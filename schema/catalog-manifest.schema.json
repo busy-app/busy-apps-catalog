@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "sourcecode",
+    "category",
+    "short_description",
+    "description",
+    "changelog",
+    "screenshots"
+  ],
+  "properties": {
+    "sourcecode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "location"
+      ],
+      "properties": {
+        "type": {
+          "const": "git"
+        },
+        "location": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "origin",
+            "commit_sha"
+          ],
+          "properties": {
+            "origin": {
+              "type": "string",
+              "pattern": "^https://github\\.com/[^/\\s?#]+/[^/\\s?#]+(?:\\.git)?$"
+            },
+            "commit_sha": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            "subdir": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "productivity",
+        "clocks",
+        "info-feeds",
+        "social",
+        "dev-monitoring",
+        "music",
+        "art",
+        "games",
+        "smart-home",
+        "utilities"
+      ]
+    },
+    "short_description": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 120,
+      "pattern": "^[^\\r\\n]+$"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "changelog": {
+      "type": "string",
+      "minLength": 10
+    },
+    "screenshots": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 10,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "back_screenshots": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

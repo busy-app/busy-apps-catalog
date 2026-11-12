@@ -1,0 +1,198 @@
+name: Publish catalog application
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      merge_sha:
+        description: Merge commit on main to publish again
+        type: string
+        required: true
+permissions: {}
+concurrency:
+  group: catalog-publish-${{ inputs.merge_sha || github.sha }}
+  cancel-in-progress: false
+jobs:
+  discover:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+      actions: read
+    outputs:
+      skip: ${{ steps.discover.outputs.skip }}
+      kind: ${{ steps.discover.outputs.kind }}
+      pr_number: ${{ steps.discover.outputs.pr_number }}
+      head_sha: ${{ steps.discover.outputs.head_sha }}
+      merge_sha: ${{ steps.discover.outputs.merge_sha }}
+      app_id: ${{ steps.discover.outputs.app_id }}
+      approved_by: ${{ steps.discover.outputs.approved_by }}
+      run_id: ${{ steps.discover.outputs.run_id }}
+      author: ${{ steps.discover.outputs.author }}
+      build_artifact: ${{ steps.discover.outputs.build_artifact }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r tools/requirements.txt
+      - name: Find approved PR and its CI artifacts
+        id: discover
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          MERGE_SHA: ${{ inputs.merge_sha || github.sha }}
+        run: python -m tools.publish_discover --merge "$MERGE_SHA" --output approved
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: steps.discover.outputs.skip != 'true' && steps.discover.outputs.kind == 'publish'
+        with:
+          name: approved-${{ inputs.merge_sha || github.sha }}
+          path: approved/manifest.yml
+          retention-days: 1
+          if-no-files-found: error
+  remove:
+    needs: discover
+    if: needs.discover.outputs.skip != 'true' && needs.discover.outputs.kind == 'remove'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r tools/requirements.txt
+      - name: Hide the removed application in the catalog
+        env:
+          CATALOG_API: ${{ vars.CATALOG_API }}
+          CATALOG_CI_TOKEN: ${{ secrets.CATALOG_CI_TOKEN }}
+          APP_ID: ${{ needs.discover.outputs.app_id }}
+          PR_NUMBER: ${{ needs.discover.outputs.pr_number }}
+          APPROVER: ${{ needs.discover.outputs.approved_by }}
+        run: python -m tools.publish_remove --app-id "$APP_ID" --pr "$PR_NUMBER" --approved-by "$APPROVER" --failure failure.json > published.json
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: published-${{ github.sha }}
+          path: published.json
+          retention-days: 1
+          if-no-files-found: error
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: failure()
+        with:
+          name: failure-${{ github.sha }}-${{ github.run_attempt }}
+          path: failure.json
+          retention-days: 1
+          if-no-files-found: ignore
+  publish:
+    needs: discover
+    if: needs.discover.outputs.skip != 'true' && needs.discover.outputs.kind == 'publish'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r tools/requirements.txt
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          name: approved-${{ needs.discover.outputs.merge_sha }}
+          path: approved
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          name: ${{ needs.discover.outputs.build_artifact }}
+          path: build
+          run-id: ${{ needs.discover.outputs.run_id }}
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          name: results-${{ needs.discover.outputs.head_sha }}
+          path: checked
+          run-id: ${{ needs.discover.outputs.run_id }}
+          github-token: ${{ github.token }}
+      - name: Validate approved artifacts
+        env:
+          PR_NUMBER: ${{ needs.discover.outputs.pr_number }}
+          HEAD_SHA: ${{ needs.discover.outputs.head_sha }}
+          MERGE_SHA: ${{ needs.discover.outputs.merge_sha }}
+          APP_ID: ${{ needs.discover.outputs.app_id }}
+          APPROVER: ${{ needs.discover.outputs.approved_by }}
+          AUTHOR: ${{ needs.discover.outputs.author }}
+          CI_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ needs.discover.outputs.run_id }}
+        run: >-
+          python -m tools.lib_publication_data --build-dir build --results checked/results.json
+          --original approved/manifest.yml --output objects --notice notice.json
+          --pr "$PR_NUMBER" --head "$HEAD_SHA" --merge "$MERGE_SHA"
+          --approver "$APPROVER" --app-id "$APP_ID" --ci-run-url "$CI_RUN_URL" --author "$AUTHOR"
+      - name: Upload and notify backend
+        env:
+          CATALOG_API: ${{ vars.CATALOG_API }}
+          CATALOG_CI_TOKEN: ${{ secrets.CATALOG_CI_TOKEN }}
+        run: python -m tools.publish_upload --manifest notice.json --results checked/results.json --artifacts objects --failure failure.json > published.json
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: published-${{ github.sha }}
+          path: published.json
+          retention-days: 1
+          if-no-files-found: error
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: failure()
+        with:
+          name: failure-${{ github.sha }}-${{ github.run_attempt }}
+          path: failure.json
+          retention-days: 1
+          if-no-files-found: ignore
+  report:
+    needs: [discover, publish, remove]
+    # A failure after the merge is reported in the PR too; a cancelled run is not.
+    if: >-
+      always() && needs.discover.result == 'success' && needs.discover.outputs.skip != 'true'
+      && (needs.publish.result == 'success' || needs.remove.result == 'success'
+      || needs.publish.result == 'failure' || needs.remove.result == 'failure')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r tools/requirements.txt
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        if: needs.publish.result == 'success' || needs.remove.result == 'success'
+        with:
+          name: published-${{ github.sha }}
+          path: published
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        if: needs.publish.result == 'failure' || needs.remove.result == 'failure'
+        continue-on-error: true
+        with:
+          name: failure-${{ github.sha }}-${{ github.run_attempt }}
+          path: failed
+      - name: Update publication confirmation
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ needs.discover.outputs.pr_number }}
+          KIND: ${{ needs.discover.outputs.kind }}
+          SUCCEEDED: ${{ needs.publish.result == 'success' || needs.remove.result == 'success' }}
+          MERGE_SHA: ${{ needs.discover.outputs.merge_sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "$SUCCEEDED" == true ]]; then
+            python -m tools.publish_report --result published/published.json --pr "$PR_NUMBER"
+          else
+            python -m tools.publish_report --failed "$KIND" --failure failed/failure.json --run-url "$RUN_URL" --merge-sha "$MERGE_SHA" --pr "$PR_NUMBER"
+          fi

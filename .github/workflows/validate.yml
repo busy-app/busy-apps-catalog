@@ -1,0 +1,104 @@
+name: Validate
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+permissions: {}
+concurrency:
+  group: validate-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  scope:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      manifest: ${{ steps.select.outputs.manifest }}
+      removal: ${{ steps.select.outputs.removal }}
+      maintenance: ${{ steps.select.outputs.maintenance }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Read current maintenance label
+        id: labels
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          MAINTENANCE=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER" --jq 'any(.labels[]; .name == "maintenance")')
+          echo "maintenance=$MAINTENANCE" >> "$GITHUB_OUTPUT"
+      - name: Select manifest
+        id: select
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          MAINTENANCE: ${{ steps.labels.outputs.maintenance }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "$MAINTENANCE" == true ]]; then
+            echo 'maintenance=true' >> "$GITHUB_OUTPUT"
+          else
+            selected=$(python -m tools.validate_scope --base "$BASE_SHA" --head "$HEAD_SHA")
+            if [[ "$selected" == removal:* ]]; then
+              printf 'manifest=\nremoval=%s\nmaintenance=false\n' "${selected#removal:}" >> "$GITHUB_OUTPUT"
+            else
+              printf 'manifest=%s\nremoval=\nmaintenance=false\n' "$selected" >> "$GITHUB_OUTPUT"
+            fi
+          fi
+  manifest:
+    needs: scope
+    if: needs.scope.outputs.maintenance != 'true' && needs.scope.outputs.removal == ''
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r tools/requirements.txt
+      - name: Validate manifest
+        env:
+          MANIFEST: ${{ needs.scope.outputs.manifest }}
+        run: python -m tools.validate_manifest "$MANIFEST"
+  tests:
+    needs: scope
+    if: needs.scope.outputs.maintenance == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r tools/requirements.txt -r e2e/requirements.txt
+      - run: python -m pytest -q
+      - run: python -m tools.validate_manifest example/com.example.weather/manifest.yml --categories-url ''
+  completed:
+    name: validate
+    if: always()
+    needs: [scope, manifest, tests]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check stage results
+        env:
+          SCOPE: ${{ needs.scope.result }}
+          MANIFEST: ${{ needs.manifest.result }}
+          TESTS: ${{ needs.tests.result }}
+          MAINTENANCE: ${{ needs.scope.outputs.maintenance }}
+          REMOVAL: ${{ needs.scope.outputs.removal }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$SCOPE" == success ]]
+          [[ "$TESTS" == success || ( "$MAINTENANCE" != true && "$TESTS" == skipped ) ]]
+          [[ "$MANIFEST" == success || ( ( "$MAINTENANCE" == true || -n "$REMOVAL" ) && "$MANIFEST" == skipped ) ]]

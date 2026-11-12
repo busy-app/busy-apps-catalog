@@ -1,0 +1,233 @@
+name: Catalog pipeline
+on:
+  workflow_dispatch:
+    inputs:
+      pull_request_number:
+        description: Application or maintenance PR to recheck
+        required: true
+        type: number
+  # Required two-stage architecture: only default-branch tools run in privileged jobs.
+  # PR content is read as data; source execution is confined to a tokenless build job.
+  workflow_run: # zizmor: ignore[dangerous-triggers]
+    workflows: [Validate]
+    types: [completed]
+permissions: {}
+concurrency:
+  group: catalog-pipeline-${{ github.event.workflow_run.head_sha || inputs.pull_request_number }}
+  cancel-in-progress: true
+jobs:
+  prepare:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.event == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+      checks: read
+    outputs:
+      skip: ${{ steps.prepare.outputs.skip }}
+      pr_number: ${{ steps.prepare.outputs.pr_number }}
+      head_sha: ${{ steps.prepare.outputs.head_sha }}
+      early: ${{ steps.prepare.outputs.early }}
+      app_id: ${{ steps.prepare.outputs.app_id }}
+      author_attested: ${{ steps.prepare.outputs.author_attested }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r tools/requirements.txt
+      - name: Read PR manifest as data
+        id: prepare
+        env:
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          PR_INPUT: ${{ inputs.pull_request_number }}
+          EVENT_NAME: ${{ github.event_name }}
+          GITHUB_TOKEN: ${{ github.token }}
+          CATALOG_API: ${{ vars.CATALOG_API }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          if [[ "$EVENT_NAME" == workflow_dispatch ]]; then
+            [[ "$PR_INPUT" =~ ^[1-9][0-9]*$ ]]
+            HEAD_SHA=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_INPUT" --jq .head.sha)
+            export HEAD_SHA
+          fi
+          python -m tools.pipeline_prepare
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: steps.prepare.outputs.skip != 'true' && steps.prepare.outputs.early != 'true'
+        with:
+          name: prepared-${{ steps.prepare.outputs.head_sha }}
+          path: |
+            prepared/manifest.yml
+            tools/*.py
+            tools/requirements.txt
+            schema/*.json
+          retention-days: 1
+          if-no-files-found: error
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: steps.prepare.outputs.early == 'true'
+        with:
+          name: results-${{ steps.prepare.outputs.head_sha }}
+          path: results.json
+          retention-days: 90
+          if-no-files-found: error
+  build:
+    needs: prepare
+    if: needs.prepare.outputs.skip != 'true' && needs.prepare.outputs.early != 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions: {}
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          name: prepared-${{ needs.prepare.outputs.head_sha }}
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version: '24'
+      - run: python -m pip install -r tools/requirements.txt
+      - name: Build untrusted source without credentials
+        env:
+          APP_ID: ${{ needs.prepare.outputs.app_id }}
+        run: |
+          set -o pipefail
+          python -m tools.pipeline_build prepared/manifest.yml "$APP_ID" build 2>&1 | tee build.log
+      - name: Preserve bounded build diagnostics
+        if: always()
+        run: |
+          if [[ -f build.log ]]; then tail -c 8192 build.log > build-error.txt; else echo 'Build failed before application assembly' > build-error.txt; fi
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: build-log-${{ needs.prepare.outputs.head_sha }}
+          path: |
+            build-error.txt
+            build-error.json
+          retention-days: 90
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: build-${{ needs.prepare.outputs.head_sha }}
+          path: build/
+          retention-days: 90
+          if-no-files-found: error
+  check:
+    if: always() && needs.prepare.result == 'success' && needs.prepare.outputs.skip != 'true' && needs.prepare.outputs.early != 'true'
+    needs: [prepare, build]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r tools/requirements.txt
+      - name: Download built output
+        if: needs.build.result == 'success'
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          name: build-${{ needs.prepare.outputs.head_sha }}
+          path: build
+      - name: Download manifest as data
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          name: prepared-${{ needs.prepare.outputs.head_sha }}
+          path: prepared-data
+      - name: Download failed build diagnostics
+        if: needs.build.result != 'success'
+        continue-on-error: true
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          name: build-log-${{ needs.prepare.outputs.head_sha }}
+          path: build-log
+      - name: Run formal checks
+        env:
+          APP_ID: ${{ needs.prepare.outputs.app_id }}
+          BUILD_RESULT: ${{ needs.build.result }}
+          CATALOG_API: ${{ vars.CATALOG_API }}
+          AUTHOR_ATTESTED: ${{ needs.prepare.outputs.author_attested }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "$BUILD_RESULT" == success ]]; then
+            python -m tools.pipeline_check --app-id "$APP_ID" --build-dir build --manifest prepared-data/prepared/manifest.yml --output results.json
+          else
+            python -m tools.pipeline_check --app-id "$APP_ID" --build-log build-log/build-error.txt --build-error build-log/build-error.json --manifest prepared-data/prepared/manifest.yml --output results.json
+          fi
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: results-${{ needs.prepare.outputs.head_sha }}
+          path: results.json
+          retention-days: 90
+          if-no-files-found: error
+  report:
+    if: always() && needs.prepare.outputs.pr_number != '' && needs.prepare.outputs.skip != 'true'
+    needs: [prepare, build, check]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      checks: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r tools/requirements.txt
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        continue-on-error: true
+        with:
+          name: results-${{ needs.prepare.outputs.head_sha }}
+          path: checked
+      - name: Publish comment and check
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ needs.prepare.outputs.pr_number }}
+          HEAD_SHA: ${{ needs.prepare.outputs.head_sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: python -m tools.pipeline_report --results checked/results.json --pr "$PR_NUMBER" --sha "$HEAD_SHA" --repository "$GITHUB_REPOSITORY" --run-url "$RUN_URL"
+
+  maintenance-check:
+    needs: prepare
+    if: needs.prepare.outputs.skip == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+      checks: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r tools/requirements.txt
+      - name: Complete catalog gate for validated maintenance changes
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          HEAD_SHA: ${{ needs.prepare.outputs.head_sha }}
+          PR_NUMBER: ${{ needs.prepare.outputs.pr_number }}
+        run: |
+          python - <<'PYTHON'
+          import os
+          from tools.lib_github import GitHubGateway
+          gateway = GitHubGateway(os.environ['GITHUB_REPOSITORY'], os.environ['GITHUB_TOKEN'])
+          sha = os.environ['HEAD_SHA']
+          if gateway.pull_head(int(os.environ['PR_NUMBER'])) != sha:
+              raise ValueError('Maintenance PR head changed')
+          gateway.create_check(sha, 'success', 'Validated maintenance change: no application package or publication is required.')
+          PYTHON
