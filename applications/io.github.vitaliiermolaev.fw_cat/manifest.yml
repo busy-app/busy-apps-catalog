@@ -1,0 +1,19 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/vitaliiermolaev/fw-cat.git
+    commit_sha: be8af34a11acf54c9065e14a1b30af3a4eb9a6d8  # v1.0.0
+category: dev-monitoring
+short_description: New issues and pull requests in the BUSY Bar firmware repository
+description: |
+  Shows the newest open issues and pull requests in busy-app/busybar-firmware.
+
+  - Front display: the cat, then each issue or PR with its number and a scrolling title.
+  - Back display: the animated cat.
+  - Updates from GitHub every 10 minutes, no token needed.
+changelog: |
+  First version.
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
+  - screenshots/3.png
