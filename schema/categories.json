@@ -1,0 +1,56 @@
+{
+  "categories": [
+    {
+      "id": "productivity",
+      "name": "Productivity",
+      "aliases": [
+        "meetings"
+      ]
+    },
+    {
+      "id": "clocks",
+      "name": "Clock & Time",
+      "aliases": []
+    },
+    {
+      "id": "info-feeds",
+      "name": "Info & Feeds",
+      "aliases": []
+    },
+    {
+      "id": "social",
+      "name": "Social",
+      "aliases": []
+    },
+    {
+      "id": "dev-monitoring",
+      "name": "Dev & Monitoring",
+      "aliases": []
+    },
+    {
+      "id": "music",
+      "name": "Music",
+      "aliases": []
+    },
+    {
+      "id": "art",
+      "name": "Art",
+      "aliases": []
+    },
+    {
+      "id": "games",
+      "name": "Games",
+      "aliases": []
+    },
+    {
+      "id": "smart-home",
+      "name": "Smart Home",
+      "aliases": []
+    },
+    {
+      "id": "utilities",
+      "name": "Utilities",
+      "aliases": []
+    }
+  ]
+}

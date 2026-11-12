@@ -1,0 +1,17 @@
+{
+  "sourcecode": {
+    "type": "git",
+    "location": {
+      "origin": "https://github.com/busy-app/busy-apps-catalog-fixtures",
+      "commit_sha": "32f398a2b6e64678d04d028534d955ce15912c25",
+      "subdir": "valid"
+    }
+  },
+  "category": "clocks",
+  "short_description": "A small clock for catalog verification.",
+  "description": "@README.md",
+  "changelog": "Initial version.",
+  "screenshots": [
+    "screenshots/clock.png"
+  ]
+}

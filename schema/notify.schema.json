@@ -1,0 +1,202 @@
+{
+  "$defs": {
+    "PublicationArtifact": {
+      "additionalProperties": false,
+      "description": "Verified information about a single publication object.",
+      "properties": {
+        "key": {
+          "title": "Key",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "size": {
+          "maximum": 104857600,
+          "minimum": 0,
+          "title": "Size",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "key",
+        "sha256",
+        "size"
+      ],
+      "title": "PublicationArtifact",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Internal representation of an approved publication.",
+  "properties": {
+    "alias": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9_-]+(\\.[a-z0-9_-]+){2,}$",
+      "title": "Alias",
+      "type": "string"
+    },
+    "name": {
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "version": {
+      "title": "Version",
+      "type": "string"
+    },
+    "api_version": {
+      "title": "Api Version",
+      "type": "string"
+    },
+    "author": {
+      "minLength": 1,
+      "title": "Author",
+      "type": "string"
+    },
+    "origin": {
+      "minLength": 1,
+      "title": "Origin",
+      "type": "string"
+    },
+    "commit_sha": {
+      "pattern": "^[0-9a-f]{40}$",
+      "title": "Commit Sha",
+      "type": "string"
+    },
+    "subdir": {
+      "default": ".",
+      "title": "Subdir",
+      "type": "string"
+    },
+    "category": {
+      "title": "Category",
+      "type": "string"
+    },
+    "short_description": {
+      "maxLength": 80,
+      "minLength": 1,
+      "title": "Short Description",
+      "type": "string"
+    },
+    "description": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Description",
+      "type": "string"
+    },
+    "changelog": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Changelog",
+      "type": "string"
+    },
+    "package": {
+      "$ref": "#/$defs/PublicationArtifact"
+    },
+    "sources": {
+      "$ref": "#/$defs/PublicationArtifact"
+    },
+    "icon": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PublicationArtifact"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "icon_back": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PublicationArtifact"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "screenshots": {
+      "items": {
+        "$ref": "#/$defs/PublicationArtifact"
+      },
+      "maxItems": 10,
+      "minItems": 1,
+      "title": "Screenshots",
+      "type": "array"
+    },
+    "back_screenshots": {
+      "items": {
+        "$ref": "#/$defs/PublicationArtifact"
+      },
+      "maxItems": 10,
+      "title": "Back Screenshots",
+      "type": "array"
+    },
+    "toolchain": {
+      "minLength": 1,
+      "title": "Toolchain",
+      "type": "string"
+    },
+    "pr_number": {
+      "exclusiveMinimum": 0,
+      "title": "Pr Number",
+      "type": "integer"
+    },
+    "head_sha": {
+      "pattern": "^[0-9a-f]{40}$",
+      "title": "Head Sha",
+      "type": "string"
+    },
+    "merge_sha": {
+      "pattern": "^[0-9a-f]{40}$",
+      "title": "Merge Sha",
+      "type": "string"
+    },
+    "approved_by": {
+      "minLength": 1,
+      "title": "Approved By",
+      "type": "string"
+    },
+    "ci_run_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Ci Run Url"
+    }
+  },
+  "required": [
+    "alias",
+    "name",
+    "version",
+    "api_version",
+    "author",
+    "origin",
+    "commit_sha",
+    "category",
+    "short_description",
+    "description",
+    "changelog",
+    "package",
+    "sources",
+    "screenshots",
+    "toolchain",
+    "pr_number",
+    "head_sha",
+    "merge_sha",
+    "approved_by"
+  ],
+  "title": "PublicationData",
+  "type": "object"
+}

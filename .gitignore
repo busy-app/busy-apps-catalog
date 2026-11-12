@@ -1,0 +1,7 @@
+__pycache__/
+.pytest_cache/
+.venv/
+results.json
+
+e2e/.env
+e2e-report.md
