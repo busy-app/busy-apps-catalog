@@ -1,5 +1,5 @@
 PyYAML==6.0.3
 jsonschema==4.26.0
 Markdown==3.11.2
-Pillow==11.3.0
+Pillow==13.0.0
 httpx2==2.16.0
