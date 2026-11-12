@@ -6,6 +6,7 @@
 - [ ] The manifest follows the catalog manifest format
 - [ ] I've tested the app on a BUSY Bar with the latest release firmware
 - [ ] The screenshots are taken from the bar
+- [ ] (optional) My app takes part in the BUSY JS Apps Contest, and I accept the [contest rules](https://go.busy.app/terms-of-js-apps-contest)
 
 # AI usage
 
