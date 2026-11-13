@@ -193,6 +193,8 @@ jobs:
     runs-on: BusyBarTest
     timeout-minutes: 20
     permissions: {}
+    outputs:
+      artifact_url: ${{ steps.evidence.outputs.artifact-url }}
     steps:
       - name: Create a fresh workspace
         id: workspace
@@ -218,11 +220,12 @@ jobs:
           BAR_WORK: ${{ steps.workspace.outputs.path }}
         run: |
           env -i PATH=/usr/bin:/bin \
-            "BUSYBAR_IP=${BUSYBAR_IP:?}" "SESSION_LOG_DIR=${SESSION_LOG_DIR:?}" \
+            "BUSYBAR_IP=${BUSYBAR_IP:?}" \
             /usr/bin/python3 -I "$BAR_WORK/trusted/tools/bar.py" \
             --request "$BAR_WORK/checked/bar-request.json" \
             --package "$BAR_WORK/build/package.tgz" --output "$BAR_WORK/bar-result.json"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        id: evidence
         if: always()
         with:
           name: bar-result-${{ needs.prepare.outputs.head_sha }}
@@ -297,6 +300,7 @@ jobs:
           PR_NUMBER: ${{ needs.prepare.outputs.pr_number }}
           HEAD_SHA: ${{ needs.prepare.outputs.head_sha }}
           BAR_JOB_RESULT: ${{ needs.bar.result }}
+          BAR_ARTIFACT_URL: ${{ needs.bar.outputs.artifact_url }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: >-
           python -m tools.pipeline_report --results checked/results.json --pr "$PR_NUMBER"

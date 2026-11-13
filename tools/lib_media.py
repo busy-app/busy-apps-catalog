@@ -105,18 +105,18 @@ def parse_view(data: object) -> dict[str, object] | None:
     return {"repo": repo, "commit_sha": commit, "items": clean}
 
 
-def render_media(view: Mapping[str, object] | None) -> list[str]:
+def render_media(
+    view: Mapping[str, object] | None,
+    bar_media: Mapping[str, object] | None = None,
+) -> list[str]:
     """
-    The Screenshots section: each image at its real size, linking to the pinned file.
+    Keep repository screenshots, CI captures and application icons in separate sections.
 
     Paths come from the author, so they are URL-encoded and the alt text is escaped.
     """
-    if not view or not view["items"]:
-        return []
-    repo, commit = view["repo"], view["commit_sha"]
-    lines = ["", "### Screenshots", ""]
-    shown = []
-    for item in view["items"]:
+    lines, groups = [], {kind: [] for kind in SIZES}
+    for item in view["items"] if view else []:
+        repo, commit = view["repo"], view["commit_sha"]
         kind, path = item["kind"], item["path"]
         width, height = SIZES[kind]
         encoded = quote(path, safe="/")
@@ -126,8 +126,26 @@ def render_media(view: Mapping[str, object] | None) -> list[str]:
             f"{TITLES[kind].removesuffix('s')}: {path}",
             quote=True,
         )
-        shown.append(
+        groups[kind].append(
             f'<a href="{page}"><img src="{raw}" width="{width}" height="{height}" alt="{alt}"></a>'
         )
-    lines.append(" ".join(shown))
+    if groups["screenshot"] or groups["back_screenshot"]:
+        lines.extend(["", "### Screenshots from the repository", ""])
+        for kind, title in (("screenshot", "Front display"), ("back_screenshot", "Back display")):
+            if groups[kind]:
+                lines.extend([f"**{title}**", "", " ".join(groups[kind]), ""])
+    if bar_media:
+        lines.extend([
+            "", "### Screenshots from the BAR", "",
+            f"Captured during CI after {bar_media['observed_seconds']} seconds on firmware {bar_media['firmware_version']}.",
+            "", f"[Download BAR screenshots and app log]({bar_media['artifact_url']})", "",
+        ])
+        for name in bar_media["screenshots"]:
+            title, size = ("Front display", "72 × 16") if name == "front.png" else ("Back display", "160 × 80")
+            lines.append(f"- {title}: `{name}` ({size})")
+    if groups["icon_front"] or groups["icon_back"]:
+        lines.extend(["", "### App icons from the repository", ""])
+        for kind, title in (("icon_front", "Front"), ("icon_back", "Back")):
+            if groups[kind]:
+                lines.extend([f"**{title}:** {' '.join(groups[kind])}", ""])
     return lines

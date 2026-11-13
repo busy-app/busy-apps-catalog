@@ -7,6 +7,7 @@ import ipaddress
 import json
 import os
 import re
+import socket
 import struct
 import time
 import zlib
@@ -187,6 +188,7 @@ class Device:
         ip = ipaddress.IPv4Address(address)
         if not any(ip in ipaddress.IPv4Network(net) for net in ("10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16")):
             raise ValueError("BAR must have a private IPv4 USB address")
+        self.address = str(ip)
         self.base = f"http://{ip}/api/"
 
     def call(self, method, path, *, query=None, data=None, timeout=3):
@@ -227,20 +229,66 @@ def save_screen(content, display, path):
 
 
 class ApplicationLog:
-    """Read new UART records, retaining only this application's logs and relevant faults."""
+    """Read native logs from USB CLI or a log file, retaining only application evidence."""
 
     def __init__(self, source, app_id, output):
-        info = source.stat()
-        if source.is_symlink() or not source.is_file():
-            raise ObservationError("invalid_serial_log")
-        self.source, self.app_id, self.output = source, app_id, output
-        self.identity, self.offset = (info.st_dev, info.st_ino), info.st_size
+        self.app_id, self.output = app_id, output
         self.pending, self.read_bytes, self.written = b"", 0, 0
         self.script_seen, self.active, self.valid = False, False, True
         self.errors = set()
-
-    def poll(self):
+        self.source = source if isinstance(source, Path) else None
+        self.connection = None
+        if self.source is not None:
+            info = self.source.stat()
+            if self.source.is_symlink() or not self.source.is_file():
+                raise ObservationError("invalid_serial_log")
+            self.identity, self.offset = (info.st_dev, info.st_ino), info.st_size
+            return
         try:
+            self.connection = socket.create_connection((source, 23), timeout=5)
+        except OSError:
+            raise ObservationError("native_log_unavailable") from None
+        try:
+            self._read_until(b">: ")
+            self.connection.sendall(b"log info\r\n")
+            marker = b"Press CTRL+C to stop..."
+            response = self._read_until(marker)
+            if b"Current log level: info" not in response:
+                raise ObservationError("native_log_not_ready")
+            self.pending = response.split(marker, 1)[1]
+            self.connection.setblocking(False)
+        except (OSError, ValueError):
+            self.close()
+            raise ObservationError("native_log_unavailable") from None
+
+    def _read_until(self, marker):
+        data, deadline = bytearray(), time.monotonic() + 5
+        while marker not in data:
+            remaining = deadline - time.monotonic()
+            if remaining <= 0 or len(data) > 65536:
+                raise ObservationError("native_log_not_ready")
+            self.connection.settimeout(remaining)
+            chunk = self.connection.recv(4096)
+            if not chunk:
+                raise ObservationError("native_log_closed")
+            data.extend(chunk)
+        return bytes(data)
+
+    def close(self):
+        if self.connection is None:
+            return
+        try:
+            # The firmware removes the subscriber and restores the previous log level.
+            self.connection.settimeout(5)
+            self.connection.sendall(b"\x03")
+            self._read_until(b">: ")
+        except (OSError, ValueError):
+            pass
+        finally:
+            self.connection.close()
+
+    def _read(self):
+        if self.source is not None:
             info = self.source.stat()
             if (info.st_dev, info.st_ino) != self.identity or info.st_size < self.offset:
                 raise ObservationError("serial_log_lost")
@@ -248,13 +296,25 @@ class ApplicationLog:
                 stream.seek(self.offset)
                 data = stream.read(2 * 1024 * 1024 + 1)
             self.offset += len(data)
+            return data
+        try:
+            data = self.connection.recv(2 * 1024 * 1024 + 1)
+        except BlockingIOError:
+            return b""
+        if not data:
+            raise ObservationError("native_log_closed")
+        return data
+
+    def poll(self):
+        try:
+            data = self._read()
             self.read_bytes += len(data)
             if len(data) > 2 * 1024 * 1024 or self.read_bytes > 8 * 1024 * 1024:
-                raise ObservationError("serial_log_flood")
+                raise ObservationError("serial_log_flood" if self.source is not None else "native_log_flood")
             lines = (self.pending + data).split(b"\n")
             self.pending = lines.pop()
             if len(self.pending) > 65536:
-                raise ObservationError("serial_line_too_long")
+                raise ObservationError("serial_line_too_long" if self.source is not None else "native_line_too_long")
             for raw in lines:
                 line = re.sub(r"\x1b\[[0-?]*[ -/]*[@-~]", "", raw.decode("utf-8", errors="replace"))
                 line = "".join(c for c in line if c == "\t" or c.isprintable())
@@ -284,7 +344,7 @@ class ApplicationLog:
                 ):
                     self.errors.add("bar_crash_or_restart")
                     selected = True
-                lost = re.search(
+                lost = self.source is not None and re.search(
                     r"\[(?:u5|Si917)\] (?:serial read error|unable to open|reconnecting in|waiting for device)", line
                 )
                 if lost:
@@ -391,7 +451,7 @@ def provision(device, firmware, image, *, clock=time.monotonic, sleep=time.sleep
     raise ValueError("BAR did not confirm reboot into the release firmware")
 
 
-def smoke(device, request, package, serial_log, output_dir, *, clock=time.monotonic, sleep=time.sleep):
+def smoke(device, request, package, log_source, output_dir, *, clock=time.monotonic, sleep=time.sleep):
     """Only firmware APIs run the package; nothing from the app executes on the runner."""
     output_dir.mkdir(parents=True, exist_ok=True)
     log_output = output_dir / "app.log"
@@ -443,7 +503,7 @@ def smoke(device, request, package, serial_log, output_dir, *, clock=time.monoto
             raise ObservationError("installed_version_mismatch")
         step = "observe"
         baseline = health(device.call("GET", "status"))
-        observer = ApplicationLog(serial_log, request["app_id"], log_output)
+        observer = ApplicationLog(log_source, request["app_id"], log_output)
         step = "launch"
         device.call("POST", "apps/launch", query={"app_id": request["app_id"]}, timeout=10)
         result["launch"] = "accepted"
@@ -480,6 +540,8 @@ def smoke(device, request, package, serial_log, output_dir, *, clock=time.monoto
                 observer.poll()
             except (ValueError, OSError) as error:
                 failed("observe", error)
+            finally:
+                observer.close()
             result.update(
                 script_seen=observer.script_seen,
                 runtime_errors=sorted(observer.errors),
@@ -533,9 +595,7 @@ def main():
         firmware, image = latest_release(f"f{target}")
         provision(device, firmware, image)
         request["firmware"] = firmware
-        result = smoke(
-            device, request, args.package, Path(os.environ["SESSION_LOG_DIR"]) / "runlog.log", args.output.parent
-        )
+        result = smoke(device, request, args.package, device.address, args.output.parent)
     except Exception as error:
         result.update(status="fail", error=f"BAR check could not complete ({type(error).__name__})")
     write_json(args.output, result)

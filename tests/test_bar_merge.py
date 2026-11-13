@@ -84,8 +84,21 @@ def assert_app_fail(data):
 def test_full_pass(tmp_path):
     ev = good()
     data = run_merge(tmp_path, ev)
-    assert bar_checks(data) == [{"id": "bar_smoke", "result": "pass"}]
+    # A pass is not a finding: the comment would show it as a problem row and call the run
+    # "passed with warnings" (seen on busy-apps-catalog#9).
+    assert bar_checks(data) == []
     assert data["bar"] == ev and data["status"] == "pass"
+
+
+def test_a_bar_pass_renders_as_a_clean_pass(tmp_path):
+    from tools.lib_comment import passed_count, verdict
+    from tools.pipeline_report import read_results
+
+    data = run_merge(tmp_path, good())
+    findings = read_results(tmp_path / "results.json")
+    assert verdict(findings) == "pass"
+    assert passed_count("device", findings) == 1
+    assert data["bar"]
 
 
 def test_existing_block_skips_bar(tmp_path):
