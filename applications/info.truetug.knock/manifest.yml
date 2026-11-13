@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/truetug/busy-knock-roll-die-app.git
-    commit_sha: 0eb57d186196b77193001dd72d199a2bdff5c4a8  # 1.2.1
+    commit_sha: 0a1c3de47d0b67e5f82dfda979c6a76fada3ccda  # 1.2.2
 
 category: games
 
@@ -33,12 +33,13 @@ changelog: |
   First version in the catalog. The app id is now info.truetug.knock, so the bar installs it as a new app: settings from earlier versions start from the defaults.
 
 screenshots:
-  - screenshots/1-tarot.png
-  - screenshots/2-prediction.png
-  - screenshots/3-wheel.png
-  - screenshots/4-intro.png
-  - screenshots/5-ball.png
-  - screenshots/6-neon.png
-  - screenshots/7-die.png
-  - screenshots/8-d20.png
-  - screenshots/9-roll.png
+  - screenshots/01-die.png
+  - screenshots/02-dice-intro.png
+  - screenshots/03-dice-wheel.png
+  - screenshots/04-cards-intro.png
+  - screenshots/05-cards-wheel.png
+  - screenshots/06-card.png
+  - screenshots/07-tarot-intro.png
+  - screenshots/08-tarot-wheel.png
+  - screenshots/09-tarot-card.png
+  - screenshots/10-tarot-prediction.png
