@@ -39,7 +39,8 @@
       "type": "string"
     },
     "name": {
-      "minLength": 1,
+      "maxLength": 32,
+      "pattern": "^[A-Za-z0-9 !?&'()+,\\-./:#$%@_]+$",
       "title": "Name",
       "type": "string"
     },
@@ -76,20 +77,21 @@
       "type": "string"
     },
     "short_description": {
-      "maxLength": 80,
-      "minLength": 1,
+      "maxLength": 120,
+      "minLength": 10,
+      "pattern": "^[^\\r\\n]+$",
       "title": "Short Description",
       "type": "string"
     },
     "description": {
-      "maxLength": 2000,
-      "minLength": 1,
+      "maxLength": 4000,
+      "minLength": 50,
       "title": "Description",
       "type": "string"
     },
     "changelog": {
-      "maxLength": 2000,
-      "minLength": 1,
+      "maxLength": 4000,
+      "minLength": 10,
       "title": "Changelog",
       "type": "string"
     },

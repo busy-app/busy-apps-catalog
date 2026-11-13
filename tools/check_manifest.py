@@ -10,7 +10,7 @@ import yaml
 from jsonschema import Draft202012Validator
 
 from tools.check_registry import outcome
-from tools.lib_app_id import MANIFEST_PATH, is_recommended, is_valid
+from tools.lib_app_id import MANIFEST_PATH, is_valid
 from tools.lib_http import HttpError, request
 
 SCHEMA = Path(__file__).resolve().parents[1] / "schema" / "catalog-manifest.schema.json"
@@ -230,8 +230,6 @@ def validate(path: Path, folder: str | None = None) -> Findings:
     folder = folder or path.parent.name
     if path.name != "manifest.yml" or not is_valid(folder):
         findings.append(outcome("manifest_path", "fail", str(path)))
-    elif not is_recommended(folder):
-        findings.append(outcome("id_style", "fail", folder))
     manifest, unreadable = read_manifest(path)
     if unreadable:
         return [*findings, *unreadable]

@@ -158,4 +158,4 @@ def test_step_summary_uses_the_comment_format(tmp_path, monkeypatch, capsys):
     assert main() == 0
     assert "✅ Passed" in capsys.readouterr().out
     text = summary.read_text()
-    assert "✅ **Manifest** — 12 checks passed" in text
+    assert "✅ **Manifest** — 11 checks passed" in text

@@ -2,7 +2,7 @@
 
 import pytest
 
-from tools.lib_app_id import MANIFEST_PATH, is_recommended, is_valid
+from tools.lib_app_id import MANIFEST_PATH, is_valid
 
 VALID = [
     "app.busy.weather",
@@ -48,14 +48,6 @@ def test_sixty_three_characters_is_the_limit() -> None:
     """Exactly 63 characters pass and 64 do not."""
     assert is_valid("a." + "b" * 59 + ".c") and len("a." + "b" * 59 + ".c") == 63
     assert not is_valid("a." + "b" * 60 + ".c")
-
-
-def test_style_hint() -> None:
-    """Hint at reverse-domain lower-case IDs without rejecting others."""
-    assert is_recommended("app.busy.weather")
-    assert is_recommended("io.github.imalkav.chess_clock")
-    assert is_recommended("de.example.weather")
-    assert not is_recommended("weather.example.app")
 
 
 def test_upper_case_reason_suggests_lower_case() -> None:

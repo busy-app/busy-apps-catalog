@@ -10,7 +10,7 @@ from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import Protocol
 
-from tools.check_registry import REGISTRY, RESULTS, STAGES, blocks, get, outcome
+from tools.check_registry import REGISTRY, RESULTS, RETIRED, STAGES, blocks, get, outcome
 from tools.lib_comment import SKIP_REASONS, find_comment, render_comment, verdict
 from tools.lib_github import GitHubGateway
 from tools.lib_license import ALLOWED
@@ -157,13 +157,14 @@ def read_results(path: Path) -> list[dict[str, str]]:
     checks = result["checks"]
     if len(checks) > 500 or any(
         not isinstance(item, dict)
-        or item.get("id") not in REGISTRY
+        or (item.get("id") not in REGISTRY and item.get("id") not in RETIRED)
         or item.get("result") not in RESULTS
         or not isinstance(item.get("detail", ""), str)
         or len(item.get("detail", "")) > 2000
         for item in checks
     ):
         raise ValueError("Invalid check finding")
+    checks = [item for item in checks if item["id"] not in RETIRED]
     blocking = any(blocks(item["id"], item["result"]) for item in checks)
     if (result["status"] == "fail") != blocking:
         raise ValueError("Inconsistent check outcome")

@@ -65,6 +65,23 @@ def fixture(tmp_path: Path) -> tuple[dict, Path, Path]:
     return record, results, tmp_path
 
 
+def test_texts_up_to_the_manifest_limits_pass_the_notify_schema(tmp_path: Path) -> None:
+    """
+    The notify schema takes what the manifest check takes: 120 characters of short description.
+
+    The schema copy here once kept 80, so a 90-character short description passed every check
+    and then failed the publication with "does not match notify schema".
+    """
+    data, results, directory = fixture(tmp_path)
+    data["short_description"] = "x" * 120
+    data["description"] = "d" * 4000
+    data["changelog"] = "c" * 4000
+    assert len(validate_publication(data, results, directory)) == 3
+    data["short_description"] = "x" * 121
+    with pytest.raises(ValueError, match="notify schema"):
+        validate_publication(data, results, directory)
+
+
 def test_upload_before_notify(tmp_path: Path) -> None:
     """
     Validate files and upload each unique object before sending notify.

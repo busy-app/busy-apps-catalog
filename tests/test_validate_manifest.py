@@ -111,10 +111,9 @@ def test_application_id_rule_and_style_hint(tmp_path: Path) -> None:
     assert "io.github.<your-github-user>.<app>" in get("manifest_path").fix
     assert [item["id"] for item in ids("App.Busy.X")] == ["manifest_path"]
     assert [item["id"] for item in ids("ru.malk-it.chess_clock")] == []
-    style = ids("weather.example.app")
-    assert [item["id"] for item in style] == ["id_style"]
-    assert not blocks("id_style", "fail")
-    assert "io.github.<your-github-user>.<app>" in get("id_style").fix
+    # Any valid ID passes: the first part is not matched against a list of domains.
+    assert [item["id"] for item in ids("info.truetug.knock")] == []
+    assert [item["id"] for item in ids("weather.example.app")] == []
 
 
 def test_changelog_must_be_inline_text_of_10_to_4000(tmp_path: Path) -> None:

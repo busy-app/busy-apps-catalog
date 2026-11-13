@@ -154,8 +154,6 @@ The `id` in `appmeta/manifest.json` is also the name of your directory, `applica
 
 `app.busy.*` is only for official BUSY apps.
 
-An ID that doesn't start with a domain-like part (`com`, `org`, `io`, `net`, `dev`, `app` or a two-letter country code) still passes, but the checks show a recommendation.
-
 ## Requirements
 
 Any failed check fails the pull request checks.
