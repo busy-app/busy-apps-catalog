@@ -1,6 +1,6 @@
 # BUSY Bar Apps Catalog
 
-This is the public repository for community-developed apps for BUSY Bar. The Apps Catalog is available at [apps.busy.app](http://apps.busy.app/).
+This is the public repository for community-developed apps for BUSY Bar.
 
 The repository contains app manifests with links to source code in the authors' GitHub repositories and the app details displayed in the Catalog. App packages are built from the authors' source code.
 
