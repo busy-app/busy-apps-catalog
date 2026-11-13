@@ -1,5 +1,6 @@
 """Tests for preparing approved build metadata for backend publication."""
 
+import hashlib
 import io
 import json
 import tarfile
@@ -64,7 +65,41 @@ def test_prepare_approved_bundle(tmp_path: Path, make_png) -> None:
     manifest = tmp_path / "manifest.yml"
     manifest.write_text(yaml.safe_dump(original))
     results = tmp_path / "results.json"
-    results.write_text('{"status":"pass","checks":[]}')
+    results.write_text(
+        json.dumps(
+            {
+                "status": "pass",
+                "checks": [],
+                "bar": {
+                    "app_id": "app.busy.clock",
+                    "version": "1.0.0",
+                    "head_sha": "b" * 40,
+                    "run_id": 9,
+                    "run_attempt": 1,
+                    "package_sha256": hashlib.sha256(
+                        (build_dir / "package.tgz").read_bytes()
+                    ).hexdigest(),
+                    "status": "pass",
+                    "cleanup": "pass",
+                    "launch": "accepted",
+                    "observed_seconds": 60,
+                    "script_seen": True,
+                    "log_complete": True,
+                    "runtime_errors": [],
+                    "artifacts": {
+                        "app.log": "d" * 64,
+                        "front.png": "e" * 64,
+                        "back.png": "f" * 64,
+                    },
+                    "firmware": {
+                        "version": "1.4.1",
+                        "target": "f22",
+                        "sha256": "f" * 64,
+                    },
+                },
+            }
+        )
+    )
     data = prepare_publication(
         build_dir,
         results,

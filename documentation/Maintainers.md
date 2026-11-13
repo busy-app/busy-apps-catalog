@@ -1,11 +1,23 @@
-# Maintainer setup
+# Maintaining the catalog
 
-For each environment repository, configure CATALOG_API and secret CATALOG_CI_TOKEN.
-Once DevOps put the backend behind Cloudflare Access, also set the secrets CF_ACCESS_CLIENT_ID and
-CF_ACCESS_CLIENT_SECRET (a service token, issued by DevOps). Both or neither: without them the CI
-works only while Access is off. They are sent to the backend host only and never to the build job.
-Issue the token through the backend CLI with role ci-upload; keep the secret out of Git.
-Set E2E author, independent moderator and cleanup admin tokens in that environment.
+This guide is for the people who run the catalog repositories. App authors need only the
+[README](../README.md), the [Contribution Guide](../CONTRIBUTING.md) and the [Terms](../TERMS.md).
+
+## Contents
+
+- [Repository setup](#repository-setup)
+- [Secrets and variables](#secrets-and-variables)
+- [CI flow](#ci-flow)
+- [Repository layout](#repository-layout)
+- [Local checks](#local-checks)
+- [End-to-end tests](#end-to-end-tests)
+- [Environments: dev, stage, prod](#environments-dev-stage-prod)
+- [Publication did not run](#publication-did-not-run)
+- [Removing a check](#removing-a-check)
+- [Workflow audit boundary](#workflow-audit-boundary)
+- [Dependabot](#dependabot)
+
+## Repository setup
 
 Protect main with required validate and catalog-checks, one independent CODEOWNERS
 approval, stale approval dismissal and approval by someone other than the last pusher.
@@ -16,10 +28,84 @@ changes; application PRs may change exactly one manifest.
 CODEOWNERS points to @busy-app/catalog-moderators; ensure that team exists and has
 repository access before requiring code-owner reviews.
 
-Promote the same reviewed CI code dev → stage → prod under the environment-repository
-task. Change only endpoint and credentials per environment. Do not copy secrets.
+## Secrets and variables
+
+| Name | Kind | Who provides it | Used by |
+|---|---|---|---|
+| `CATALOG_API` | variable | maintainers | pipeline, publish, review, E2E: the backend address |
+| `CATALOG_CI_TOKEN` | secret | backend CLI, role `ci-upload` | publish and review jobs |
+| `CF_ACCESS_CLIENT_ID`, `CF_ACCESS_CLIENT_SECRET` | secrets | DevOps (Cloudflare Access service token) | steps that call the backend; set both or neither |
+| `E2E_AUTHOR_TOKEN`, `E2E_MODERATOR_TOKEN` | secrets | maintainers: GitHub tokens of two different users, the author and the independent moderator | E2E only |
+| `E2E_ADMIN_TOKEN` | secret | maintainers: a backend token with the admin role | E2E cleanup (hides published fixtures) |
+
+Keep every secret out of Git. The Access secrets are sent to the backend host only and never
+to the build job; without them the CI works only while Access is off.
+
+## CI flow
+
+1. **PR validation.** `validate.yml` checks the PR scope, validates the manifest against the schema, and runs tool tests.
+2. **Package build and checks.** `pipeline.yml` reads the manifest as data, builds the pinned source without secrets, and checks the resulting package. Then, it updates a single PR comment and check run.
+3. **Independent review.** An independent reviewer verifies ownership and reviews the build results.
+   Unresolved change requests block publication. Approval must match the current head SHA.
+4. **Publication.** After the PR is merged, `publish.yml` uploads the approved artifacts and notifies the backend. If `CATALOG_API` is not set, the workflow runs in dry-run mode.
+
+## Repository layout
+
+- `applications/` — application manifests
+- `tools/` — CI commands and pinned Python dependencies
+- `schema/` — Catalog manifest and backend publication contracts
+- `tests/` — offline tests and optional backend integration test
+- `.github/` — workflows and submission template
+
+## Local checks
+
+Use Python 3.13 or newer from the repository root:
+
+```sh
+python -m pip install -r tools/requirements.txt -r e2e/requirements.txt pytest
+python -m pytest -q
+python -m tools.validate_manifest applications/APP_ID/manifest.yml
+python -m tools.check_package package.tgz APP_ID --output results.json
+```
+
+For backend integration, set `CATALOG_BACKEND_SOURCE` to the backend checkout and
+`CATALOG_TEST_POSTGRES_DSN` to a disposable PostgreSQL instance. The test creates
+and removes its own schema.
+
+A green local test suite alone does not establish successful publication.
+
+## End-to-end tests
+
+The E2E suite runs real submissions against an environment repository and its backend.
+Setup, options and waits are in [e2e/README.md](../e2e/README.md); run it with `make e2e ENV=dev`.
+
+## Environments: dev, stage, prod
+
+There are three repositories, dev → stage → prod. The code is identical; only `applications/`,
+the variables and the secrets differ (endpoint and credentials per environment; do not copy
+secrets). Every change goes to dev first, then a synchronising pull request with the
+`maintenance` label carries the same reviewed code to the next repository.
+
 Publish consumes the approved artifact without rebuilding. Backend upload/notify retries
 5xx only; missing artifacts or active change requests block publication.
+
+## Publication did not run
+
+If a pull request was merged without an independent approval, or the publication step failed:
+approve the merged pull request, then start `publish.yml` by hand with the `merge_sha` of the merge
+commit.
+
+## Removing a check
+
+A check that is removed (only a check that never blocked) must have its id added to `RETIRED` in `tools/check_registry.py`:
+results recorded before its removal still carry it and are read without it.
+
+## Workflow audit boundary
+
+The required two-stage `workflow_run` trigger has one explicit `zizmor` exception for
+`dangerous-triggers`, documented at the trigger. Privileged jobs execute default-branch
+tools only, PR content is read as data, and submitted source runs in a tokenless isolated
+build job. Artifact results are parsed as data before creating comments/checks. The audit otherwise runs offline and uses no global suppression for this finding.
 
 ## Dependabot
 

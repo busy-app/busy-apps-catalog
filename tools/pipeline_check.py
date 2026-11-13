@@ -8,6 +8,8 @@ from pathlib import Path
 
 import yaml
 
+from tools.bar import digest, validate_request, write_json
+
 from tools.check_catalog import HttpCatalogSource, compare_catalog_with_diff
 from tools.check_manifest import check_manifest
 from tools.check_package import check_package
@@ -236,6 +238,7 @@ def main() -> int:
     parser.add_argument("--manifest", type=Path)
     parser.add_argument("--app-id", required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--bar-request", type=Path)
     args = parser.parse_args()
     args.output.write_text(
         json.dumps(
@@ -253,6 +256,16 @@ def main() -> int:
         + "\n",
         encoding="utf-8",
     )
+    if args.bar_request and args.build_dir and json.loads(args.output.read_text(encoding="utf-8"))["status"] == "pass":
+        _, meta = package_inventory(args.build_dir / "package.tgz", args.app_id)
+        request = {"app_id": args.app_id, "version": meta["version"],
+                   "package_sha256": digest(args.build_dir / "package.tgz"),
+                   "head_sha": os.environ["HEAD_SHA"], "run_id": int(os.environ["GITHUB_RUN_ID"]),
+                   "run_attempt": int(os.environ["GITHUB_RUN_ATTEMPT"])}
+        validate_request(request)
+        write_json(args.bar_request, request)
+        with Path(os.environ["GITHUB_OUTPUT"]).open("a", encoding="utf-8") as output:
+            output.write("bar_eligible=true\n")
     return 0
 
 
