@@ -8,7 +8,7 @@ from urllib.parse import quote, urlsplit
 
 from tools.check_package import SEMVER
 from tools.check_registry import outcome
-from tools.lib_http import HttpError, request
+from tools.lib_http import ACCESS_REFUSED, AccessRefused, HttpError, request
 
 COMMIT_SHA = re.compile(r"^[0-9a-f]{40}$")
 # The names GitHub allows for owners and repositories, ASCII only.
@@ -255,6 +255,8 @@ class HttpCatalogSource:
         except HttpError as error:
             if error.status == 404 and path.startswith("applications/"):
                 return None
+            if isinstance(error, AccessRefused):
+                raise CatalogUnavailableError(ACCESS_REFUSED) from None
             raise CatalogUnavailableError from None
         except ValueError:
             raise CatalogUnavailableError from None

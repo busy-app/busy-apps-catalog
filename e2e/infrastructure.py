@@ -82,7 +82,12 @@ class GitHub:
         """Keep role credentials in the subprocess environment only; the rest is for tests."""
         self.runner = runner
         self.sleep = sleep
-        self.environment = dict(os.environ)
+        # The Access token is for the backend only; `gh` talks to GitHub.
+        self.environment = {
+            key: value
+            for key, value in os.environ.items()
+            if not key.startswith("CF_ACCESS_")
+        }
         if token:
             self.environment["GH_TOKEN"] = token
 

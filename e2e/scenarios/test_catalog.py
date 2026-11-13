@@ -11,7 +11,7 @@ from urllib.parse import urlencode
 import pytest
 
 from e2e.cases import CASES
-from e2e.domain import red_rows, report_problems
+from e2e.domain import access_secret_problem, red_rows, report_problems
 from e2e.infrastructure import fetch, wait_for
 
 
@@ -53,6 +53,9 @@ def test_e2e_01_repository_configuration(run):
     assert any(item["name"] == "CATALOG_CI_TOKEN" for item in secrets), (
         "Missing repository secret CATALOG_CI_TOKEN"
     )
+    # The Access secrets are optional until Access is on, but only as a pair.
+    problem = access_secret_problem(item["name"] for item in secrets)
+    assert problem is None, problem
 
 
 @pytest.mark.task("10.26-26")

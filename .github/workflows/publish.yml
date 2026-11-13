@@ -70,6 +70,8 @@ jobs:
         env:
           CATALOG_API: ${{ vars.CATALOG_API }}
           CATALOG_CI_TOKEN: ${{ secrets.CATALOG_CI_TOKEN }}
+          CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
+          CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
           APP_ID: ${{ needs.discover.outputs.app_id }}
           PR_NUMBER: ${{ needs.discover.outputs.pr_number }}
           APPROVER: ${{ needs.discover.outputs.approved_by }}
@@ -136,6 +138,8 @@ jobs:
         env:
           CATALOG_API: ${{ vars.CATALOG_API }}
           CATALOG_CI_TOKEN: ${{ secrets.CATALOG_CI_TOKEN }}
+          CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
+          CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
         run: python -m tools.publish_upload --manifest notice.json --results checked/results.json --artifacts objects --failure failure.json > published.json
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:

@@ -45,6 +45,22 @@ def rewrite_manifest(source: bytes, identifier: str, version: str) -> bytes:
     return result
 
 
+ACCESS_SECRETS = ("CF_ACCESS_CLIENT_ID", "CF_ACCESS_CLIENT_SECRET")
+
+
+def access_secret_problem(secret_names) -> str | None:
+    """
+    Why the Cloudflare Access secrets of a repository are unusable, or None.
+
+    Both absent is fine while Access is off; exactly one is a misconfiguration.
+    """
+    present = [name for name in ACCESS_SECRETS if name in set(secret_names)]
+    if len(present) != 1:
+        return None
+    missing = next(name for name in ACCESS_SECRETS if name not in present)
+    return f"Missing repository secret {missing}: Access needs both {' and '.join(ACCESS_SECRETS)}"
+
+
 def ref_gone(error_text: str) -> bool:
     """
     Whether a failed branch DELETE means the branch is already absent.

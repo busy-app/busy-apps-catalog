@@ -47,6 +47,8 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           GITHUB_TOKEN: ${{ github.token }}
           CATALOG_API: ${{ vars.CATALOG_API }}
+          CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
+          CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           set -euo pipefail
@@ -154,6 +156,8 @@ jobs:
           APP_ID: ${{ needs.prepare.outputs.app_id }}
           BUILD_RESULT: ${{ needs.build.result }}
           CATALOG_API: ${{ vars.CATALOG_API }}
+          CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
+          CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
           AUTHOR_ATTESTED: ${{ needs.prepare.outputs.author_attested }}
         shell: bash
         run: |
