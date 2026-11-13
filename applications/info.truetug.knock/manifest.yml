@@ -1,0 +1,45 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/truetug/busy-knock-roll-die-app.git
+    commit_sha: 0a1c3de47d0b67e5f82dfda979c6a76fada3ccda  # 1.2.2
+
+category: games
+
+short_description: Tarot, a magic 8 ball, dice, runes and more decks. Ask aloud, spin the wheel, press Start.
+
+description: |
+  Tarot, a magic 8 ball and dice on the BUSY Bar's front screen. Ask a question out loud, spin the wheel, press Start.
+
+  ## How it plays
+
+  - **The wheel**: face-down cards slide past a frame. Turn the dial to launch it, or press Start; more turns send it faster, Start brakes it.
+  - **The result**: the picked card grows to fill the screen and shows the deck's answer. A tarot card shows its art, then a short prediction.
+  - **Auto play** (Settings): the app spins by itself, game after game, with one deck or a random one each time.
+
+  ## Decks
+
+  Tarot (also as Neon, Cosmic and Russian fairy tales), tarot count for a physical deck, runes, I Ching, playing cards, dominoes, Russian lotto, bingo, roulette, coin, rock-paper-scissors, directions, what to eat, the 8 ball, 2d6 and dice from d4 to d100.
+
+  Settings also choose the number of results, the card back and the sound.
+
+  ## Network
+
+  The current firmware does not let an app read its own files, so the app downloads the deck it plays from its GitHub repository (raw.githubusercontent.com, the files of this version), a small part at a time. It sends nothing about you or the bar. Without Wi-Fi the decks are not available.
+
+  Source code and how to make your own deck: https://github.com/truetug/busy-knock-roll-die-app
+
+changelog: |
+  First version in the catalog. The app id is now info.truetug.knock, so the bar installs it as a new app: settings from earlier versions start from the defaults.
+
+screenshots:
+  - screenshots/01-die.png
+  - screenshots/02-dice-intro.png
+  - screenshots/03-dice-wheel.png
+  - screenshots/04-cards-intro.png
+  - screenshots/05-cards-wheel.png
+  - screenshots/06-card.png
+  - screenshots/07-tarot-intro.png
+  - screenshots/08-tarot-wheel.png
+  - screenshots/09-tarot-card.png
+  - screenshots/10-tarot-prediction.png
