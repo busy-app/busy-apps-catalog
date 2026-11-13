@@ -61,6 +61,8 @@ class Run:
         self.api = os.getenv(
             "E2E_API", "https://cloud.dev.busy.app/api/catalog/v1"
         ).rstrip("/")
+        # lib_http decides where the Access token goes from E2E_API: export the default too.
+        os.environ["E2E_API"] = self.api
         self.timeout = float(os.getenv("E2E_TIMEOUT_S", "900"))
         self.author = GitHub(os.getenv("E2E_AUTHOR_TOKEN", ""))
         self.source_sha = None

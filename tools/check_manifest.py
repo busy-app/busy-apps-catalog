@@ -11,7 +11,7 @@ from jsonschema import Draft202012Validator
 
 from tools.check_registry import outcome
 from tools.lib_app_id import MANIFEST_PATH, is_valid
-from tools.lib_http import HttpError, request
+from tools.lib_http import ACCESS_REFUSED, AccessRefused, HttpError, request
 
 SCHEMA = Path(__file__).resolve().parents[1] / "schema" / "catalog-manifest.schema.json"
 CATEGORIES = SCHEMA.with_name("categories.json")
@@ -84,8 +84,9 @@ def public_category_findings(path: Path, url: str) -> list[dict[str, str]]:
     if url:
         try:
             allowed = public_categories(url)
-        except (HttpError, ValueError):
-            findings.append(outcome("category_offline", "not_run", "category"))
+        except (HttpError, ValueError) as error:
+            detail = ACCESS_REFUSED if isinstance(error, AccessRefused) else "category"
+            findings.append(outcome("category_offline", "not_run", detail))
         else:
             if category not in allowed:
                 detail = f"category: {category}; allowed: {', '.join(allowed)}"

@@ -212,3 +212,54 @@ def test_publish_reports_a_failure_but_not_a_cancellation() -> None:
         if step.get("with", {}).get("name") == name
     ]
     assert len(fetched) == 1 and fetched[0]["continue-on-error"] == "true"
+
+
+def test_access_secrets_only_in_steps_that_call_the_backend() -> None:
+    """
+    The Cloudflare Access token is in the step that runs a backend tool, nowhere wider.
+
+    Not in a build, not in discovery or report jobs, not at workflow or job level, and
+    never through `secrets: inherit` or a reusable workflow.
+    """
+    allowed = {
+        "pipeline.yml": {"prepare", "check"},
+        "publish.yml": {"publish", "remove"},
+        "review.yml": {"review"},
+        "e2e.yml": {"e2e"},
+    }
+    commands = (
+        "tools.pipeline_prepare",
+        "tools.pipeline_check",
+        "tools.publish_upload",
+        "tools.publish_remove",
+        "tools.review_cli",
+        "make e2e",
+    )
+    directory = Path(__file__).resolve().parents[1] / ".github" / "workflows"
+    for path in directory.glob("*.yml"):
+        workflow = yaml.load(path.read_text(), Loader=yaml.BaseLoader)
+        assert "CF_ACCESS" not in str(workflow.get("env", "")), path.name
+        for name, job in workflow["jobs"].items():
+            assert "secrets" not in job and "uses" not in job, (path.name, name)
+            assert "CF_ACCESS" not in str(job.get("env", "")), (path.name, name)
+            holders = [
+                step for step in job.get("steps", []) if "CF_ACCESS" in str(step)
+            ]
+            if not holders:
+                continue
+            assert name in allowed.get(path.name, set()), (path.name, name)
+            for step in holders:
+                env = step.get("env", {})
+                assert (
+                    env.get("CF_ACCESS_CLIENT_ID")
+                    == "${{ secrets.CF_ACCESS_CLIENT_ID }}"
+                )
+                assert (
+                    env.get("CF_ACCESS_CLIENT_SECRET")
+                    == "${{ secrets.CF_ACCESS_CLIENT_SECRET }}"
+                )
+                assert any(command in step.get("run", "") for command in commands), (
+                    path.name,
+                    name,
+                    step.get("name"),
+                )

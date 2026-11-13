@@ -97,6 +97,8 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           CATALOG_API: ${{ vars.CATALOG_API }}
           CATALOG_CI_TOKEN: ${{ secrets.CATALOG_CI_TOKEN }}
+          CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
+          CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
           PR_NUMBER: ${{ inputs.pr_number }}
           HEAD_SHA: ${{ needs.discover.outputs.head_sha }}
           REQUESTED_BY: ${{ github.triggering_actor }}

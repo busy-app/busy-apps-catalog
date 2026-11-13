@@ -7,7 +7,13 @@ from collections.abc import Mapping
 from pathlib import Path
 
 from tools.lib_github import GitHubGateway
-from tools.lib_http import client
+from tools.lib_http import (
+    ACCESS_REFUSED,
+    AccessConfigError,
+    AccessRefused,
+    HttpError,
+    request,
+)
 from tools.review_comment import clean, post_review, render_review, usage_line
 from tools.review_request import ReviewInputError, build_request, discover
 
@@ -35,21 +41,31 @@ def ask_backend(api: str, token: str, body: Mapping[str, object]) -> tuple[int, 
     Errors name the status and the backend's own `detail`, never the token.
     """
     try:
-        reply = client().post(
+        reply = request(
+            "POST",
             api.rstrip("/") + REVIEW_PATH,
             headers={"Token": token},
             json=body,
             timeout=BACKEND_TIMEOUT,
+            retry=False,
+            max_bytes=MAX_ANSWER,
+            error_body=MAX_ANSWER,
         )
-    except Exception as error:  # noqa: BLE001 - the cause is a transport error of any kind
-        raise ReviewError(
-            f"the backend is unreachable ({type(error).__name__})"
-        ) from None
+        status, raw = reply.status, reply.content
+    except AccessRefused:
+        raise ReviewError(ACCESS_REFUSED) from None
+    except AccessConfigError as error:
+        raise ReviewError(str(error)) from None
+    except HttpError as error:
+        if error.status is None:
+            raise ReviewError("the backend is unreachable") from None
+        # An answer over the limit has no readable body; an error keeps its own.
+        status, raw = error.status, error.body
     try:
-        data = reply.json() if len(reply.content) <= MAX_ANSWER else {}
+        data = json.loads(raw) if raw else {}
     except ValueError:
         data = {}
-    return reply.status_code, data if isinstance(data, dict) else {}
+    return status, data if isinstance(data, dict) else {}
 
 
 def answer_or_error(status: int, data: dict) -> tuple[dict, bool]:

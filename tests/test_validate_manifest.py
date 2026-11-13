@@ -93,7 +93,7 @@ def test_application_id_rule_and_style_hint(tmp_path: Path) -> None:
 
     The hint is a warning: it must not make the manifest invalid.
     """
-    from tools.check_registry import blocks, get
+    from tools.check_registry import get
 
     source = (
         Path(__file__).parents[1] / "example/com.example.weather/manifest.yml"

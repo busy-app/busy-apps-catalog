@@ -1,6 +1,9 @@
 # Maintainer setup
 
 For each environment repository, configure CATALOG_API and secret CATALOG_CI_TOKEN.
+Once DevOps put the backend behind Cloudflare Access, also set the secrets CF_ACCESS_CLIENT_ID and
+CF_ACCESS_CLIENT_SECRET (a service token, issued by DevOps). Both or neither: without them the CI
+works only while Access is off. They are sent to the backend host only and never to the build job.
 Issue the token through the backend CLI with role ci-upload; keep the secret out of Git.
 Set E2E author, independent moderator and cleanup admin tokens in that environment.
 

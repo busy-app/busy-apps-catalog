@@ -7,7 +7,7 @@ from urllib.parse import quote
 from tools.check_registry import outcome
 from tools.lib_app_id import is_valid
 from tools.lib_github import GitHubGateway
-from tools.lib_http import HttpError, request
+from tools.lib_http import ACCESS_REFUSED, AccessRefused, HttpError, request
 
 WRITE_ROLES = frozenset({"admin", "maintain", "write"})
 FIELDS = ("id", "name", "version", "author")
@@ -68,13 +68,14 @@ def removal_findings(
     """
     try:
         card = published_app(catalog_url, app_id)
-    except HttpError:
+    except HttpError as error:
         allowed = gateway.collaborator_permission(login) in WRITE_ROLES
-        findings = (
-            []
-            if allowed
-            else [outcome("removal_not_owner", "not_run", "catalog unavailable")]
+        reason = (
+            ACCESS_REFUSED
+            if isinstance(error, AccessRefused)
+            else "catalog unavailable"
         )
+        findings = [] if allowed else [outcome("removal_not_owner", "not_run", reason)]
         return findings, removal_info(app_id, None) | {"published": True}
     if card is None:
         return [outcome("removal_not_published", "fail", app_id)], removal_info(
