@@ -10,7 +10,7 @@ from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import Protocol
 
-from tools.bar import judge, read_json, write_json
+from tools.bar import BINDING, judge, read_json, write_json
 
 from tools.check_registry import REGISTRY, RESULTS, RETIRED, STAGES, blocks, get, outcome
 from tools.lib_comment import SKIP_REASONS, find_comment, render_comment, verdict
@@ -107,6 +107,7 @@ def publish_report(
     license_name: str | None = None,
     media: dict[str, object] | None = None,
     removal: dict[str, object] | None = None,
+    bar_media: dict[str, object] | None = None,
 ) -> None:
     """
     Publish or update a report and create a matching GitHub check run.
@@ -126,6 +127,7 @@ def publish_report(
         license_name,
         media,
         removal,
+        bar_media,
     )
     comment_id = find_comment(gateway.comments(number), bot_login)
     if comment_id is None:
@@ -248,6 +250,29 @@ def read_media(path: Path) -> dict[str, object] | None:
     return parse_view(data.get("media")) if isinstance(data, dict) else None
 
 
+def read_bar_media(path: Path, run_url: str, artifact_url: str) -> dict[str, object] | None:
+    """Link only this run's BAR captures, without treating repository images as evidence."""
+    match = re.fullmatch(
+        r"https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/actions/runs/([1-9][0-9]*)/artifacts/[1-9][0-9]*",
+        artifact_url,
+    )
+    if not match or not artifact_url.startswith(run_url + "/artifacts/"):
+        return None
+    result = read_json(path).get("bar")
+    if not isinstance(result, dict) or result.get("run_id") != int(match[1]):
+        return None
+    firmware, seconds, artifacts = result.get("firmware"), result.get("observed_seconds"), result.get("artifacts")
+    version = firmware.get("version") if isinstance(firmware, dict) else None
+    if not isinstance(version, str) or not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", version):
+        return None
+    if type(seconds) is not int or not 0 <= seconds <= 60 or not isinstance(artifacts, dict):
+        return None
+    screenshots = [name for name in ("front.png", "back.png") if re.fullmatch(r"[0-9a-f]{64}", str(artifacts.get(name, "")))]
+    if not screenshots:
+        return None
+    return {"artifact_url": artifact_url, "firmware_version": version, "observed_seconds": seconds, "screenshots": screenshots}
+
+
 def read_compare_url(path: Path) -> str | None:
     """Read an optional same-repository GitHub compare URL from trusted results."""
     if path.stat().st_size > 1024 * 1024:
@@ -268,7 +293,7 @@ def read_compare_url(path: Path) -> str | None:
     return value
 
 
-def load_report_inputs(results: Path, run_url: str) -> dict:
+def load_report_inputs(results: Path, run_url: str, artifact_url: str = "") -> dict:
     """
     Everything the report needs from results.json.
 
@@ -283,6 +308,7 @@ def load_report_inputs(results: Path, run_url: str) -> dict:
             "compare_url": read_compare_url(results),
             "license_name": read_license(results),
             "media": read_media(results),
+            "bar_media": read_bar_media(results, run_url, artifact_url),
             "skipped": extra["skipped"],
             "author_attested": extra["author_attested"],
             "manifest_path": extra["manifest_path"],
@@ -297,6 +323,7 @@ def load_report_inputs(results: Path, run_url: str) -> dict:
             "compare_url": None,
             "license_name": None,
             "media": None,
+            "bar_media": None,
             "skipped": ["manifest", "build", "package", "catalog", "device"],
             "author_attested": False,
             "manifest_path": "",
@@ -335,6 +362,18 @@ def bar_finding(request: Path, evidence: Path, head: str, run: int, attempt: int
     if verdict == "fail":
         detail = f"Failed on the real bar: {why}. The app log and screenshots are in the hardware job artifact."
         return outcome("bar_smoke", "fail", detail), None
+    if all(observed.get(key) == expected.get(key) for key in BINDING):
+        error = observed.get("error")
+        kind = error.get("kind") if isinstance(error, dict) else None
+        reasons = {
+            "serial_log_silent": "no native application logs were received",
+            "native_log_unavailable": "the BAR log stream over USB CLI could not be opened",
+            "native_log_closed": "the BAR log connection closed during observation",
+            "native_log_flood": "the BAR log exceeded the observation limit",
+            "native_line_too_long": "a BAR log line exceeded the observation limit",
+        }
+        if isinstance(kind, str):
+            why = reasons.get(kind, why)
     return stand(why)
 
 
@@ -352,7 +391,9 @@ def merge_bar(results: Path, request: Path, evidence: Path, head: str, run: int,
         finding, observed = bar_finding(request, evidence, head, run, attempt, job)
         if observed is not None:
             data["bar"] = observed
-        findings.append(finding)
+        # Results list only what did not pass; a pass is the evidence alone, like every other check.
+        if finding["result"] != "pass":
+            findings.append(finding)
         data["checks"] = findings
         data["status"] = "fail" if any(blocks(i["id"], i["result"]) for i in findings) else "pass"
     write_json(results, data)
@@ -383,7 +424,7 @@ def main() -> int:
         merge_bar(args.results, args.bar_request, args.bar_result, args.sha,
                   int(os.environ["GITHUB_RUN_ID"]), int(os.environ["GITHUB_RUN_ATTEMPT"]),
                   os.environ.get("BAR_JOB_RESULT", ""))
-    inputs = load_report_inputs(args.results, args.run_url)
+    inputs = load_report_inputs(args.results, args.run_url, os.environ.get("BAR_ARTIFACT_URL", ""))
     findings = inputs.pop("findings")
     publish_report(
         GitHubGateway(args.repository, token),

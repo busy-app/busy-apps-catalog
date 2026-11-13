@@ -62,7 +62,7 @@ def verdict(findings: Sequence[Mapping[str, str]]) -> str:
     """Reduce findings to `fail` (a required check broke), `warn` or `pass`."""
     if any(blocks(item["id"], item["result"]) for item in findings):
         return "fail"
-    return "warn" if findings else "pass"
+    return "warn" if any(item["result"] != "pass" for item in findings) else "pass"
 
 
 def stage_order(stage: str) -> list[str]:
@@ -130,7 +130,8 @@ def render_checks(
     """
     reported: dict[str, list[Mapping[str, str]]] = {}
     for item in findings:
-        reported.setdefault(get(item["id"]).stage, []).append(item)
+        if item["result"] != "pass":
+            reported.setdefault(get(item["id"]).stage, []).append(item)
     lines = [HEADLINES[verdict(findings)], ""]
     for stage in stages:
         if stage not in skipped:
@@ -190,6 +191,7 @@ def render_comment(
     license_name: str | None = None,
     media: Mapping[str, object] | None = None,
     removal: Mapping[str, object] | None = None,
+    bar_media: Mapping[str, object] | None = None,
 ) -> str:
     """
     Render all checks into one concise PR comment.
@@ -211,7 +213,7 @@ def render_comment(
     )
     if notes:
         lines.extend(["", "### For the reviewer", "", *notes])
-    lines.extend(render_media(media))
+    lines.extend(render_media(media, bar_media))
     if inventory:
         lines.extend(["", "### Package", "", *package_summary(inventory)])
     if compare_url:
