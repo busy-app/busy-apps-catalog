@@ -297,3 +297,37 @@ def test_access_secrets_only_in_steps_that_call_the_backend() -> None:
                     name,
                     step.get("name"),
                 )
+
+
+def test_bar_has_both_time_limits_and_only_the_watchdog_may_cancel() -> None:
+    """A queued bar must not hold the checks for a day; the cancelling job is minimal."""
+    from tools.bar_watchdog import BAR_QUEUE_TIMEOUT
+
+    path = (
+        Path(__file__).resolve().parents[1] / ".github" / "workflows" / "pipeline.yml"
+    )
+    workflow = yaml.load(path.read_text(), Loader=yaml.BaseLoader)
+    jobs = workflow["jobs"]
+    assert jobs["bar"]["timeout-minutes"] == "20"
+    watchdog = jobs["bar-watchdog"]
+    # It outlives the queue limit a little, and starts and stops with the same condition as the bar.
+    assert int(watchdog["timeout-minutes"]) * 60 > BAR_QUEUE_TIMEOUT
+    assert jobs["bar"]["if"] in watchdog["if"] and "check" in watchdog["needs"]
+    assert (
+        "refs/heads/{0}" in watchdog["if"]
+    )  # writing jobs run on the default branch only
+    assert watchdog["permissions"] == {"actions": "write", "contents": "read"}
+    text = str(watchdog)
+    assert (
+        "secrets." not in text and "head_sha" not in text and "pull_request" not in text
+    )
+    checkout = next(s for s in watchdog["steps"] if "checkout" in s.get("uses", ""))
+    assert checkout["with"]["persist-credentials"] == "false"
+    assert (
+        "default_branch" in checkout["with"]["ref"]
+        or "github.sha" in checkout["with"]["ref"]
+    )
+    for name, job in jobs.items():
+        if name != "bar-watchdog":
+            assert "actions" not in job.get("permissions", {}), name
+    assert "bar" in jobs["report"]["needs"] and "always()" in jobs["report"]["if"]

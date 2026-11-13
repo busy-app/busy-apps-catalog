@@ -31,7 +31,12 @@ SKIP_REASONS = {
     "internal": "the checks could not finish",
     "removal": "nothing is built when an app is removed",
 }
-UNCOUNTED = {"internal_error", "removal_not_owner", "removal_not_published"}
+UNCOUNTED = {
+    "internal_error",
+    "removal_not_owner",
+    "removal_not_published",
+    "bar_unavailable",
+}
 REVIEWER_NOTE = (
     "Verify that the PR author is the author of the app or has write access to "
     "its repository."
@@ -75,6 +80,8 @@ def passed_count(stage: str, items: Sequence[Mapping[str, str]]) -> int:
     if stage == "build" and items:
         return min(order.index(item["id"]) for item in items)
     failed = {item["id"] for item in items}
+    if "bar_unavailable" in failed:
+        failed.add("bar_smoke")  # not run is not a pass
     return len([check_id for check_id in order if check_id not in failed])
 
 
