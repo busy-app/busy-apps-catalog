@@ -124,17 +124,51 @@ def test_pipeline_runs_on_any_validate_outcome_and_always_reports() -> None:
     jobs = workflow["jobs"]
     assert "conclusion" not in jobs["prepare"]["if"]
     assert "always()" in jobs["report"]["if"]
-    assert set(jobs["report"]["needs"]) == {"prepare", "build", "check"}
-    for name in ("prepare", "report"):
+    assert set(jobs["report"]["needs"]) == {"prepare", "build", "check", "bar"}
+    for name in ("prepare", "check", "report"):
         checkout = next(
             step
             for step in jobs[name]["steps"]
             if "actions/checkout" in step.get("uses", "")
         )
-        assert (
-            checkout["with"]["ref"] == "${{ github.event.repository.default_branch }}"
-        )
+        expected = "${{ github.event.repository.default_branch }}"
+        if name != "report":
+            expected = "${{ github.event_name == 'workflow_dispatch' && github.sha || github.event.repository.default_branch }}"
+        assert checkout["with"]["ref"] == expected
     assert "early" in jobs["build"]["if"] and "early" in jobs["check"]["if"]
+
+
+def test_pipeline_branch_previews_cannot_authorize_publication() -> None:
+    """Manual previews use pinned tools and cannot write checks or approved results."""
+    path = (
+        Path(__file__).resolve().parents[1] / ".github" / "workflows" / "pipeline.yml"
+    )
+    workflow = yaml.load(path.read_text(), Loader=yaml.BaseLoader)
+    jobs = workflow["jobs"]
+    default_branch = (
+        "github.ref == format('refs/heads/{0}', github.event.repository.default_branch)"
+    )
+    for job in jobs.values():
+        if "write" in job.get("permissions", {}).values():
+            assert default_branch in job["if"]
+    preview = jobs["preview-report"]
+    assert "github.event_name == 'workflow_dispatch'" in preview["if"]
+    assert default_branch.replace(" == ", " != ", 1) in preview["if"]
+    assert preview["permissions"] == {"contents": "read"}
+    assert "GITHUB_TOKEN" not in str(preview) and "secrets." not in str(preview)
+    checkout = next(
+        step for step in preview["steps"] if "actions/checkout@" in step.get("uses", "")
+    )
+    assert checkout["with"]["ref"] == "${{ github.sha }}"
+    uploads = [
+        step
+        for step in preview["steps"]
+        if "actions/upload-artifact@" in step.get("uses", "")
+    ]
+    assert len(uploads) == 1
+    assert uploads[0]["with"]["name"].startswith("preview-results-")
+    assert uploads[0]["if"] == "always()"
+    assert jobs["bar"]["permissions"] == {}
 
 
 def test_no_bare_exceptions_on_author_data() -> None:

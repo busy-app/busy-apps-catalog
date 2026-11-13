@@ -107,7 +107,7 @@ back_screenshots:
 - All fields are required except `subdir` and `back_screenshots`.
 - Don't add `name`, `id`, `version`, `author` or `icon`: we take them from your app package. The `description` field in `appmeta/manifest.json` isn't used by the Catalog.
 - The app author is the owner of the GitHub repository.
-- Write all texts in the manifest. File references aren't supported.
+- `description` can be taken from a Markdown file in your app folder: write `@README.md` (a path inside the app folder). `changelog` and `short_description` must be written as text in the manifest; file references aren't supported there.
 - `description` and `changelog` support basic Markdown: level 1–2 headings, bold, italic, lists, and links. `short_description` is plain text.
 - Texts over the limit fail the check. We don't cut them.
 - Screenshot and back screenshot paths are relative to the app folder at `commit_sha` and can't point outside it.

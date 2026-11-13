@@ -10,6 +10,8 @@ from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import Protocol
 
+from tools.bar import read_json, validate_result, write_json
+
 from tools.check_registry import REGISTRY, RESULTS, RETIRED, STAGES, blocks, get, outcome
 from tools.lib_comment import SKIP_REASONS, find_comment, render_comment, verdict
 from tools.lib_github import GitHubGateway
@@ -295,12 +297,39 @@ def load_report_inputs(results: Path, run_url: str) -> dict:
             "compare_url": None,
             "license_name": None,
             "media": None,
-            "skipped": ["manifest", "build", "package", "catalog"],
+            "skipped": ["manifest", "build", "package", "catalog", "device"],
             "author_attested": False,
             "manifest_path": "",
             "skip_reason": "internal",
             "removal": None,
         }
+
+
+def merge_bar(results: Path, request: Path, evidence: Path, head: str, run: int, attempt: int, job: str) -> None:
+    """Fold the same-run hardware result into the existing required catalog check."""
+    try:
+        findings, data = read_results(results), read_json(results)
+    except (OSError, ValueError):
+        write_json(results, {"status": "fail", "checks": [outcome("internal_error")],
+                            "skipped": ["manifest", "build", "package", "catalog", "device"], "skip_reason": "internal"})
+        return
+    if any(blocks(i["id"], i["result"]) for i in findings) or data.get("skip_reason") == "removal":
+        data["skipped"] = list(dict.fromkeys([*data.get("skipped", []), "device"]))
+    else:
+        try:
+            expected, observed = read_json(request), read_json(evidence)
+            if (expected.get("head_sha"), expected.get("run_id"), expected.get("run_attempt")) != (head, run, attempt):
+                raise ValueError("Hardware request belongs to another run")
+            if job != "success":
+                raise ValueError("Hardware job did not succeed")
+            validate_result(observed, expected)
+            data["bar"] = observed
+            findings.append(outcome("bar_smoke", "pass"))
+        except (OSError, ValueError):
+            findings.append(outcome("bar_smoke", "not_run", "The hardware job failed or its result is missing or inconsistent."))
+        data["checks"] = findings
+        data["status"] = "fail" if any(blocks(i["id"], i["result"]) for i in findings) else "pass"
+    write_json(results, data)
 
 
 def main() -> int:
@@ -316,10 +345,18 @@ def main() -> int:
     parser.add_argument("--repository", required=True)
     parser.add_argument("--bot", default="github-actions[bot]")
     parser.add_argument("--run-url", default="")
+    parser.add_argument("--bar-result", type=Path)
+    parser.add_argument("--bar-request", type=Path)
     args = parser.parse_args()
+    if bool(args.bar_result) != bool(args.bar_request):
+        parser.error("--bar-result and --bar-request must be supplied together")
     token = os.environ.get("GITHUB_TOKEN", "")
     if args.pr < 1 or re.fullmatch(r"[0-9a-f]{40}", args.sha) is None:
         raise ValueError("Invalid pull request or commit SHA")
+    if args.bar_result:
+        merge_bar(args.results, args.bar_request, args.bar_result, args.sha,
+                  int(os.environ["GITHUB_RUN_ID"]), int(os.environ["GITHUB_RUN_ATTEMPT"]),
+                  os.environ.get("BAR_JOB_RESULT", ""))
     inputs = load_report_inputs(args.results, args.run_url)
     findings = inputs.pop("findings")
     publish_report(

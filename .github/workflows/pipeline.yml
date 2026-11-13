@@ -3,18 +3,18 @@ on:
   workflow_dispatch:
     inputs:
       pull_request_number:
-        description: Application or maintenance PR to recheck
+        description: Application PR to test (maintenance PRs can only be rechecked on main)
         required: true
         type: number
-  # Required two-stage architecture: only default-branch tools run in privileged jobs.
-  # PR content is read as data; source execution is confined to a tokenless build job.
+  # Only default-branch runs may publish checks. Manual branch previews use their pinned SHA.
+  # PR content is read as data; submitted code runs only in the isolated build and BAR jobs.
   workflow_run: # zizmor: ignore[dangerous-triggers]
     workflows: [Validate]
     types: [completed]
 permissions: {}
 concurrency:
-  group: catalog-pipeline-${{ github.event.workflow_run.head_sha || inputs.pull_request_number }}
-  cancel-in-progress: true
+  group: catalog-pipeline-${{ github.ref }}-${{ github.event.workflow_run.head_sha || inputs.pull_request_number }}
+  cancel-in-progress: false
 jobs:
   prepare:
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.event == 'pull_request'
@@ -33,7 +33,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          ref: ${{ github.event.repository.default_branch }}
+          ref: ${{ github.event_name == 'workflow_dispatch' && github.sha || github.event.repository.default_branch }}
           persist-credentials: false
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
         with:
@@ -58,6 +58,13 @@ jobs:
             export HEAD_SHA
           fi
           python -m tools.pipeline_prepare
+      - name: Require an application PR for a branch preview
+        if: >-
+          github.event_name == 'workflow_dispatch' && github.ref != format('refs/heads/{0}', github.event.repository.default_branch)
+          && (steps.prepare.outputs.skip == 'true' || steps.prepare.outputs.removal != '')
+        run: |
+          echo '::error::Select an application submission PR without the maintenance label.'
+          exit 1
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: steps.prepare.outputs.skip != 'true' && steps.prepare.outputs.early != 'true'
         with:
@@ -72,7 +79,7 @@ jobs:
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: steps.prepare.outputs.early == 'true'
         with:
-          name: results-${{ steps.prepare.outputs.head_sha }}
+          name: formal-${{ steps.prepare.outputs.head_sha }}
           path: results.json
           retention-days: 90
           if-no-files-found: error
@@ -124,10 +131,12 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    outputs:
+      bar_eligible: ${{ steps.check.outputs.bar_eligible }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          ref: ${{ github.event.repository.default_branch }}
+          ref: ${{ github.event_name == 'workflow_dispatch' && github.sha || github.event.repository.default_branch }}
           persist-credentials: false
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
         with:
@@ -152,8 +161,10 @@ jobs:
           name: build-log-${{ needs.prepare.outputs.head_sha }}
           path: build-log
       - name: Run formal checks
+        id: check
         env:
           APP_ID: ${{ needs.prepare.outputs.app_id }}
+          HEAD_SHA: ${{ needs.prepare.outputs.head_sha }}
           BUILD_RESULT: ${{ needs.build.result }}
           CATALOG_API: ${{ vars.CATALOG_API }}
           CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
@@ -163,19 +174,70 @@ jobs:
         run: |
           set -euo pipefail
           if [[ "$BUILD_RESULT" == success ]]; then
-            python -m tools.pipeline_check --app-id "$APP_ID" --build-dir build --manifest prepared-data/prepared/manifest.yml --output results.json
+            python -m tools.pipeline_check --app-id "$APP_ID" --build-dir build --manifest prepared-data/prepared/manifest.yml --output results.json --bar-request bar-request.json
           else
             python -m tools.pipeline_check --app-id "$APP_ID" --build-log build-log/build-error.txt --build-error build-log/build-error.json --manifest prepared-data/prepared/manifest.yml --output results.json
           fi
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
         with:
-          name: results-${{ needs.prepare.outputs.head_sha }}
-          path: results.json
+          name: formal-${{ needs.prepare.outputs.head_sha }}
+          path: |
+            results.json
+            bar-request.json
           retention-days: 90
           if-no-files-found: error
+  bar:
+    needs: [prepare, check]
+    if: needs.check.outputs.bar_eligible == 'true'
+    runs-on: BusyBarTest
+    timeout-minutes: 20
+    permissions: {}
+    steps:
+      - name: Create a fresh workspace
+        id: workspace
+        shell: bash
+        run: |
+          work_dir=$(mktemp -d "${RUNNER_TEMP:?}/catalog-bar-XXXXXXXX")
+          printf 'path=%s\n' "$work_dir" >> "$GITHUB_OUTPUT"
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          name: prepared-${{ needs.prepare.outputs.head_sha }}
+          path: ${{ steps.workspace.outputs.path }}/trusted
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          name: build-${{ needs.prepare.outputs.head_sha }}
+          path: ${{ steps.workspace.outputs.path }}/build
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          name: formal-${{ needs.prepare.outputs.head_sha }}
+          path: ${{ steps.workspace.outputs.path }}/checked
+      - name: Install release firmware and smoke-test the checked package
+        shell: bash
+        env:
+          BAR_WORK: ${{ steps.workspace.outputs.path }}
+        run: |
+          env -i PATH=/usr/bin:/bin \
+            "BUSYBAR_IP=${BUSYBAR_IP:?}" "SESSION_LOG_DIR=${SESSION_LOG_DIR:?}" \
+            /usr/bin/python3 -I "$BAR_WORK/trusted/tools/bar.py" \
+            --request "$BAR_WORK/checked/bar-request.json" \
+            --package "$BAR_WORK/build/package.tgz" --output "$BAR_WORK/bar-result.json"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: bar-result-${{ needs.prepare.outputs.head_sha }}
+          path: |
+            ${{ steps.workspace.outputs.path }}/bar-result.json
+            ${{ steps.workspace.outputs.path }}/app.log
+            ${{ steps.workspace.outputs.path }}/front.png
+            ${{ steps.workspace.outputs.path }}/back.png
+          retention-days: 90
+          if-no-files-found: warn
   report:
-    if: always() && needs.prepare.outputs.pr_number != '' && needs.prepare.outputs.skip != 'true'
-    needs: [prepare, build, check]
+    if: >-
+      always() && needs.prepare.outputs.pr_number != '' && needs.prepare.outputs.skip != 'true'
+      && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    needs: [prepare, build, check, bar]
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -193,19 +255,98 @@ jobs:
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
         continue-on-error: true
         with:
-          name: results-${{ needs.prepare.outputs.head_sha }}
+          name: formal-${{ needs.prepare.outputs.head_sha }}
           path: checked
+      - name: Download hardware result
+        if: needs.check.outputs.bar_eligible == 'true'
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        continue-on-error: true
+        with:
+          name: bar-result-${{ needs.prepare.outputs.head_sha }}
+          path: bar-evidence
       - name: Publish comment and check
         env:
           GITHUB_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ needs.prepare.outputs.pr_number }}
           HEAD_SHA: ${{ needs.prepare.outputs.head_sha }}
+          BAR_JOB_RESULT: ${{ needs.bar.result }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: python -m tools.pipeline_report --results checked/results.json --pr "$PR_NUMBER" --sha "$HEAD_SHA" --repository "$GITHUB_REPOSITORY" --run-url "$RUN_URL"
+        run: >-
+          python -m tools.pipeline_report --results checked/results.json --pr "$PR_NUMBER"
+          --sha "$HEAD_SHA" --repository "$GITHUB_REPOSITORY" --run-url "$RUN_URL"
+          --bar-request checked/bar-request.json --bar-result bar-evidence/bar-result.json
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: results-${{ needs.prepare.outputs.head_sha }}
+          path: checked/results.json
+          retention-days: 90
+          if-no-files-found: error
+
+  preview-report:
+    if: >-
+      always() && github.event_name == 'workflow_dispatch'
+      && github.ref != format('refs/heads/{0}', github.event.repository.default_branch)
+      && needs.prepare.result == 'success' && needs.prepare.outputs.skip != 'true'
+    needs: [prepare, build, check, bar]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r tools/requirements.txt
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        continue-on-error: true
+        with:
+          name: formal-${{ needs.prepare.outputs.head_sha }}
+          path: checked
+      - name: Download hardware result
+        if: needs.check.outputs.bar_eligible == 'true'
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        continue-on-error: true
+        with:
+          name: bar-result-${{ needs.prepare.outputs.head_sha }}
+          path: bar-evidence
+      - name: Validate preview results
+        env:
+          HEAD_SHA: ${{ needs.prepare.outputs.head_sha }}
+          PR_NUMBER: ${{ needs.prepare.outputs.pr_number }}
+          BAR_JOB_RESULT: ${{ needs.bar.result }}
+        run: |
+          python - <<'PYTHON'
+          import os
+          from pathlib import Path
+          from tools.lib_comment import verdict
+          from tools.pipeline_report import merge_bar, read_results
+          results = Path('checked/results.json')
+          results.parent.mkdir(exist_ok=True)
+          merge_bar(results, Path('checked/bar-request.json'), Path('bar-evidence/bar-result.json'),
+                    os.environ['HEAD_SHA'], int(os.environ['GITHUB_RUN_ID']),
+                    int(os.environ['GITHUB_RUN_ATTEMPT']), os.environ['BAR_JOB_RESULT'])
+          status = verdict(read_results(results))
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as summary:
+              summary.write(f"Application PR #{os.environ['PR_NUMBER']}: **{status}**\n\n")
+              summary.write('Branch preview only; these results cannot authorize publication.\n')
+          raise SystemExit(status == 'fail')
+          PYTHON
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: preview-results-${{ needs.prepare.outputs.head_sha }}
+          path: checked/results.json
+          retention-days: 90
+          if-no-files-found: error
 
   maintenance-check:
     needs: prepare
-    if: needs.prepare.outputs.skip == 'true'
+    if: >-
+      needs.prepare.outputs.skip == 'true'
+      && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
     runs-on: ubuntu-latest
     permissions:
       contents: read

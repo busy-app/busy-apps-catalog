@@ -4,12 +4,13 @@ from dataclasses import dataclass
 
 from tools.lib_app_id import EXAMPLES, RULE
 
-STAGES = ("manifest", "build", "package", "catalog", "review")
+STAGES = ("manifest", "build", "package", "catalog", "device", "review")
 STAGE_TITLES = {
     "manifest": "Manifest",
     "build": "Build",
     "package": "Package",
     "catalog": "Catalog",
+    "device": "Physical BAR",
     "review": "Review",
 }
 RESULTS = ("pass", "fail", "not_run")
@@ -550,6 +551,11 @@ CHECKS: tuple[Check, ...] = (
         False,
         "The latest firmware API could not be checked.",
         "Nothing to do; the maintainers recheck before publishing.",
+    ),
+    Check(
+        "bar_smoke", "device", "Application runtime on BAR", True,
+        "Application installation, runtime observation, screen capture or cleanup failed on the BAR.",
+        "Inspect the hardware job. Resolve application or stand errors before rerunning.",
     ),
     # review
     Check(

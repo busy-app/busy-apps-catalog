@@ -11,6 +11,8 @@ from urllib.parse import urlsplit
 
 import yaml
 
+from tools.bar import digest, read_json, validate_result
+
 from tools.check_manifest import category_aliases
 from tools.check_package import check_package
 from tools.check_png import BACK_SCREENSHOT as BACK_SCREENSHOT_RULES
@@ -219,6 +221,11 @@ def prepare_publication(
     """
     original_data, resolved = read_approved_inputs(build_dir, results, original)
     package_path = verify_package(build_dir, resolved, expected_app_id)
+    evidence = read_json(results).get("bar")
+    if not isinstance(evidence, dict):
+        raise ValueError("Missing hardware smoke result")
+    validate_result(evidence, {**evidence, "app_id": expected_app_id, "head_sha": head_sha,
+                              "version": resolved["appmeta"]["version"], "package_sha256": digest(package_path)})
     source = original_data["sourcecode"]["location"]
     owner = github_owner(source)
     screenshots = checked_images(
