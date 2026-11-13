@@ -554,8 +554,16 @@ CHECKS: tuple[Check, ...] = (
     ),
     Check(
         "bar_smoke", "device", "Application runtime on BAR", True,
-        "Application installation, runtime observation, screen capture or cleanup failed on the BAR.",
-        "Inspect the hardware job. Resolve application or stand errors before rerunning.",
+        "The application failed on the BAR: it was refused, raised an error, did not start or restarted the BAR.",
+        "Open the app log and screenshots in the hardware job artifact, fix the error and push a new commit.",
+    ),
+    Check(
+        "bar_unavailable",
+        "device",
+        "Application runtime on BAR (not run)",
+        False,
+        "The check on the real BAR was not run because of the test stand.",
+        "Nothing to do for the author: the moderator decides whether to merge without it.",
     ),
     # review
     Check(

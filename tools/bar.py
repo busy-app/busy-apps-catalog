@@ -81,6 +81,72 @@ def validate_result(result: dict, expected: dict) -> None:
         raise ValueError("BAR smoke check or cleanup did not pass")
 
 
+APP_ERRORS = {"js_exception", "bar_crash_or_restart"}
+# The bar answers these to a package it will not take; 408/409/429/5xx are the stand's.
+PACKAGE_REFUSED = {400, 413, 415, 422}
+
+
+def application_fault(result: dict) -> str | None:
+    """
+    What the application did wrong, read from the result's fields only; None if unsure.
+
+    A fault of the stand (lost or silent UART, Wi-Fi, cleanup, screenshots, a swapped or
+    re-flashed bar, a bar that did not answer) is never the author's, so anything not
+    listed here is not a fault. Malformed fields count as "unsure".
+    """
+    launched = result.get("launch") == "accepted"
+    errors = result.get("runtime_errors")
+    seen = set()
+    if isinstance(errors, list):
+        seen = {item for item in errors if isinstance(item, str)} & APP_ERRORS
+    # A restart is the app's only once its script was seen running.
+    if not (launched and result.get("script_seen") is True):
+        seen.discard("bar_crash_or_restart")
+    if seen:
+        return f"the application raised errors on the BAR ({', '.join(sorted(seen))})"
+    error = result.get("error")
+    if not isinstance(error, dict):
+        return None
+    step, kind, type_ = error.get("step"), error.get("kind"), error.get("type")
+    status = error.get("http_status")
+    if kind == "script_not_seen" and launched:
+        return "the application was launched but its script never started"
+    if kind == "bar_rebooted" and launched:
+        return "the BAR restarted while the application was running"
+    if kind == "installed_version_mismatch" and step == "list":
+        return "the installed application is missing or has a different version"
+    if (
+        step in ("stage", "install")
+        and type_ == "DeviceError"
+        and type(status) is int
+        and status in PACKAGE_REFUSED
+    ):
+        return f"the BAR refused to {step} the package (HTTP {status})"
+    return None
+
+
+def judge(result: dict, expected: dict) -> tuple[str, str]:
+    """
+    Verdict on a hardware result: ("pass" | "fail" | "not_run", why).
+
+    "fail" only for a result of this very package and run that shows an application fault.
+    A foreign, broken or stand-caused result is "not_run": it never passes and never fails
+    the author.
+    """
+    if any(result.get(key) != expected.get(key) for key in BINDING):
+        return "not_run", "the result belongs to another package or CI attempt"
+    try:
+        validate_result(result, expected)
+        return "pass", ""
+    except ValueError:
+        pass
+    try:
+        fault = application_fault(result)
+    except (TypeError, KeyError, AttributeError):
+        fault = None
+    return ("fail", fault) if fault else ("not_run", "the stand did not give a usable result")
+
+
 class DeviceError(Exception):
     def __init__(self, status=0):
         super().__init__(f"HTTP {status}" if status else "Device unreachable")
@@ -374,7 +440,7 @@ def smoke(device, request, package, serial_log, output_dir, *, clock=time.monoto
         step = "list"
         installed = [app for app in device.call("GET", "apps/list")["apps"] if app["id"] == request["app_id"]]
         if len(installed) != 1 or installed[0]["version"] != request["version"]:
-            raise ValueError("Installed application is missing or has a different version")
+            raise ObservationError("installed_version_mismatch")
         step = "observe"
         baseline = health(device.call("GET", "status"))
         observer = ApplicationLog(serial_log, request["app_id"], log_output)
@@ -386,8 +452,10 @@ def smoke(device, request, package, serial_log, output_dir, *, clock=time.monoto
         while True:
             observer.poll()
             current = health(device.call("GET", "status"))
+            if current[0][:3] != baseline[0][:3]:
+                raise ObservationError("bar_identity_changed")
             if current[0] != baseline[0] or current[1] < baseline[1]:
-                raise ObservationError("bar_reboot_or_identity_change")
+                raise ObservationError("bar_rebooted")
             if device.call("GET", "wifi/status").get("state") != "disconnected":
                 raise ObservationError("wifi_reconnected")
             elapsed = clock() - started
@@ -420,7 +488,9 @@ def smoke(device, request, package, serial_log, output_dir, *, clock=time.monoto
             if observer.errors:
                 failed("observe", ObservationError("runtime_error"))
             if started is not None and not observer.script_seen:
-                failed("observe", ObservationError("script_not_seen"))
+                # A log that never grew is a dead logger, not an app that did not start.
+                kind = "script_not_seen" if observer.read_bytes else "serial_log_silent"
+                failed("observe", ObservationError(kind))
         try:
             if touched:
                 try:

@@ -10,7 +10,7 @@ from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import Protocol
 
-from tools.bar import read_json, validate_result, write_json
+from tools.bar import judge, read_json, write_json
 
 from tools.check_registry import REGISTRY, RESULTS, RETIRED, STAGES, blocks, get, outcome
 from tools.lib_comment import SKIP_REASONS, find_comment, render_comment, verdict
@@ -305,8 +305,41 @@ def load_report_inputs(results: Path, run_url: str) -> dict:
         }
 
 
+STAND_NOT_RUN = (
+    "The check on the real bar was not run because of the test stand; the moderator decides."
+)
+
+
+def bar_finding(request: Path, evidence: Path, head: str, run: int, attempt: int, job: str):
+    """
+    The check entry for the hardware result, and the evidence to keep (only on a pass).
+
+    Only an application fault in a result of this run fails; the stand never fails the author.
+    """
+
+    def stand(why: str):
+        return outcome("bar_unavailable", "not_run", f"{STAND_NOT_RUN} ({why}.)"), None
+
+    if job in {"cancelled", "skipped"}:
+        return stand("the BAR stand was not available or did not finish in time")
+    try:
+        expected = read_json(request)
+        if (expected.get("head_sha"), expected.get("run_id"), expected.get("run_attempt")) != (head, run, attempt):
+            return stand("the hardware request belongs to another run")
+        observed = read_json(evidence)
+    except (OSError, ValueError):
+        return stand("there is no usable result from the hardware job")
+    verdict, why = judge(observed, expected)
+    if verdict == "pass":
+        return outcome("bar_smoke", "pass"), observed
+    if verdict == "fail":
+        detail = f"Failed on the real bar: {why}. The app log and screenshots are in the hardware job artifact."
+        return outcome("bar_smoke", "fail", detail), None
+    return stand(why)
+
+
 def merge_bar(results: Path, request: Path, evidence: Path, head: str, run: int, attempt: int, job: str) -> None:
-    """Fold the same-run hardware result into the existing required catalog check."""
+    """Fold the same-run hardware result into the checks: pass, an application fail, or not run."""
     try:
         findings, data = read_results(results), read_json(results)
     except (OSError, ValueError):
@@ -316,17 +349,10 @@ def merge_bar(results: Path, request: Path, evidence: Path, head: str, run: int,
     if any(blocks(i["id"], i["result"]) for i in findings) or data.get("skip_reason") == "removal":
         data["skipped"] = list(dict.fromkeys([*data.get("skipped", []), "device"]))
     else:
-        try:
-            expected, observed = read_json(request), read_json(evidence)
-            if (expected.get("head_sha"), expected.get("run_id"), expected.get("run_attempt")) != (head, run, attempt):
-                raise ValueError("Hardware request belongs to another run")
-            if job != "success":
-                raise ValueError("Hardware job did not succeed")
-            validate_result(observed, expected)
+        finding, observed = bar_finding(request, evidence, head, run, attempt, job)
+        if observed is not None:
             data["bar"] = observed
-            findings.append(outcome("bar_smoke", "pass"))
-        except (OSError, ValueError):
-            findings.append(outcome("bar_smoke", "not_run", "The hardware job failed or its result is missing or inconsistent."))
+        findings.append(finding)
         data["checks"] = findings
         data["status"] = "fail" if any(blocks(i["id"], i["result"]) for i in findings) else "pass"
     write_json(results, data)

@@ -221,11 +221,14 @@ def prepare_publication(
     """
     original_data, resolved = read_approved_inputs(build_dir, results, original)
     package_path = verify_package(build_dir, resolved, expected_app_id)
+    # The real-bar check is required in a PR but not for publication: absent is fine,
+    # a present result must still belong to this package.
     evidence = read_json(results).get("bar")
-    if not isinstance(evidence, dict):
-        raise ValueError("Missing hardware smoke result")
-    validate_result(evidence, {**evidence, "app_id": expected_app_id, "head_sha": head_sha,
-                              "version": resolved["appmeta"]["version"], "package_sha256": digest(package_path)})
+    if evidence is not None:
+        if not isinstance(evidence, dict):
+            raise ValueError("Invalid hardware smoke result")
+        validate_result(evidence, {**evidence, "app_id": expected_app_id, "head_sha": head_sha,
+                                  "version": resolved["appmeta"]["version"], "package_sha256": digest(package_path)})
     source = original_data["sourcecode"]["location"]
     owner = github_owner(source)
     screenshots = checked_images(
