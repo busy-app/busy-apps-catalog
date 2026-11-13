@@ -1,0 +1,24 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/delovoyhomie/busy-apps-catalog.git
+    commit_sha: 368ff8b3d5e3d607cbe884f8698646faad052344
+    subdir: integration-test-app
+
+category: utilities
+
+short_description: TEST ONLY - verifies automatic catalog PR to Discord forum synchronization.
+
+description: |
+  Temporary app for checking that a new catalog pull request automatically creates a post in the BUSY Discord forum.
+
+  ## Test details
+  - The front display shows SYNC TEST.
+  - The screenshot was captured from the official BUSY Bar Emulator running firmware 1.3.1.
+  - This is an integration test, not a contest entry. Do not merge or publish it.
+
+changelog: |
+  Initial test fixture for automatic forum post creation. This is not a user-facing release.
+
+screenshots:
+  - screenshots/front-1.png
