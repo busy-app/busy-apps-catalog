@@ -149,8 +149,6 @@ The `id` in `appmeta/manifest.json` is also the name of your directory, `applica
 - You don't have a website: use your GitHub account, `io.github.<github-user>.<app>`, e.g. `io.github.imalkav.chess_clock`.
 - `app.busy.*` is only for official BUSY apps.
 
-An ID that doesn't start with a domain-like part (`com`, `org`, `io`, `net`, `dev`, `app` or a two-letter country code) still passes, but the checks show a recommendation.
-
 ## Requirements
 
 Any failed check fails the pull request checks.

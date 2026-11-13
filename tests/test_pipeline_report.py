@@ -65,6 +65,26 @@ def test_reject_inconsistent_results(tmp_path: Path) -> None:
     ]
 
 
+def test_results_from_before_a_check_was_retired_still_read(tmp_path: Path) -> None:
+    """
+    A retired check in results recorded before its removal is dropped, not rejected.
+
+    PR #179 was checked with `id_style`, then the check was removed and its publication
+    failed with "Invalid check finding".
+    """
+    path = tmp_path / "results.json"
+    path.write_text(
+        '{"status":"pass","checks":[{"id":"id_style","result":"fail",'
+        '"detail":"info.truetug.knock"},{"id":"category_alias","result":"pass"}]}'
+    )
+    assert read_results(path) == [
+        {"id": "category_alias", "result": "pass", "detail": ""}
+    ]
+    path.write_text('{"status":"pass","checks":[{"id":"id_styles","result":"fail"}]}')
+    with pytest.raises(ValueError, match="Invalid check"):
+        read_results(path)
+
+
 def test_conclusion_and_annotations_follow_the_icons() -> None:
     """❌ fails the check run; ⚠️ stays green and becomes a warning annotation."""
     gateway = Mock()

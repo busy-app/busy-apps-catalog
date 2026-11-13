@@ -24,7 +24,7 @@ def test_render_shows_every_stage_and_the_fix() -> None:
     assert result.count(MARKER) == 1
     for title in ("Manifest", "Build", "Package", "Catalog", "Review"):
         assert title in result
-    assert "✅ **Manifest** — 12 checks passed" in result
+    assert "✅ **Manifest** — 11 checks passed" in result
     assert "❌ | Source commit | No commit found. (abc)" in result
     assert (
         "Check that the corresponding commit is available in your repository" in result

@@ -50,14 +50,6 @@ CHECKS: tuple[Check, ...] = (
         f"Put the manifest at applications/<app_id>/manifest.yml. {RULE} {EXAMPLES}",
     ),
     Check(
-        "id_style",
-        "manifest",
-        "Application ID style",
-        False,
-        "The application ID does not start with a domain-like part.",
-        f"Recommended: a reverse-domain ID (Java package style), {EXAMPLES}",
-    ),
-    Check(
         "pr_scope",
         "manifest",
         "Changed files",
@@ -580,6 +572,9 @@ CHECKS: tuple[Check, ...] = (
 
 
 REGISTRY: dict[str, Check] = {check.id: check for check in CHECKS}
+# Checks that were removed and never blocked: results recorded before their removal still
+# carry them and are read without them (the publication reads results of past PR runs).
+RETIRED = frozenset({"id_style"})
 
 
 def get(check_id: str) -> Check:

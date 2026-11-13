@@ -10,7 +10,6 @@ MANIFEST_PATH = re.compile(
     r"applications/(?=[^/]{3," + str(MAX_LENGTH) + r"}/)"
     rf"{CHARS}(?:\.{CHARS}){{2,}}/manifest\.yml"
 )
-DOMAIN_PREFIXES = {"app", "com", "io", "org", "net", "dev"}
 RULE = (
     f"Application ID: up to {MAX_LENGTH} characters, lower-case Latin letters, digits, "
     "`_`, `-` and `.`; at least two dots, none at the start or end or in a row."
@@ -24,16 +23,6 @@ EXAMPLES = (
 def is_valid(app_id: str) -> bool:
     """Check the full rule: dotted parts of `[a-z0-9_-]`, at least three, up to 63."""
     return APP_ID.fullmatch(app_id) is not None
-
-
-def is_recommended(app_id: str) -> bool:
-    """
-    Tell whether a valid ID starts like a reverse domain.
-
-    The first part is a known top-level label or a two-letter country code.
-    """
-    first = app_id.split(".", 1)[0]
-    return first in DOMAIN_PREFIXES or (len(first) == 2 and first.isalpha())
 
 
 def invalid_reason(app_id: str) -> str:
