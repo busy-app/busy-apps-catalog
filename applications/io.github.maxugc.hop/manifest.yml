@@ -1,0 +1,27 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/maxugc/busybar-hop.git
+    commit_sha: 62b5ee0b8e43abca982fa5cec79e0ac194b3fc39  # v1.0.0
+
+category: games
+
+short_description: Endless runner. Jump over mushrooms and rocks with the Start button.
+
+description: |
+  A little frog runs along the ground and you jump over mushrooms and rocks with the **Start** button. The run speeds up as you go.
+
+  - **Start:** jump. Also starts a new run.
+  - **OK:** pause and resume.
+  - **Back:** pause during a run, exit otherwise.
+
+  Tall mushrooms appear from score 80, mushroom and rock pairs from 120, and bees from 150. Bees fly at jump height, so stay on the ground while one passes. If a notification covers the screen during a run, the game pauses. Your best score is saved on the bar.
+
+changelog: |
+  First release.
+
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
+  - screenshots/3.png
+  - screenshots/4.png
