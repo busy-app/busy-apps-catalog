@@ -1,0 +1,38 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/maxugc/busybar-ad-pacer.git
+    commit_sha: b5fc9f290caa407db7552a975f93f0af840519da  # v1.0.0
+
+category: dev-monitoring
+
+short_description: Today's Meta ad spend against your daily budget, per ad account, with a pacing bar.
+
+description: |
+  For anyone running Meta ads. Ad Spend Pacer shows today's spend for each ad account against its daily budget, with a bar that marks where spend should be by now. You see at a glance when an account stops spending (a failed card payment, a disabled account) or burns through its budget too fast.
+
+  - **Green:** on pace.
+  - **Yellow:** spending fast or slow, or a payment is overdue.
+  - **Red:** over budget, not spending by mid-morning, or the account can't run ads (**Payment needed**, disabled, in review, closed).
+
+  **Controls:** the wheel moves between accounts, Start refreshes, Back exits. The back screen shows spend, budget, where pace says you should be, and when it last updated.
+
+  **Sign in with a code:** the bar shows a code for facebook.com/device, like a TV app, so there's no long token to paste. It needs a Meta app of your own with Facebook Login and Login from Devices turned on: put its App ID and Client token in the app's settings. It asks only for read access (`ads_read`).
+
+  **Accounts and budgets:** with no account IDs set, it shows the accounts that spent in the last 7 days. Budgets come from today's active campaigns and ad sets (lifetime budgets spread over their dates), or type your own. Turn on **Demo data**, or press Start on the setup screen, to try it without Meta.
+
+  **Privacy:** the sign-in stays on your BUSY Bar and is sent only to Meta's Graph API. Nothing goes anywhere else. Protect the bar's local HTTP API with a password so others on your network can't read it.
+
+changelog: |
+  First release.
+
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
+  - screenshots/3.png
+  - screenshots/4.png
+  - screenshots/5.png
+
+back_screenshots:
+  - screenshots/back-1.png
+  - screenshots/back-2.png
