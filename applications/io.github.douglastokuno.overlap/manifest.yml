@@ -1,0 +1,56 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/douglastokuno/overlap.git
+    commit_sha: 61dcec0b31f8a39445f33ff8775a6d4935985491  # 1.0.0
+
+category: clocks
+
+short_description: See when your whole team is working. Everyone's hours across time zones as one 24-hour strip.
+
+description: |
+  # Overlap
+
+  Your team's working hours as one 24-hour strip.
+
+  The 72 pixels of the front display are your day, midnight to midnight, three pixels to the hour. Each pair of rows is one person: **bright** while they work, **dim** while they are awake, **dark** while they sleep. A white marker sits over the hours when everyone works, and the status line says when that window opens (ALL IN 15:00) or how long it has left.
+
+  ## Controls
+
+  - **Wheel:** time travel. Slides a second cursor along the day, 30 minutes a click, and counts who works at that moment. Returns to now after 15 seconds.
+  - **OK:** focus on one teammate: their local time, whether they are working, awake or asleep, and the hours you two share.
+  - **Start:** jumps the cursor to where the shared hours begin.
+  - **Back:** returns to the live view, then leaves the app.
+
+  The back display shows everyone's city, local time and state in words.
+
+  ## Settings
+
+  - Up to three teammates, each with a name of up to four letters, a time zone, working hours and a color. Your own time zone is the bar's.
+  - 24-hour or 12-hour clock.
+  - A chime and the status light when everyone's working hours begin to overlap.
+
+  The app reads its settings when it starts, so start it again after a change. Out of the box it shows New York and London beside you.
+
+  ## Good to know
+
+  - Works without Wi-Fi: time zones and their daylight-saving rules are built in, for 31 zones.
+  - Every day counts as a working day; weekends are not left out.
+  - Tested on BUSY Bar Emulator with firmware 1.3.1.
+
+changelog: |
+  First release: the 24-hour strip with up to four lanes, person focus, time travel, a jump to the shared hours, a chime when they begin, 12 and 24-hour clocks, and a back display with everyone's local time.
+
+screenshots:
+  - screenshots/front-1-live.png
+  - screenshots/front-2-focus.png
+  - screenshots/front-3-time-travel.png
+  - screenshots/front-4-all-in.png
+  - screenshots/front-5-12-hour.png
+
+back_screenshots:
+  - screenshots/back-1-live.png
+  - screenshots/back-2-focus.png
+  - screenshots/back-3-time-travel.png
+  - screenshots/back-4-all-in.png
+  - screenshots/back-5-12-hour.png
