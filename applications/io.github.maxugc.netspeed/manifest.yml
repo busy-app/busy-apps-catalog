@@ -1,0 +1,36 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/maxugc/busybar-net-speed.git
+    commit_sha: c0adbc27031aacba8aa2705c84907521717bc172  # v1.0.0
+
+category: utilities
+
+short_description: Tap Start to test your internet speed and keep a history. Needs a small helper program on a computer.
+
+description: |
+  An internet speed test for your desk. Tap **Start** and watch ping, download and upload being measured, with live numbers and a progress bar. Turn the wheel to see your history: last test, averages for 24 hours, 7 days and 30 days, fastest and slowest. The back screen adds decimals, jitter and the range of your results.
+
+  **It needs a helper on a computer.** A BUSY Bar can't test a connection itself: an app on the bar moves data at under 1 Mbps. So the measuring is done by a small helper, one Python file you run on a computer on the same network (Mac, Windows, Linux or a Raspberry Pi), and the bar is the button and the screen. Get the helper and the setup steps at [github.com/maxugc/busybar-net-speed](https://github.com/maxugc/busybar-net-speed). It finds the bar by itself, so there is nothing to type on the bar.
+
+  **Try it without the helper:** press Start on the setup screen, or turn on **Demo data** in the app's settings, for made-up history and a pretend test.
+
+  **Controls:** Start runs a test, the wheel moves through the history, Back exits.
+
+  **Test engines:** the helper's built-in test measures against Cloudflare's public speed test. For very fast lines it can use Ookla's Speedtest CLI instead, if you install it and accept its license yourself.
+
+  **Privacy:** results stay on the computer that runs the helper. Test traffic goes to Cloudflare, or to Ookla if you choose that engine. Nothing is sent to the author.
+
+changelog: |
+  First release.
+
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
+  - screenshots/3.png
+  - screenshots/4.png
+  - screenshots/5.png
+
+back_screenshots:
+  - screenshots/back-1.png
+  - screenshots/back-2.png
