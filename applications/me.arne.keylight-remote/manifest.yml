@@ -1,0 +1,36 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/bahlo/busybar-elgato-key-light-remote.git
+    commit_sha: 27ebb9c6ff941676eb23e42d41b627f3111d55c2
+
+category: smart-home
+
+short_description: Control your Elgato Key Light from your BUSY Bar.
+
+description: |
+  Control your Elgato Key Light from your BUSY Bar: turn it on and off, set
+  brightness and color temperature with the wheel, and switch between four
+  presets. The app runs on the BUSY Bar itself and talks to the light over your
+  network.
+
+  Changing the light currently needs a small relay running on a computer on your
+  network due to the Key Lights only supporting HTTP/1.1 requests.
+
+  ## Setup
+
+  1. Install the app
+  2. Start the relay on a computer in your network
+  3. Enter the IP address of the relay in your BUSY Bar's web interface
+
+changelog: |
+  First release: You can turn a light on or off and control brightness,
+  temperature. There's four presets available.
+
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+
+back_screenshots:
+  - screenshots/back-1.png
