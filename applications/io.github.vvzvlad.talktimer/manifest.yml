@@ -1,0 +1,37 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/vvzvlad/busybar-talk-timer.git
+    commit_sha: ddaa5ef2afa380c8e523705839e38b11b84092f5
+category: productivity
+short_description: "A speaker timer: big digits on a band that turns from green to yellow to red as your time runs out."
+description: |-
+  Keep your talk on time without looking at your phone.
+
+  ## How to use
+
+  - Turn the wheel to set the length, from 1 to 99 minutes.
+  - Press **Start** to start the timer, and again to pause it.
+  - Press **OK** while paused to reset it.
+
+  ## What you see
+
+  - The whole front display is a colored band with the time left in large digits.
+  - The band is green, turns yellow and then red as the time runs out: at 2 and 1 minutes left by default.
+  - A short sound and a blink of the status light mark yellow, red and zero.
+  - Past zero it counts the overtime up in red, such as +00:15.
+  - The back display shows the same time in digits as tall as the display, for the audience or the host behind you.
+
+  ## Settings
+
+  The default length, the minutes left for yellow and for red, and the sound on or off.
+
+  Works offline.
+changelog: "First release: the length on the wheel, green, yellow and red phases with a sound and the status light, the overtime count, the time on the back display."
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+  - screenshots/front-4.png
+back_screenshots:
+  - screenshots/back-1.png
