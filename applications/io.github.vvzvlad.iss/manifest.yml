@@ -1,0 +1,38 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/vvzvlad/busybar-iss-dashboard.git
+    commit_sha: 05703e04ec6d005684c75c47f107082012d8e60b
+category: info-feeds
+short_description: "Live ISS telemetry: the water tanks, cabin air, the solar arrays turning and a reboost alert."
+description: |-
+  Live telemetry from the International Space Station on your desk.
+
+  ## What you see
+
+  Turn the wheel to switch between the views:
+
+  - **Plumbing**: the urine, waste water and clean water tanks side by side, then each tank on the whole display: clean water sloshes in blue, urine in yellow with rising bubbles, and waste water is a heap of garbage as tall as its level. When someone aboard uses the toilet, a stream pours into the urine tank with a trickling sound.
+  - **Cabin air**: the temperature, pressure and CO2 aboard the station.
+  - **Solar arrays**: the station seen from above, its eight wings turning by the real joint angles, and the beta angle.
+
+  When the station switches into reboost mode, an alert with the firing engine takes the display for 10 seconds, with a sound and the status light; while the engines push the station, the urine and the clean water gather at one wall of their tanks.
+
+  The back display lists all the numbers: the tanks, the urine and water processors, temperature, pressure, O2, N2, CO2, the beta angle, the station mode and the age of the data.
+
+  While the station has no signal from the ground, the values dim and the back display says NO SIGNAL. Without a connection the last values stay, dimmed, with a red cross in the corner.
+
+  ## Data
+
+  NASA's public ISS telemetry (ISSLIVE) through Lightstreamer, no key needed, checked every five minutes. With the Slosh setting on Gyroscopes, the urine and the clean water slosh with the live control torque of the station's gyroscopes, read about once a second while one of them is on the display.
+changelog: "First release: the water tanks, each also on the whole display, cabin air, the solar arrays, a reboost alert and all the numbers on the back display."
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+  - screenshots/front-4.png
+  - screenshots/front-5.png
+  - screenshots/front-6.png
+  - screenshots/front-7.png
+back_screenshots:
+  - screenshots/back-1.png
