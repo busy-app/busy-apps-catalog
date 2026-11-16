@@ -1,0 +1,35 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/vvzvlad/busybar-focus-forest.git
+    commit_sha: 744ba4d5518dcd3afd2fcc826d54ceb9adaca031
+category: games
+short_description: "Focus sessions grow trees on your BUSY Bar; skip a day and its spot in the row stays empty."
+description: |-
+  Grow a forest one focus session at a time.
+
+  ## How to use
+
+  - Turn the wheel to pick a session of 15, 25, 50 or 90 minutes and press **Start**.
+  - A tree grows on the screen while the countdown runs. Finish the session and the tree takes its day's spot in the row, the fox jumps for joy and a short sound plays.
+  - Press **Back** during a session to give up, and the tree dies. Leaving the app in the middle of a session counts as giving up too.
+
+  ## What you see
+
+  - Between sessions: the session length and the last 18 days as a row of small trees, today on the right. A day with a finished session has a tree of the last species it grew, a day with abandoned ones only a dry tree, and a day without a session stays an empty spot.
+  - A little fox walks along the row and gets sad next to the dry trees.
+  - New species unlock as your focus hours add up: spruce, then birch at 4 hours, oak at 10, sakura at 25, autumn maple at 50, palm at 75, cactus at 100 and sunflower at 150, and a snowy fir in December.
+  - The back display shows your forest for today, the week, the month or the year (**OK** turns the pages), your streak of days and your total focus hours. During a session it says BUSY and the minutes left, large, for the people around you.
+
+  ## Settings
+
+  The default session length, the sound on or off, and the fox's name.
+
+  Works offline; your days are kept on the BUSY Bar.
+changelog: "First release: sessions of 15 to 90 minutes, a row of 18 days, eight tree species to unlock, a fox among the trees, the forest of the week, month and year on the back display."
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+back_screenshots:
+  - screenshots/back-1.png
