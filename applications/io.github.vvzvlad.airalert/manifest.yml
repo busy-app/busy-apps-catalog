@@ -1,0 +1,30 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/vvzvlad/busybar-air-alert.git
+    commit_sha: 24d8e86f7e722d1e9e96e9fce6fe4bb1ca1c3518
+category: utilities
+short_description: Air raid alerts for regions of Ukraine and cities of Israel, on your BUSY Bar.
+description: |-
+  ## How to use
+
+  In the app's settings, choose up to three regions — Kyiv, any of 23 Ukrainian regions, or all of Israel — and up to three of 31 Israeli cities.
+
+  ## What you see
+
+  - No alert: NO ALERTS in green.
+  - An alert: the screen turns red with a flashing siren, AIR ALERT and the region's name, with a siren sound and a red blink of the status light; long or several names scroll by.
+  - When the alert ends: ALL CLEAR in green for a minute.
+  - Without a connection: the last known state, dimmed, with a red cross in the corner.
+
+  The app checks every 20 seconds. The BUSY Bar runs one app at a time, so alerts show only while this app is open.
+
+  ## Data
+
+  [ubilling.net.ua aerial alerts](https://ubilling.net.ua/aerialalerts/) for Ukraine and [Tzeva Adom](https://www.tzevaadom.co.il) for Israel, no keys needed.
+changelog: "First release: regions of Ukraine and cities of Israel, a red screen with a siren sound and the status light during an alert, all clear for a minute."
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+  - screenshots/front-4.png
