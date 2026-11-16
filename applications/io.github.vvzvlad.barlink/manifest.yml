@@ -1,0 +1,35 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/vvzvlad/busybar-bar-link.git
+    commit_sha: bda10eb5a404c03b0bc0b84cabdb4f69249923ed
+category: social
+short_description: Send a heart or a short message from your BUSY Bar to a friend's.
+description: |-
+  Pair two BUSY Bars and send each other little messages.
+
+  ## How to use
+
+  - On both bars, set the same secret word in the app's settings, and your name.
+  - While idle, the front display shows a clock. Turn the wheel to pick a message, a pixel picture with its word: a heart, lips for KISS, a phone for CALL ME, a house for HOME, a sad face for MISS YOU or a hand for WAVE.
+  - Press **Start** to send it. Five seconds after the last turn the clock comes back; **Start** on the clock brings the picker back with the last picture picked, and a second **Start** sends it.
+
+  ## What you see
+
+  - The other bar shows the picture moving for 10 seconds, with the sender's name beside it: the heart beats, the lips blow a kiss, the phone rings, smoke rises from the house, a tear runs down the sad face, the hand waves. A short sound plays and the status light blinks pink.
+  - Its back display keeps who sent the last message and when, also after a restart.
+  - Without a connection a red cross shows in the corner.
+
+  The BUSY Bar runs one app at a time, so messages arrive only while this app is open. The bar checks for new ones every 10 seconds.
+
+  ## Privacy
+
+  Messages go through the public server [ntfy.sh](https://ntfy.sh), on a channel named after your secret word. Anyone who knows the word can read and send messages, so pick one that is hard to guess. See ntfy.sh's [privacy policy](https://docs.ntfy.sh/privacy/).
+changelog: "First release: six messages as moving pictures with a sound and the status light, a clock while idle, pairing by a secret word, the last sender on the back display."
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+  - screenshots/front-4.png
+back_screenshots:
+  - screenshots/back-1.png
