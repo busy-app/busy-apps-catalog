@@ -1,0 +1,31 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/vvzvlad/busybar-market-ticker.git
+    commit_sha: 39fd6678a08aad1d8cd5b67832b26aac1d1c7f03
+category: info-feeds
+short_description: Stocks, indices, crypto and currencies in large digits, with the day's chart and green and red.
+description: |-
+  ## What you see
+
+  - Your tickers take turns every five seconds: the price in large digits, and on the left the name and the day's change after an up or down arrow. Gains are green, losses red.
+  - Turn the wheel to pick a ticker and hold it; after half a minute without a turn they take turns again. Press **OK** to see the held ticker's chart for the day, and again to go back.
+  - The back display shows a table of all your tickers with their prices and the day's change.
+  - Without a connection the last prices stay on the display, dimmed, with a red cross in the corner.
+
+  ## Settings
+
+  - Up to six Yahoo Finance symbols separated by commas, such as ^GSPC for the S&P 500, AAPL, BTC-USD or EURUSD=X, each with an optional label: ^GSPC=S&P 500. By default the S&P 500 and Bitcoin.
+  - The minutes between updates, 5 by default.
+
+  ## Data
+
+  Yahoo Finance chart data, no key needed.
+changelog: "First release: up to six tickers from Yahoo Finance in large digits, the day's chart, a table on the back display."
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+  - screenshots/front-4.png
+back_screenshots:
+  - screenshots/back-1.png
