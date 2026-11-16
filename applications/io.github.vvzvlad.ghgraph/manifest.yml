@@ -1,0 +1,29 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/vvzvlad/busybar-github-graph.git
+    commit_sha: 5985a187a3c2e53c995e83d231aa6e5d8afa6a0f
+category: dev-monitoring
+short_description: "Your GitHub contribution graph on the BUSY Bar's LED screen; today blinks until your first contribution."
+description: |-
+  ## How to use
+
+  - Create a GitHub personal access token at https://github.com/settings/tokens.
+  - In the app's settings, enter your login and the token, and pick the colors.
+
+  ## What you see
+
+  The last 72 weeks as columns of seven days, one pixel a day, in GitHub's shades of green, or orange, blue or purple. Today blinks until your first contribution of the day. Turn the wheel to see your current streak in large digits.
+
+  The back display shows your contributions in the last year, your current streak and your best day. The app updates every 30 minutes; without a connection the last graph stays, dimmed, with a red cross in the corner.
+
+  ## Data
+
+  The GitHub GraphQL API with your token. The token stays in the app's settings on your BUSY Bar.
+changelog: "First release: 72 weeks of contributions, a blinking today, the streak on the wheel, the year on the back display, four color schemes."
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+back_screenshots:
+  - screenshots/back-1.png
