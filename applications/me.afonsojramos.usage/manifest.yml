@@ -1,0 +1,39 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/afonsojramos/busybar-usage.git
+    commit_sha: 41a05e4bfe0b4cedf07ba0db1780b5a62e44065f
+
+category: dev-monitoring
+
+short_description: How much of your AI subscriptions you have used, with a bar per limit and the time until it resets.
+
+description: |
+  Shows how much of your AI subscriptions you have used: one page per account, a bar for each rate-limit window (Claude's 5-hour and weekly limits, Codex's weekly limit, and so on), and the time until a full window resets. Balances without a limit show their value instead.
+
+  ## Where the numbers come from
+
+  The app shows a usage feed; it never contacts an AI provider itself. Until a feed arrives, it shows "No usage yet". Use one or both of these:
+
+  - **The companion**, a command-line tool for your computer from the [app's repository](https://github.com/afonsojramos/busybar-usage). It reads the sign-ins your AI tools already have for 113 providers, the ones CodexBar supports, and sends only percentages and reset times to the bar over USB or Wi-Fi. Your logins stay on your computer.
+  - **A CLIProxyAPI hub** on your network that serves the same feed. Set its address in **Hub URL**.
+
+  ## Settings
+
+  - **Hub URL**: the hub's usage address, if you use one.
+  - **Uppercase text**: draws every label in capitals.
+
+  ## Controls
+
+  Turn the wheel to change page, press OK to refresh, and press Back to leave.
+
+changelog: |
+  First release in the catalog.
+
+screenshots:
+  - screenshots/claude.png
+  - screenshots/codex.png
+  - screenshots/copilot.png
+  - screenshots/venice.png
+  - screenshots/sign-in.png
+  - screenshots/uppercase.png
