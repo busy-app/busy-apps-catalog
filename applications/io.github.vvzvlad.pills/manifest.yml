@@ -1,0 +1,27 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/vvzvlad/busybar-pill-reminder.git
+    commit_sha: 86ab182c4db3ef8770f0d6ea87d13614a1cf491c
+category: productivity
+short_description: Reminds you to take your pills on time and shows when you took the last one.
+description: |-
+  ## How to use
+
+  - In the app's settings, set up to four doses, each with a name, a time and an on/off switch, and how soon to remind you again.
+  - When a dose is due, a capsule shakes on the front display next to the dose's name, with START = TAKEN under it, a short chime plays and the status light blinks amber. Press **Start** once you have taken it.
+  - Until you press Start, the reminder comes back after the interval you set.
+
+  ## What you see
+
+  - Between doses: the clock and the next dose, such as OMEGA 3 08:30.
+  - On the back display: the last dose taken and when, such as Last: VIT D 08:12.
+
+  The BUSY Bar runs one app at a time, so reminders come only while this app is open. Works offline.
+changelog: "First release: up to four doses with a chime and the status light, a repeat interval, the last dose taken on the back display."
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+back_screenshots:
+  - screenshots/back-1.png
