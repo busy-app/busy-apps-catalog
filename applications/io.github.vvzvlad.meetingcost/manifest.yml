@@ -1,0 +1,32 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/vvzvlad/busybar-meeting-cost.git
+    commit_sha: 2c7fabf634b74a5507ac13fa68280fc61e9906ba
+category: productivity
+short_description: The live cost of the meeting you are in, ticking up on your BUSY Bar.
+description: |-
+  Everyone in a meeting costs money. This app shows how much, second by second.
+
+  ## How to use
+
+  - Turn the wheel to set how many people are in the meeting, from 1 to 99, before or during it.
+  - Press **Start** to start the count, and again to pause it.
+  - Press **OK** to reset it to zero.
+
+  ## What you see
+
+  - The total in large digits, and under it the headcount and the time elapsed, such as 8 ppl 23:41.
+  - The back display shows the total in digits as tall as the display, so your colleagues can see it too.
+
+  ## Settings
+
+  The hourly rate per person ($100 by default), the currency (USD, EUR or GBP) and the default headcount.
+
+  Works offline.
+changelog: "First release: the headcount on the wheel, start, pause and reset, the rate and currency in the settings, the total on the back display."
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+back_screenshots:
+  - screenshots/back-1.png
