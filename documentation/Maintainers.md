@@ -82,6 +82,11 @@ Setup, options and waits are in [e2e/README.md](../e2e/README.md); run it with `
 
 ## Check on a real bar
 
+**Off in this repository for now.** The check is still being tested in dev and stage. Here
+`pipeline.yml` does not request it, so the `bar` and `bar-watchdog` jobs are skipped and the PR
+comment has no Physical BAR stage. The comments in `pipeline.yml` and `tools/lib_comment.py` say
+how to turn it back on. The rest of this section describes the check where it is on.
+
 The `bar` job of `pipeline.yml` runs on the organisation-level runner `BusyBarTest`, a real
 BUSY Bar on a private USB network. It installs the checked package, watches it for 60 seconds,
 saves the front and back screens and the application log, removes the application and uploads

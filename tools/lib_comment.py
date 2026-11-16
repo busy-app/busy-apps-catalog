@@ -202,11 +202,14 @@ def render_comment(
     if removal is not None:
         lines = [MARKER, "## Checks", "", *render_removal_checks(findings)]
         return "\n".join([*lines, *render_removal(removal)]) + "\n"
+    # The real-bar check is off in prod (see pipeline.yml), so the "Physical BAR" stage is not
+    # shown: with no result it would read as passed. To turn it back on, render all STAGES again.
     lines = [
         MARKER,
         "## Checks",
         "",
-        *render_checks(findings, skipped, skip_reason=skip_reason),
+        *render_checks(findings, skipped, skip_reason=skip_reason,
+                       stages=tuple(stage for stage in STAGES if stage != "device")),
     ]
     notes = ([f"- {REVIEWER_NOTE}"] if author_attested else []) + (
         [f"- License: {license_name}"] if license_name else []

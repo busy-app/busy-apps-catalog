@@ -174,7 +174,11 @@ jobs:
         run: |
           set -euo pipefail
           if [[ "$BUILD_RESULT" == success ]]; then
-            python -m tools.pipeline_check --app-id "$APP_ID" --build-dir build --manifest prepared-data/prepared/manifest.yml --output results.json --bar-request bar-request.json
+            # The real-bar check is off in prod for now: it is still being tested in dev and stage.
+            # Without a bar request the bar and bar-watchdog jobs are skipped. To turn it back on,
+            # run the commented line instead and restore the bar arguments in report and preview-report.
+            # python -m tools.pipeline_check --app-id "$APP_ID" --build-dir build --manifest prepared-data/prepared/manifest.yml --output results.json --bar-request bar-request.json
+            python -m tools.pipeline_check --app-id "$APP_ID" --build-dir build --manifest prepared-data/prepared/manifest.yml --output results.json
           else
             python -m tools.pipeline_check --app-id "$APP_ID" --build-log build-log/build-error.txt --build-error build-log/build-error.json --manifest prepared-data/prepared/manifest.yml --output results.json
           fi
@@ -302,10 +306,11 @@ jobs:
           BAR_JOB_RESULT: ${{ needs.bar.result }}
           BAR_ARTIFACT_URL: ${{ needs.bar.outputs.artifact_url }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        # The real-bar check is off in prod (see the check job). To turn it back on, add again:
+        # --bar-request checked/bar-request.json --bar-result bar-evidence/bar-result.json
         run: >-
           python -m tools.pipeline_report --results checked/results.json --pr "$PR_NUMBER"
           --sha "$HEAD_SHA" --repository "$GITHUB_REPOSITORY" --run-url "$RUN_URL"
-          --bar-request checked/bar-request.json --bar-result bar-evidence/bar-result.json
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: results-${{ needs.prepare.outputs.head_sha }}
@@ -356,9 +361,10 @@ jobs:
           from tools.pipeline_report import merge_bar, read_results
           results = Path('checked/results.json')
           results.parent.mkdir(exist_ok=True)
-          merge_bar(results, Path('checked/bar-request.json'), Path('bar-evidence/bar-result.json'),
-                    os.environ['HEAD_SHA'], int(os.environ['GITHUB_RUN_ID']),
-                    int(os.environ['GITHUB_RUN_ATTEMPT']), os.environ['BAR_JOB_RESULT'])
+          # The real-bar check is off in prod (see the check job). To turn it back on, uncomment:
+          # merge_bar(results, Path('checked/bar-request.json'), Path('bar-evidence/bar-result.json'),
+          #           os.environ['HEAD_SHA'], int(os.environ['GITHUB_RUN_ID']),
+          #           int(os.environ['GITHUB_RUN_ATTEMPT']), os.environ['BAR_JOB_RESULT'])
           status = verdict(read_results(results))
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as summary:
               summary.write(f"Application PR #{os.environ['PR_NUMBER']}: **{status}**\n\n")
