@@ -1,0 +1,33 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/vvzvlad/busybar-time-progress.git
+    commit_sha: c52dfd6f1dd18267988520747119cfc5157d46a5
+category: clocks
+short_description: How much of the year, the month, your own span or your life has passed, as progress bars.
+description: |-
+  ## What you see
+
+  Two lines with progress bars: the year on top, such as 2026 87%, and under it the line you pick with the wheel.
+
+  ## Lines
+
+  - **Month**, counted from any day: set 12 and you see how far you are from one payday to the next.
+  - **Week** and **day**.
+  - **Your own span** between two dates, with your label, such as BABY 75%.
+  - **Life**: the share lived, from your birth date and the years you set.
+  - Two pixel views, one pixel per unit: the days of the year, and the months of your life.
+
+  The year can start on any date too, such as your birthday. A spark runs along the year's bar at each new whole percent.
+
+  ## Settings
+
+  The year's start and label, the month's start day and label, your span's label and dates (YYYY-MM-DD), your birth date and the years of life. All of them are optional.
+
+  Works offline, on the BUSY Bar's own clock.
+changelog: "First release: year, month, week, day, your own span, life, and two pixel views."
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+  - screenshots/front-4.png
