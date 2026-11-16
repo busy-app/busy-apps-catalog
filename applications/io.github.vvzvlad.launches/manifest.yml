@@ -1,0 +1,27 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/vvzvlad/busybar-launch-countdown.git
+    commit_sha: 6881bd518cac00edcd9243697edcc38c9a4e442d
+category: info-feeds
+short_description: A countdown to the next rocket launch, with a rocket waiting on its pad.
+description: |-
+  ## What you see
+
+  - On the front: a rocket on its pad and the time to liftoff in large digits, such as 02:13:44, or 3D 07H when it is days away. The color follows the launch status: green for Go, yellow for TBC or TBD, red for Hold.
+  - At T-0 the rocket lifts off with a roar, and the next launch takes its place.
+  - On the back display: the mission name, its status, the launch time and which of the upcoming launches it is.
+
+  ## How to use
+
+  Turn the wheel to step through the upcoming launches, up to five.
+
+  ## Data
+
+  [The Space Devs Launch Library 2](https://thespacedevs.com/llapi), no key needed, checked every 15 minutes. Without a connection the app keeps counting down to the launches it last got, dimmed, with a red cross in the corner.
+changelog: "First release: up to five upcoming launches, a rocket that lifts off at T-0 with a sound, details on the back display, the last list kept without a connection."
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+back_screenshots:
+  - screenshots/back-1.png
