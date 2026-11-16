@@ -1,0 +1,29 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/njarvis9516-sys/spot_bar.git
+    commit_sha: f518e83066c15fe96f7bd42f5c8b7436a7ff2356
+category: music
+short_description: it shows what you are playing
+description: "Control your Spotify listening from your BUSY Bar: see what's playing, skip songs, pause, and like songs. (Made with help from Claude Code.)"
+changelog: |-
+  you can
+  1. scroll to change songs
+  2. click (OK) to like the song
+  3. press [start/pause] to pause the song
+  4. back exits the program
+screenshots:
+  - screenshots/front-3.png
+  - screenshots/front-4.png
+  - screenshots/front-5.png
+  - screenshots/front-6.png
+  - screenshots/front-8.png
+  - screenshots/front-9.png
+  - screenshots/front-10.png
+  - screenshots/front-12.png
+  - screenshots/front-15.png
+  - screenshots/front-16.png
+back_screenshots:
+  - screenshots/back-1.png
+  - screenshots/back-2.png
+  - screenshots/back-3.png
