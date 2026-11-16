@@ -1,0 +1,35 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/vvzvlad/busybar-json-widget.git
+    commit_sha: 6a833601bdb73f5b552d4c1aa69b4f95700f6cf9
+category: dev-monitoring
+short_description: A number or a line of text from any JSON or plain-text endpoint, colored by your thresholds.
+description: |-
+  Watch any value a web endpoint returns.
+
+  ## How to use
+
+  In the app's settings, set:
+
+  - the **URL** of the endpoint and its **format**, JSON or plain text;
+  - for JSON, the **path** to the field, such as bitcoin.usd, data.result[0].value[1] for Prometheus or results[0].series[0].values[0][1] for InfluxDB 1.x;
+  - a **label** and a **unit**, how often to check, the **yellow** and **red** thresholds, and an optional **Authorization** header.
+
+  ## What you see
+
+  Your label and unit on the left and the value in large digits, white, yellow or red by your thresholds. A plain-text answer that is not a number is shown as a line of text, and a long one scrolls.
+
+  Press OK for a chart of the last 72 readings. The back display shows the value, the lowest and highest of those readings and the time of the last one. Without a connection the last value stays, dimmed, with a red cross next to it.
+
+  ## Data
+
+  Only the endpoint you set. The Authorization header stays in the app's settings on your BUSY Bar.
+changelog: "First release: JSON and plain text, yellow and red thresholds, a chart of the last 72 readings, the back display, an optional Authorization header."
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+  - screenshots/front-4.png
+back_screenshots:
+  - screenshots/back-1.png
