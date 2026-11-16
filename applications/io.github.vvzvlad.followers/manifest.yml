@@ -1,0 +1,30 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/vvzvlad/busybar-follower-counter.git
+    commit_sha: a09ec689fcd7f4ee5e4951bbb75e46123e81561e
+category: social
+short_description: Your Bluesky or Mastodon follower count in large digits on your BUSY Bar.
+description: |-
+  ## How to use
+
+  - In the app's settings, choose the network and enter your handle, such as bsky.app on Bluesky or Gargron@mastodon.social on Mastodon, and the step for the fireworks.
+  - Turn the wheel to switch between followers, following and posts.
+
+  ## What you see
+
+  - The network's logo, the Bluesky butterfly or the Mastodon bubble, and the count in large digits. On the followers view, today's gain sits above it, such as +12 TODAY. The app updates it every 10 minutes.
+  - When your followers pass a round number, a multiple of the step you set (100 by default), fireworks go off across the screen with a sound and the status light.
+  - The back display shows the followers, today's gain and a chart of the last 24 hours.
+  - Without a connection the last counts stay, dimmed, with a red cross in the corner.
+
+  ## Data
+
+  The public Bluesky and Mastodon APIs, no account or key needed.
+changelog: "First release: Bluesky and Mastodon, followers, following and posts, today's gain, fireworks on round numbers, a 24-hour chart on the back display."
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+back_screenshots:
+  - screenshots/back-1.png
