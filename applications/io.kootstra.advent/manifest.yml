@@ -1,0 +1,59 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/nkootstra/busybar-advent.git
+    commit_sha: e200f5c3960158b71fb53998dd190b6d40115fdc  # 0.1.0
+category: clocks
+short_description: "A door a day until Christmas: 24 animated pixel scenes, doors you can play with, and a tree that fills up."
+description: |-
+  # Advent Calendar
+
+  A door a day until Christmas, on your BUSY Bar.
+
+  Each December day has a door on the front display. Press **Start** and it slides open with a chime and a golden light, to an animated pixel scene: first snow over a village, a skater on the ice, the northern lights, a toy train, carols on a staff, a quiet Christmas Eve. 24 scenes, all different, and a finale on Christmas Day.
+
+  On the back display a tree fills up: an ornament for every door you opened, and the star on Christmas Day.
+
+  ## Controls
+
+  - **Start:** opens the door on show. On some open doors it plays with the scene: shake the snow globe, ring the bells, stoke the fire, light up the tree, unwrap the gift, drop a present from the sleigh, wish on a shooting star.
+  - **Wheel:** browses the doors. Doors of later days are locked and say how long to wait; a missed day can be opened late.
+  - **OK:** back to today.
+  - **Back:** leaves the app.
+
+  ## Through the season
+
+  - Before December it counts the days to the first door.
+  - The Advent wreath lights a candle for every Advent Sunday so far.
+  - Until 6 January every door stays open to look back on. Next year starts fresh.
+
+  ## Settings
+
+  - **Sound when a door opens.**
+  - **Test date:** try the calendar before December. It behaves exactly as on that day of December, and the back display says so.
+  - **Unlock every door:** open any door at any time of year.
+
+  The app reads its settings when it starts, so start it again after a change.
+
+  ## Good to know
+
+  - Works without Wi-Fi: nothing is downloaded, and the date comes from the bar's own clock.
+  - Opened doors are remembered on the bar.
+  - Tested on BUSY Bar Emulator with firmware 1.3.1.
+changelog: "First release: 24 animated scenes and a finale for Christmas Day, seven doors that answer to Start, a tree on the back display that gains an ornament per opened door, a countdown before December, and settings to try it on any date."
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+  - screenshots/front-4.png
+  - screenshots/front-5.png
+  - screenshots/front-6.png
+  - screenshots/front-7.png
+back_screenshots:
+  - screenshots/back-1.png
+  - screenshots/back-2.png
+  - screenshots/back-3.png
+  - screenshots/back-4.png
+  - screenshots/back-5.png
+  - screenshots/back-6.png
+  - screenshots/back-7.png
