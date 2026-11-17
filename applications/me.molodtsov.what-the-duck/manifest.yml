@@ -1,0 +1,24 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ymolodtsov/what-the-duck.git
+    commit_sha: 4b6fd26a3e9825d3652dae23df58f013495f2f10
+category: games
+short_description: A yellow duck, cacti, and one more jump. An endless runner for your BUSY Bar.
+description: |
+  A yellow duck runs through the desert, jumping over cacti as the pace increases. Chase your best score, retry after a collision, and keep the next jump ready.
+
+  Press Start or OK, or turn the wheel, to start, jump, or retry. Hold OK to pause or resume. Back quits. The rear display shows your score, best score, and controls. A yellow duck icon identifies the app in the launcher.
+
+  What the Duck runs entirely on your BUSY Bar without Wi-Fi, an account, or a desktop connection. Best scores persist between launches on firmware with localStorage; otherwise they last for the app session. Slow or failed display requests pause play.
+
+  Requires HTTP API 27.14.0 or newer.
+changelog: |
+  Initial catalog release with a yellow duck runner, cactus obstacles, increasing speed, score tracking, pause and retry controls, and duck launcher icons.
+screenshots:
+- screenshots/running.png
+- screenshots/jump.png
+- screenshots/ready.png
+- screenshots/game-over.png
+back_screenshots:
+- screenshots/ready-back.png
