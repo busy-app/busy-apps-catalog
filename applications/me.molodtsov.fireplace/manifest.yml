@@ -1,0 +1,21 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ymolodtsov/fireplace.git
+    commit_sha: 8490827e243977a0eacb5f88a670d4e34a26ae6b
+category: art
+short_description: A full-width pixel fire with five flame levels, controlled by the wheel.
+description: |
+  Fill your BUSY Bar’s front display with a warm pixel fire. Flames rise across the full width of the screen in a continuous loop.
+
+  Turn the wheel to stoke or calm the fire through five levels. Back quits. The rear display stays blank, and the app makes no sound. Native BUSY and calendar overlays keep their higher priority.
+
+  The animation runs entirely on the Bar without Wi-Fi, an account, or a desktop connection. Your flame level is remembered between launches on firmware with localStorage.
+
+  Requires HTTP API 27.14.0 or newer.
+changelog: |
+  Initial catalog release with a seamless full-width flame animation, five wheel-controlled intensity levels, and optional flame-level persistence.
+screenshots:
+- screenshots/flames.png
+- screenshots/high.png
+- screenshots/low.png
