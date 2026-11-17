@@ -1,0 +1,25 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ymolodtsov/superbar.git
+    commit_sha: f8cc2b18de6064aee75b4ac5e07ded58e6f5f815
+category: clocks
+short_description: Clock, weather, timers, world clocks, reminders, and countdowns on your BUSY Bar.
+description: |
+  SuperBar keeps the time, date, ISO week number, and weather together on your BUSY Bar. Turn the wheel to browse a quick timer, detailed weather, up to five world clocks, a pinned reminder, and a date countdown.
+
+  Choose 12- or 24-hour time, Celsius or Fahrenheit, accent colors, quiet hours, and which views appear. Start opens the timer; turn the wheel to set its duration, then press Start or OK. Back returns to the clock, and Back again quits.
+
+  The app runs on the Bar without a desktop connection. Weather needs Wi-Fi and uses Open-Meteo; set your location in the app settings. The clock and timer remain available when weather cannot be fetched. Busy’s existing calendar and BUSY overlays keep their higher priority.
+
+  Weather requests send the configured coordinates to Open-Meteo. See the [privacy policy](https://github.com/ymolodtsov/superbar/blob/main/PRIVACY.md). Weather data: [Open-Meteo](https://open-meteo.com/), CC BY 4.0.
+
+  Requires HTTP API 27.14.0 or newer.
+changelog: |
+  Initial catalog release with a configurable clock, weather and weather alerts, quick timer, world clocks, pinned reminder, and date countdown.
+screenshots:
+- screenshots/clock.png
+- screenshots/timer.png
+- screenshots/weather.png
+back_screenshots:
+- screenshots/clock-back.png
