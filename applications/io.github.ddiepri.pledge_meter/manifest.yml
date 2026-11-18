@@ -1,0 +1,60 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ddiepri/pledge-meter.git
+    commit_sha: 65757f9413f5e3b9c9d48911dfcdee88ef63f9d0  # v1.1.0
+
+category: info-feeds
+
+short_description: Live Kickstarter campaign stats with a pixel Flipper One. Total raised, today, backers, goal and days to go.
+
+description: |
+  Live stats of a Kickstarter campaign on your BUSY Bar. It's set up for the [Flipper One](https://www.kickstarter.com/projects/flipper-devices/flipper-one) campaign and works with any Kickstarter project.
+
+  ## Pages
+
+  - **Total raised**, next to a pixel Flipper One
+  - **Exact total**, which rolls up when new pledges come in
+  - **Raised today**, with a 24-hour chart: one bar per hour
+  - **Days to go**
+  - **Backers**, and new backers today
+  - **Percent funded** and the goal
+  - **Pledges over the last hour**
+  - **Average pledge** per backer
+  - A **celebration** when the total crosses a milestone
+
+  The Flipper One's own screen changes with the page: a picture, an hourglass, a rising chart.
+
+  ## Controls
+
+  - **Scroll wheel**: switch pages
+  - **OK**: refresh now
+  - **Start / Pause**: pause or resume auto-rotation
+  - **Back**: exit
+
+  ## Settings
+
+  In **Apps → Pledge Meter** in the web interface or on the bar:
+
+  - **Kickstarter project**: the creator/project part of the project URL, e.g. flipper-devices/flipper-one
+  - **Short name**, **Campaign ends** (UTC), **Funding goal** and **Celebrate every** (milestone)
+  - **Update every**: 5 seconds to 5 minutes
+  - **Rotate pages** and **Seconds per page**
+
+  ## Data
+
+  The numbers come from the public stats of the project page on kickstarter.com, which Kickstarter refreshes about every 5 seconds. The BUSY Bar needs Wi-Fi with access to kickstarter.com. The app sends no personal data.
+
+changelog: |
+  First release in the catalog.
+
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
+  - screenshots/3.png
+  - screenshots/4.png
+  - screenshots/5.png
+  - screenshots/6.png
+  - screenshots/7.png
+  - screenshots/8.png
+  - screenshots/9.png
