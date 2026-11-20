@@ -1,0 +1,25 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/busy-app/weather-app.git
+    commit_sha: aecffbedbabbef66565092051c8b7d79835be0bc  # 1.0.0
+category: info-feeds
+short_description: Current weather, a 24-hour forecast graph and the days ahead for your location.
+description: |
+  Weather for your location on BUSY Bar.
+
+  - **Now:** the temperature and an animated weather icon, with the date and time.
+  - **Next 24 hours:** a temperature graph. Turn the wheel to step through the hours.
+  - **Next days:** day and night temperatures. Turn the wheel to step through the days.
+
+  Press OK or Start to switch screens. The forecast updates every 15 minutes.
+
+  In the settings, choose the location (by default it's found from the bar's network address), °C or °F, and whether to show the time and date.
+
+  The bar gets the forecast from the BUSY weather service. See the [BUSY Privacy Policy](https://busy.app/policies/privacy-policy).
+changelog: |
+  First version in the catalog.
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
+  - screenshots/3.png
