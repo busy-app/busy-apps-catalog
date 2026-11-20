@@ -1,0 +1,29 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/vitaliiermolaev/instagram-followers-counter.git
+    commit_sha: a9b3287269e31bdfb4581ccc3087a08086ba1440  # v1.0.0
+category: social
+short_description: Follower count of any public Instagram profile, with hearts floating up next to it.
+description: |
+  # Instagram Followers Counter
+
+  Shows the follower count of a public Instagram profile on the front display: the Instagram icon, the username and the number of followers, rounded the way Instagram shows it (89M, 19.8K, 5,017). Pink hearts float up in the corner next to the count.
+
+  ## Settings
+
+  - **Instagram profile**: a profile link or a username, for example https://www.instagram.com/instagram/ or @instagram. Set it in the BUSY app or in the bar's web interface.
+
+  ## How it works
+
+  - The app reads the follower count from the public profile page on instagram.com. No Instagram account, login or token is needed.
+  - The count updates every 15 minutes. If an update fails, the last count stays on screen with a red cross on the icon, and the app tries again in 5 minutes.
+  - Each update downloads the profile page, about 0.7 MB.
+  - If the username doesn't exist, the app shows "Not found".
+  - Back closes the app.
+changelog: |
+  First version: the follower count of a public Instagram profile, with hearts floating up next to it.
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
+  - screenshots/3.png
