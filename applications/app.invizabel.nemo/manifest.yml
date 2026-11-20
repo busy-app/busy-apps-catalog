@@ -1,0 +1,30 @@
+sourcecode:
+  type: git
+  location:
+    # Public GitHub repository of your app
+    origin: https://github.com/Invizabel/nemo.git
+    # Full commit SHA. Tags and branches aren't accepted, you can keep the tag in a comment
+    commit_sha: cd653f7fe707e8d04786834660974b30622ccc10  # v0.1.0
+    # App folder in the repository, with its own lock file. Omit it if the app is in the root
+
+# Category ID from the list in Categories below
+category: art
+
+# Short description for the app card: plain text, 10 to 120 characters, one line
+short_description: Clownfish swimming in an aquarium
+
+# Full description for the app page, 50 to 4000 characters
+description: |
+  A relaxing aquarium where a clownfish swims inside its tank
+
+# What's new in this version: inline text, 10 to 4000 characters (no file references)
+changelog: |
+  My first commit!
+
+# Screenshots from your app's repository: PNG 72×16 up to 2 MB, 1 to 10. The first one is the card cover
+screenshots:
+  - screenshots/front-1.png
+
+# Optional: screenshots of the back screen, PNG 160×80 up to 2 MB, 0 to 10
+back_screenshots:
+  - screenshots/back-1.png
