@@ -1,0 +1,20 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/busy-app/clock-app.git
+    commit_sha: 1666372cc8b4912f6f776f170bdfaddb773f245b  # 1.0.0
+category: clocks
+short_description: The time and date in 12- or 24-hour format, with optional seconds.
+description: |
+  The time and date on BUSY Bar.
+
+  - 24-hour or 12-hour format.
+  - Seconds and blinking colons, if you want them.
+  - The month and weekday under the time, with the day of the month in a calendar icon.
+
+  Choose what to show in the app settings.
+changelog: |
+  First version in the catalog.
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
