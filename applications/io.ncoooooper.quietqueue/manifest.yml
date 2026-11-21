@@ -1,0 +1,16 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-quiet-queue.git
+    commit_sha: af261c33432ac0d46bedfde0a30f5f339bd06599
+category: social
+short_description: Give visitors a numbered web ticket and accept the next request from your BUSY Bar.
+description: 'Give visitors a numbered web ticket and accept the next request from your BUSY Bar. Guests join from a small web form. Ticket numbers appear on the front while the operator sees the optional topic on the back. Click accepts the displayed ticket, Start refreshes, and the wheel switches to waiting count. The queue refreshes every ten seconds.
+
+
+  [Privacy policy](https://github.com/ncoooooper/busybar-quiet-queue/blob/main/PRIVACY.md)'
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
