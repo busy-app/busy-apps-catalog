@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-split-reel.git
+    commit_sha: e0ce22e18e2ed081ab951c89c69ba6e52a5726b5
+category: utilities
+short_description: Record lap splits with one button and compare each repetition against your target.
+description: Record lap splits with one button and compare each repetition against your target. Turn the wheel before starting to set a target split in five-second increments. Click to start the first lap and click at each subsequent line crossing. The wheel reviews the previous 20 splits. Start pauses or resumes between repetitions. Hold Start to begin a new session.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
