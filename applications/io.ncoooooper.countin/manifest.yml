@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-count-in.git
+    commit_sha: 1acc5890691b8a3d7d87ca57f893244b90f0eb56
+category: music
+short_description: Count silent bars at your tempo and show the exact beat where you should enter.
+description: Count silent bars at your tempo and show the exact beat where you should enter. The wheel adjusts tempo (30–240 marked beats per minute), bars (1–32) or meter. Click changes fields. Start begins or stops the count. In 6/8 the marked beat is an eighth note. GO stays visible after the last silent beat until the next action.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
