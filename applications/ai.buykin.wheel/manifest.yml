@@ -1,0 +1,16 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/dmitry-buykin/busybar-apps.git
+    commit_sha: f74a0d6bb18496959ee410141f97563d41353407
+    subdir: wheel
+category: utilities
+short_description: Spin ten reels for everyday choices and games with friends, from lunch to dice and who pays.
+description: '@catalog.md'
+changelog: First release with ten decks, clear odds for weighted choices, a cancellable spin and locally saved results.
+screenshots:
+- screenshots/deck-front.png
+- screenshots/spin-front.png
+- screenshots/result-front.png
+back_screenshots:
+- screenshots/deck-back.png
