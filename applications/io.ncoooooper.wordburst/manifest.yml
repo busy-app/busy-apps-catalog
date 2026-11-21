@@ -1,0 +1,17 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-wordburst.git
+    commit_sha: 3e7ad961f0dd90f8eaea29e7b3373961f613cd46
+category: social
+short_description: Count a chosen spoken word with local speech recognition and a separate pixel firework for every match.
+description: 'Count a chosen spoken word with local speech recognition and a separate pixel firework for every match. Set a word, start the Mac companion, and place the bar near your screen. Say ‘amazing’ three times during a presentation and you get three hits. The counter is shared with the display. Wheel switches to the target editor, click changes the goal or refreshes the count, and Start sets a new target five hits above the current count.
+
+
+  [Privacy policy](https://github.com/ncoooooper/busybar-wordburst/blob/main/PRIVACY.md)'
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-reading.png
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
