@@ -1,0 +1,16 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-key-kiln.git
+    commit_sha: 7fc12e34409d330c7c6f0d29bbf9c17c8e2c901a
+category: productivity
+short_description: Separate daily physical key presses from characters entered in an opt-in writing pad.
+description: 'Separate daily physical key presses from characters entered in an opt-in writing pad. Run swift companion/keys.swift ~/key-counts.json for system-wide aggregate key-down counts. It reads the WindowServer event counter only. For characters, run python3 companion/writer.py ~/character-counts.json using a Python installation with Tk. Only text inserted in that visible writer counts, including paste. Deletion leaves the cumulative typed count intact. The writer stores counts and minute numbers only. Set key_file and character_file to the same paths.
+
+
+  [Privacy policy](https://github.com/ncoooooper/busybar-key-kiln/blob/main/PRIVACY.md)'
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
