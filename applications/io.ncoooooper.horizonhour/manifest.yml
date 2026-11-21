@@ -1,0 +1,17 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-horizon-hour.git
+    commit_sha: 20fbe9cf36555e14775a2de0482965cf387a6585
+category: utilities
+short_description: Count down to the next local sunrise or sunset with a weather display.
+description: 'Set a place and coordinates in the Python companion. It reads sunrise, sunset and current weather from Open-Meteo. The front shows the time to the next crossing. Turn the wheel for the sky condition. Rain, snow and seasonal colours change the scene. If the four-day forecast contains no sunrise or sunset, the display says so.
+
+
+  [Privacy policy](https://github.com/ncoooooper/busybar-horizon-hour/blob/main/PRIVACY.md)'
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+- screenshots/front-2.png
+back_screenshots:
+- screenshots/back-1.png
