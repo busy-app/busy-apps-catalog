@@ -1,0 +1,17 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-tempo-drift.git
+    commit_sha: 1824a92e47baeac25082e97df9741b72febca599
+category: music
+short_description: Measure tempo from a song on the microphone, a WAV file or a sequence of taps.
+description: 'Tap along on the bar to compare the early and late parts of a phrase. For audio input, run the Python companion on your computer and select a microphone or 16-bit PCM WAV file. It estimates beats per minute from changes in audio energy. Silence and recordings without a clear pulse stay in the listening state. Tap mode runs on the bar by itself.
+
+
+  [Privacy policy](https://github.com/ncoooooper/busybar-tempo-drift/blob/main/PRIVACY.md)'
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-reading.png
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
