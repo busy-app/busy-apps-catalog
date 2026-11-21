@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-fold-echo.git
+    commit_sha: 7680c1cee62dac17e0b4a88906b86dee66feb4db
+category: games
+short_description: Fold a pixel sheet about horizontal and vertical creases until its ink matches a target silhouette.
+description: Fold a pixel sheet about horizontal and vertical creases until its ink matches a target silhouette. Amber is the current sheet, pale green is the target. Rotate to select a horizontal or vertical crease; click folds the far side onto the near side. The two layers combine as a union. Start undoes a fold, hold Start resets the puzzle. Click after matching to advance. Every target is derived from legal folds of its starting sheet.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
