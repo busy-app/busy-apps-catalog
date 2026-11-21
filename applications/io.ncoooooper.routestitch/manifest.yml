@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-route-stitch.git
+    commit_sha: 9c7d76d9f0f3e2903c6d8f167af5c48807f7639e
+category: games
+short_description: Draw a closed route through every beacon without reusing an edge on a tiny switchback grid.
+description: Draw a closed route through every beacon without reusing an edge on a tiny switchback grid. Turn the wheel to aim and click to move one tile. Travel through every gold beacon before returning home. An edge can be traversed only once. Start undoes one move. Click after closing a valid loop to open the next board. Hold Start restarts the current board.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
