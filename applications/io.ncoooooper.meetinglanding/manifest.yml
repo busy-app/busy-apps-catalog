@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-meeting-landing.git
+    commit_sha: f8ffd41e594b48a16473956c9889af316a4bd308
+category: productivity
+short_description: Close a meeting with a named owner and actual due date for each decision.
+description: Close a meeting with a named owner and actual due date for each decision. Set up to six decisions and owners as comma-separated values in device settings. Turn to a decision and click to edit. Turn to choose an owner, click to move to due days, then turn and click to confirm. Start returns to the list. In list mode, hold the wheel to mark the selected action done or reopen it.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
