@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-desk-relay.git
+    commit_sha: ce08684343f55fd0acc22be5762c309c14002cd9
+category: social
+short_description: Give the next desk shift to an available person with the fewest completed turns.
+description: Give the next desk shift to an available person with the fewest completed turns. Set three team names in device settings. The bar suggests the available person with the fewest completed shifts, breaking ties by rotation. Click to assign and complete the suggestion. Turn to inspect another person, Start toggles their availability, and hold the wheel to return to the suggestion.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
