@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-brewpilot.git
+    commit_sha: 470952dc2635823b1b2e3e368dc2d520c70edf0b
+category: utilities
+short_description: Scale three coffee recipes by dose, then follow timed pours and cumulative water targets.
+description: Scale three coffee recipes by dose, then follow timed pours and cumulative water targets. Choose V60, French press or AeroPress with the wheel. Click to set 8–40 g coffee, then click again to brew. The back shows cumulative water weight at each step. Start pauses or resumes the clock. When a step expires, the bar waits for your click before advancing. Click through the final step to finish.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
