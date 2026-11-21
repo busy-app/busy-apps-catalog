@@ -1,0 +1,18 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/dmitry-buykin/busybar-apps.git
+    commit_sha: f74a0d6bb18496959ee410141f97563d41353407
+    subdir: pourover
+category: utilities
+short_description: Follow animated V60 and Kalita Wave pour paths, timed steps and scale targets for your chosen dose.
+description: '@catalog.md'
+changelog: First release with 11 brew presets, dose-scaled water and ice targets, animated pour paths, pause and skip,
+  and optional sound and light cues.
+screenshots:
+- screenshots/brew-front.png
+- screenshots/ready-front.png
+- screenshots/dose-front.png
+back_screenshots:
+- screenshots/brew-back.png
+- screenshots/ready-back.png
