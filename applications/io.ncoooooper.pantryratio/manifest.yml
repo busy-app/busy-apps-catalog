@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-pantry-ratio.git
+    commit_sha: 9e044560d1bf56d22769cc2679c6919f014a575f
+category: utilities
+short_description: Scale a recipe to the amount of its limiting ingredient and see each new quantity.
+description: Scale a recipe to the amount of its limiting ingredient and see each new quantity. With 180 g flour instead of 300 g, water falls to 126 g, salt to 3.6 g and yeast to 1.8 g.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
