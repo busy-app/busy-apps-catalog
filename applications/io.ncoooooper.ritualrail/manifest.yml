@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-ritual-rail.git
+    commit_sha: 7bfa80a24764ed67ac80f7d1c7768e39d4dd5a16
+category: productivity
+short_description: Keep three daily routines on your desk with custom steps, undo and automatic progress recovery.
+description: Keep three daily routines on your desk with custom steps, undo and automatic progress recovery. Choose Morning, Focus or Shutdown with the wheel. Click to finish a step, or tap Start to undo. In app settings, enter up to seven short ASCII steps per route separated by |. Each routine keeps its own progress for the day. Changing a routine starts its new list at the first step.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
