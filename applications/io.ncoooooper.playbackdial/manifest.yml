@@ -1,0 +1,17 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-playback-dial.git
+    commit_sha: d765ab65791245d7fccee9260e4a3e2d34853536
+category: music
+short_description: See elapsed and remaining time for the film or song playing in desktop VLC.
+description: 'Enable VLC’s web interface and give the local Python companion its HTTP password. Open a film or song. The bar follows VLC as you play, pause or seek. Turn the wheel for time remaining, or pin that page with Start. A stream with unknown duration shows Live. Stopping playback clears the old playhead.
+
+
+  [Privacy policy](https://github.com/ncoooooper/busybar-playback-dial/blob/main/PRIVACY.md)'
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+- screenshots/front-2.png
+back_screenshots:
+- screenshots/back-1.png
