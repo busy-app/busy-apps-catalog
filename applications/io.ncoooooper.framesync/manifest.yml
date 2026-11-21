@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-frame-sync.git
+    commit_sha: 4cd9a8082b5191051beccab605882b3da4290ec2
+category: music
+short_description: Locate a musical beat on an editing timeline at your selected BPM and frame rate.
+description: Locate a musical beat on an editing timeline at your selected BPM and frame rate. At 120 BPM and 25 fps, the first beat of bar nine in 4/4 lands on frame 400.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
