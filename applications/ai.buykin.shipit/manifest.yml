@@ -1,0 +1,17 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/dmitry-buykin/busybar-apps.git
+    commit_sha: f74a0d6bb18496959ee410141f97563d41353407
+    subdir: shipit
+category: games
+short_description: Give finished work a rocket launch, with a close-up countdown, simulated rollout and shipping streak.
+description: '@catalog.md'
+changelog: First release with seven simulated targets, a close-up countdown, liftoff, staged rollouts, rollbacks and
+  saved shipping streaks.
+screenshots:
+- screenshots/climb-front.png
+- screenshots/countdown-front.png
+- screenshots/result-front.png
+back_screenshots:
+- screenshots/result-back.png
