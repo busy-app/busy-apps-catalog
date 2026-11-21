@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-scale-steps.git
+    commit_sha: c918f2258fbd3588dcf9651a7e20ac37298b6566
+category: music
+short_description: Practise scale degrees in seconds, thirds or fourths and transpose the same exercise into another key.
+description: Practise scale degrees in seconds, thirds or fourths and transpose the same exercise into another key. Wheel steps forward or back through seven scale degrees. Start cycles between seconds, thirds and fourths. Click switches the wheel to transposition; click again to play. Hold the wheel switches major and natural minor. Both displays identify the exercise, degree and sounding octave.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
