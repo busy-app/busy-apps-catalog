@@ -1,0 +1,19 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/dmitry-buykin/busybar-apps.git
+    commit_sha: f74a0d6bb18496959ee410141f97563d41353407
+    subdir: oracle
+category: art
+short_description: One card a day for a fresh thought, with seven decks from Latin sayings to engineering and applied
+  AI.
+description: '@catalog.md'
+changelog: First release with 217 cards in seven decks, a daily card in each deck, on-demand draws and adjustable pace
+  and sound.
+screenshots:
+- screenshots/daily-front.png
+- screenshots/draw-front.png
+- screenshots/deck-front.png
+back_screenshots:
+- screenshots/daily-back.png
+- screenshots/draw-back.png
