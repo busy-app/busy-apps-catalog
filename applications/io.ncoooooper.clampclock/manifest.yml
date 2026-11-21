@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-clamp-clock.git
+    commit_sha: fb7e0da7910573f2a80af9e2adf89169d95fa041
+category: utilities
+short_description: Run three independent glue-clamp timers and find which assembly is ready to release.
+description: Run three independent glue-clamp timers and find which assembly is ready to release. Select clamp A, B or C with the wheel. Click edits its duration in minutes, then click again to browse. Start runs an idle timer or acknowledges a completed timer. Hold Start cancels only the selected clamp. Other timers continue using absolute deadlines across app restarts.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
