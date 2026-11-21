@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-contrast-bench.git
+    commit_sha: 26244c11b3d6ab83c9637285402906ef74516a32
+category: art
+short_description: Compare LED color pairs on the device and calculate WCAG relative luminance contrast.
+description: Compare LED color pairs on the device and calculate WCAG relative luminance contrast. Wheel browses six authored colors for ink or background. Click changes which color you edit. Start saves the displayed pair; hold Start recalls it. Back shows the computed ratio alongside AA normal-text and large-text thresholds. The front is a real visual sample on the matrix.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
