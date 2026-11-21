@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-duet-grid.git
+    commit_sha: 0cff3c251286d93fd82019689565e4163e190740
+category: games
+short_description: Trade short rhythms between two players, then reproduce the full pulse sequence by tapping.
+description: Trade short rhythms between two players, then reproduce the full pulse sequence by tapping. The composer taps the wheel button at least three times to set a phrase. Start hands it to the second player. Tap the rhythm from memory; intervals must be within 25% or 120 ms. On a successful echo, pass back and add a beat to the phrase. Hold Start starts a new round. A phrase can contain up to twelve taps.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
