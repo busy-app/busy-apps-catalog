@@ -1,0 +1,16 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-photo-cull.git
+    commit_sha: 073e5b6da125b74073cc85ea5c93d22242d49c82
+category: art
+short_description: Review thumbnails from a local photo shoot and export the names you mark for retouching.
+description: 'Review thumbnails from a local photo shoot and export the names you mark for retouching. Install Pillow (python3 -m pip install Pillow) and run python3 companion/serve.py /path/to/photos. Set bridge to http://127.0.0.1:8770/reading in the emulator. Turn to browse, click to toggle selection and Start to export busybar-selection.txt in the folder. Selections persist in a separate hidden JSON file. Supported images include JPEG, PNG, TIFF, BMP and WebP. For hardware, use --bind with your computer''s LAN address on a trusted local network and use that address in the URL.
+
+
+  [Privacy policy](https://github.com/ncoooooper/busybar-photo-cull/blob/main/PRIVACY.md)'
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
