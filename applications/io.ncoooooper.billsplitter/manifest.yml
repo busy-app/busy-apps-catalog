@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-bill-splitter.git
+    commit_sha: d5dc1cfbf9e7f5df040bf5d3e83aef73b709ec35
+category: utilities
+short_description: Divide a bill by three weights down to the last cent with fair remainder allocation.
+description: Divide a bill by three weights down to the last cent with fair remainder allocation. 999.99 split 2:1:1 yields 499.99, 250.00 and 250.00, exactly 999.99.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
