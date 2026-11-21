@@ -1,0 +1,14 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-pixel-loom.git
+    commit_sha: 3b9d517d197db35e265a8837a3ae4d7e9103ea1c
+category: art
+short_description: Weave a pocket-sized pixel textile with six drafts, four palettes and an eight-piece gallery.
+description: Weave a pocket-sized pixel textile with six drafts, four palettes and an eight-piece gallery. Turn the wheel to choose a weave. Click it to change the palette. Tap Start to shift the threads. Hold Start to save the current piece. Hold the wheel button to enter or leave the gallery, turn to browse, and click to resume editing a saved weave. The newest eight saves and your current design survive a restart.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-2.png
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
