@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-wordflip.git
+    commit_sha: bbe3a1b37485609e77e87574d4eff4522718a2be
+category: productivity
+short_description: Learn 50 everyday Spanish words with reversible flashcards and review intervals based on recall.
+description: Learn 50 everyday Spanish words with reversible flashcards and review intervals based on recall. Click to reveal a translation. Turn to select Again, Good or Easy, then click to grade. Again returns in one minute. Good and Easy schedule increasingly distant reviews (up to 45 days). Turn on the prompt to browse due cards; Start reverses English and Spanish. Progress is saved locally.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
