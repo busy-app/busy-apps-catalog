@@ -1,0 +1,14 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-signal-sprint.git
+    commit_sha: 7138ca24a2b37c669c37fca89947c991dcb92e41
+category: games
+short_description: Test your button reaction on green and practise ignoring the orange signal.
+description: Press the wheel to start a round. Wait while the display is dark. Orange means hold still and green means press. A correct press shows the reaction time in milliseconds. An early press or a press on orange ends the round. Your best successful time stays on the bar between sessions.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-2.png
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
