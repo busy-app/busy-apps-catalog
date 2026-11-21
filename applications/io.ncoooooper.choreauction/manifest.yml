@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-chore-auction.git
+    commit_sha: ee6e74746b7b1369869967552595a26333075c2e
+category: social
+short_description: Let two people bid on three chores privately, then split the work by estimated effort.
+description: Let two people bid on three chores privately, then split the work by estimated effort. Each person rates three chores 1–5 by turning and clicking. Between turns the display asks the next player to take over and click. After both sets of bids, the bar checks all splits that give each person at least one chore. It minimizes the higher personal effort total, breaking ties by lower total effort. Wheel browses the results. Hold Start begins new bids.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
