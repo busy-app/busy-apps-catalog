@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-goal-gap.git
+    commit_sha: 34ee6c9be6d5e29c4c064fdcb7cee5ca9e1c9780
+category: utilities
+short_description: Calculate how much of a purchase remains and how many regular deposits it will take.
+description: Calculate how much of a purchase remains and how many regular deposits it will take. Price 20,000 minus 8,000 saved gives 60% remaining and six deposits of 2,000.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
