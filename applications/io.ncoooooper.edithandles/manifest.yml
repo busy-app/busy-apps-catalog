@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-edit-handles.git
+    commit_sha: 9f3682fc1087cb662491fbac085bf1f43e2401d0
+category: art
+short_description: Find the longest centered dissolve from the real spare frames on either side of an edit.
+description: Find the longest centered dissolve from the real spare frames on either side of an edit. With 8 tail and 14 head frames, an even centered dissolve can use 16 frames; asymmetric alignment allows 22.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
