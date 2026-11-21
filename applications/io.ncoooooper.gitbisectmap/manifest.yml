@@ -1,0 +1,16 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-git-bisect-map.git
+    commit_sha: d6f4b26a21e2dc41b776d3e88475bd5f0283fed4
+category: dev-monitoring
+short_description: See the remaining revision range and good/bad bounds of a local Git bisect without changing it.
+description: 'See the remaining revision range and good/bad bounds of a local Git bisect without changing it. Set repo to a local working repository where a default-terms Git bisect is in progress. The companion uses only for-each-ref, rev-list and rev-parse. It counts commits reachable from the bad revision excluding all known good revisions. Unusual merge histories and skipped revisions can increase the actual number of steps.
+
+
+  [Privacy policy](https://github.com/ncoooooper/busybar-git-bisect-map/blob/main/PRIVACY.md)'
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
