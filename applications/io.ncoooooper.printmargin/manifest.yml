@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-print-margin.git
+    commit_sha: b96be6196a1f070bd9a9d1fc21153b5041e5bd2d
+category: art
+short_description: Preview crop and white borders when a photo is fitted to a paper size.
+description: Preview crop and white borders when a photo is fitted to a paper size. A 1920×1080 photo fitted to 150×100 mm has 7.8 mm top and bottom borders.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
