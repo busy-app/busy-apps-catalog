@@ -1,0 +1,16 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-cable-verdict.git
+    commit_sha: 8739e33fb5a16fea828f9656ffd1767d57ee84da
+category: utilities
+short_description: Compare the negotiated Mac power adapter profile to your expected wattage and read battery charge.
+description: 'Compare the negotiated Mac power adapter profile to your expected wattage and read battery charge. On a Mac laptop, choose the expected adapter wattage in the configuration. The bridge reads AppleSmartBattery from I/O Registry and battery percent from pmset. Watts refer to the adapter profile reported by macOS, not the instantaneous battery charging current. A disconnected or unreported adapter displays --. Browse to the second page for the battery.
+
+
+  [Privacy policy](https://github.com/ncoooooper/busybar-cable-verdict/blob/main/PRIVACY.md)'
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
