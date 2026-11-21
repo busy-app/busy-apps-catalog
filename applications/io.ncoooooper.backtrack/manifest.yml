@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-backtrack.git
+    commit_sha: f0cbf046f839b78608bcc1ee566fd73a4d70e58a
+category: productivity
+short_description: Bookmark three work contexts with a next action and jump straight back to the latest interruption.
+description: Bookmark three work contexts with a next action and jump straight back to the latest interruption. Set three context names and their next actions in app settings, then restart. Turn to a context and click when you are interrupted. The bar snapshots its name, action and time. Press Start to jump to the most recently parked context and click to resume. Existing bookmarks retain the original action even if settings change.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
