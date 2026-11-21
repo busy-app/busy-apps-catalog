@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-focus-invoice.git
+    commit_sha: b5702275b7cb6f2ac44d9f0fd715eebf7a9d2159
+category: productivity
+short_description: Clock project sessions and round their combined duration once per project for billing.
+description: Clock project sessions and round their combined duration once per project for billing. Wheel selects a project. Start starts or stops its clock. Starting a different project settles the previous session before the new one begins. Click switches between elapsed time and invoice totals. Set your hourly rate and billing interval in settings. Past time remains on the device.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
