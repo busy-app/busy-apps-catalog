@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-bracket-desk.git
+    commit_sha: 559729c33b65656bfb496fb03cb56019b17a6220
+category: games
+short_description: Run a single-elimination desk tournament with byes, undo and up to eight entrants.
+description: Run a single-elimination desk tournament with byes, undo and up to eight entrants. Set participant names separated by commas in settings. The first round automatically gives byes when needed. During a match, turn to select the winner and click to advance. Start undoes the last result. Hold Start restarts the bracket from the configured entrants.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
