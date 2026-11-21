@@ -1,0 +1,14 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-cherry-circuit.git
+    commit_sha: e0b153aaa07bc269bf2c12a7ff5c7c255f719459
+category: games
+short_description: Spin three reels and collect pairs and triples in a free-play desk game.
+description: Press Start for a spin. Each reel stops in turn on a cherry, seven, bell, orange or BAR tile. A matching pair lights two green marks. A triple draws a gold line across the reels. A miss ends the round and you can spin again. The win counter survives a restart. Everything runs on the bar.
+changelog: Separate reel-stop animations for a miss, a pair and a triple.
+screenshots:
+- screenshots/front-2.png
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
