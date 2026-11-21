@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-plant-pour.git
+    commit_sha: 6fe12ea976d3f643dceff4ca73a7bd87845c3e17
+category: smart-home
+short_description: Log measured watering by plant and see what remains of each weekly volume target.
+description: Log measured watering by plant and see what remains of each weekly volume target. Set your own weekly targets as Plant|mL, separated by commas. Wheel chooses a plant. Click switches the wheel to volume in 10 mL increments, click again to finish editing. Start logs that pour. Hold the wheel undoes the last pour from the current week. Totals use local weeks beginning Monday.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
