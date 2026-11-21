@@ -1,0 +1,16 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-caption-catch.git
+    commit_sha: 0f8071455bb300926a3898ce5e30a4fa5b2c48a4
+category: productivity
+short_description: Find unusually fast subtitle cues and return straight to their location in the edit.
+description: 'Find unusually fast subtitle cues and return straight to their location in the edit. Set file to a UTF-8 SubRip .srt file and max_cps to the desired characters per second. Pages rank the 15 fastest cues with start time, character count and duration, followed by the longest caption. Markup tags are excluded. Cue text stays on the local device and companion.
+
+
+  [Privacy policy](https://github.com/ncoooooper/busybar-caption-catch/blob/main/PRIVACY.md)'
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
