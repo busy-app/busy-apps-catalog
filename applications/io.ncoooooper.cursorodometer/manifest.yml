@@ -1,0 +1,16 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-cursor-odometer.git
+    commit_sha: 02fd20af903fc4c359bf41bbb8c835b4f0d5c156
+category: productivity
+short_description: See how far the pointer traveled across your screens today and yesterday.
+description: 'See how far the pointer traveled across your screens today and yesterday. Run swift companion/cursor.swift ~/cursor-totals.json. The sampler uses each display’s millimeters per logical point. If macOS reports incorrect physical size, pass your measured mm-per-point as the second argument. Cross-display jumps and long gaps are excluded. The result measures the sampled cursor path on the display, not centimeters of mouse movement across a desk. No pointer positions are written. Set totals_file to the same file.
+
+
+  [Privacy policy](https://github.com/ncoooooper/busybar-cursor-odometer/blob/main/PRIVACY.md)'
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
