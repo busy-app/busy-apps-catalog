@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-pick-list.git
+    commit_sha: 8f893a8d228ae7c17b9514a1ff08fa2ffa64f24b
+category: utilities
+short_description: Pick the exact quantity of each part, skip missing lines, and check the remaining kit.
+description: Pick the exact quantity of each part, skip missing lines, and check the remaining kit. Configure a kit as Part|quantity;Part|quantity. The wheel selects a line, click picks one unit and Start removes one picked unit. Hold the wheel jumps to the next incomplete line, including earlier skipped parts. The front turns complete only when every required quantity is picked.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
