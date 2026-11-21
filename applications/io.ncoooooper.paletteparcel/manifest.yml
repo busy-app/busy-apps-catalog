@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-palette-parcel.git
+    commit_sha: 7b6490cc11d460474262818fc5e7cd437d5cc7cc
+category: art
+short_description: Match an editable RGB swatch to the closest thread in a personal palette using CIE76 colour distance.
+description: Match an editable RGB swatch to the closest thread in a personal palette using CIE76 colour distance. Wheel adjusts the active RGB channel in steps of five. Click selects the next channel. Start saves the reference; hold the wheel recalls it. Enter your own threads as code|RRGGBB separated by commas. Factory colours are examples and can be replaced by measured thread colours.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
