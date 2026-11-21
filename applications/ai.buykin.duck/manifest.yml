@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/dmitry-buykin/busybar-apps.git
-    commit_sha: f74a0d6bb18496959ee410141f97563d41353407
+    commit_sha: e69a75930169b221625662454170e0f198e106e7
     subdir: duck
 category: productivity
 short_description: A desk duck with 123 questions for when you and your coding agents get stuck.
