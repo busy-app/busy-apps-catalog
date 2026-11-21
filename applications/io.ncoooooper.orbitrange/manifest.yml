@@ -1,0 +1,18 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-orbit-range.git
+    commit_sha: 01b4fcb9d8343df6ccdc5215f19725fef100cf73
+category: info-feeds
+short_description: Measure the distance from your location to a planet, comet or tracked satellite.
+description: 'Set the observer’s coordinates and elevation in the Python companion. For Mars, the Moon or a comet, the companion requests an observer range from JPL Horizons. For a satellite it uses its catalog ID and recent orbital elements to calculate range locally. Turn the wheel to check the observer location. Satellite mode needs the optional Python dependencies listed in the guide.
+
+
+  [Privacy policy](https://github.com/ncoooooper/busybar-orbit-range/blob/main/PRIVACY.md)'
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-reading.png
+- screenshots/front-1.png
+- screenshots/front-2.png
+back_screenshots:
+- screenshots/back-1.png
