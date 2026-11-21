@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-light-table.git
+    commit_sha: 0f10da23b645aad5f1f933eb61327432b15d0746
+category: art
+short_description: Align two small pixel-animation masks on the front screen using an onion-skin comparison.
+description: Align two small pixel-animation masks on the front screen using an onion-skin comparison. Set each mask in device settings as slash-separated rows of 0s and 1s, up to 12 columns and 7 rows. Amber and teal are the original layers, and pale pixels mark overlap. Wheel shifts the second mask on the selected axis. Click switches X/Y. Start cycles overlay and single-layer views. Hold Start resets the offset.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
