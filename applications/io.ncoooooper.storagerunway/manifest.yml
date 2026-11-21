@@ -1,0 +1,16 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-storage-runway.git
+    commit_sha: 450c4065f5f2d32303f4e809d6fc689613ade4f1
+category: dev-monitoring
+short_description: Estimate time to fill your recording volume using observed growth of the selected folder.
+description: 'Estimate time to fill your recording volume using observed growth of the selected folder. Set folder to your recording directory. The bridge measures allocated bytes with du and free space on that same volume. Give it at least two readings while data is growing. A flat or shrinking folder shows no estimate. The rolling two-minute window adapts as the capture rate changes.
+
+
+  [Privacy policy](https://github.com/ncoooooper/busybar-storage-runway/blob/main/PRIVACY.md)'
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
