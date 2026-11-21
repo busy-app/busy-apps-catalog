@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-scene-slate.git
+    commit_sha: 875824cc0833d8f41001a3ce93babe44cd3a41a0
+category: utilities
+short_description: Slate scene and shot numbers, advance takes, and mark keepers for the editor.
+description: Slate scene and shot numbers, advance takes, and mark keepers for the editor. Click to advance a take. Press Start to mark or unmark the current take as a keeper. The wheel selects scene, shot or keeper history. Click in scene or shot mode advances that number and resets the dependent counters. Hold the wheel to return straight to the active take.
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
