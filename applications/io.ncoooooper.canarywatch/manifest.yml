@@ -1,0 +1,16 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-canary-watch.git
+    commit_sha: 7f9ba8a0124617757c8214a2af0bb1c66ec491d0
+category: dev-monitoring
+short_description: Monitor websites, Bitrise status and Jenkins, or compare one service before and after a release.
+description: 'For one service, enter its health URL on the bar. Turn the wheel to switch between availability and latency and keep a baseline for comparison. For several services, run the Python companion and configure the URLs to probe. It understands Bitrise Statuspage and authenticated Jenkins. Each service has its own status and healthy-probe percentage, based on up to 120 observations since launch.
+
+
+  [Privacy policy](https://github.com/ncoooooper/busybar-canary-watch/blob/main/PRIVACY.md)'
+changelog: New screen transitions and high-contrast LED previews.
+screenshots:
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
