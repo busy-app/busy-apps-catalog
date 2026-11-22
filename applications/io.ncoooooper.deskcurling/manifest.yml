@@ -1,0 +1,19 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-desk-curling.git
+    commit_sha: f9a6d276a394daae9ebad7964f7e3092f71e6715
+category: games
+short_description: Slide curling stones down the strip, add curl and knock a rival out of the house.
+description: 'Play a two-colour curling end across the length of the bar. Aim the guide line, hold Start to build power and release to slide a stone. Stones carry momentum into each other, so an opponent’s well-placed shot can become the target of your next throw.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-desk-curling/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-desk-curling/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+- screenshots/front-1.png
+- screenshots/front-2.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
