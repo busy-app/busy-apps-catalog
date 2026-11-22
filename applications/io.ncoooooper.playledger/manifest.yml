@@ -1,0 +1,18 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-play-ledger.git
+    commit_sha: 93aa3e1b957ea0c0b2de62df7c1645add0c5c439
+category: games
+short_description: Time a game session with one button and keep separate totals for your Steam, PlayStation and Epic games.
+description: 'Keep a running clock for the game you are actually playing. The game title stays above the time. Steam, PlayStation and Epic titles can sit in the same list and keep separate totals.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-play-ledger/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-play-ledger/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-1.png
+- screenshots/front-2.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
