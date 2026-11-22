@@ -1,0 +1,18 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-stitch-ferry.git
+    commit_sha: 2f2609ec77a3cf1ba4cfb95350a572dfc41e6864
+category: productivity
+short_description: Count rows, catch the next shaping instruction and undo a row without losing your place.
+description: 'Keep your working row and the next shaping instruction in view while you knit. Ordinary rows alternate between a knit arrow and a purl arrow. On a shaping row the instruction takes their place, so you can see when to decrease, increase, cable or change colour.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-stitch-ferry/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-stitch-ferry/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+- screenshots/front-1.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
