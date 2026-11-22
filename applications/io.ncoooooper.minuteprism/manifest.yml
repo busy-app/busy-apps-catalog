@@ -1,0 +1,18 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-minute-prism.git
+    commit_sha: 5d669dd79436b7b8ad7dec46b061b927e3c875e3
+category: art
+short_description: A full-width kaleidoscope that changes pattern with each wall-clock minute.
+description: 'Leave Minute Prism running on a shelf or at the edge of your desk. Each change of minute opens a new mirrored pattern across the front of the BUSY Bar. You can tell that a minute has passed without putting a clock or a label over the artwork.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-minute-prism/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-minute-prism/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-1.png
+- screenshots/front-2.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
