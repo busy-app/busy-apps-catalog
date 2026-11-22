@@ -1,0 +1,17 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-sand-signature.git
+    commit_sha: 278b37cbae8d9147af4532dabeb4903347e7f526
+category: art
+short_description: Pour coloured sand into a short name, turn gravity and let the letters fall apart.
+description: 'Pour coloured grains into a word, then let the letters fall apart. Turn gravity while the sand is loose and grains move around one another toward the new edge. Recast the same name from the top, bottom or side.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-sand-signature/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-sand-signature/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/back-1.png
