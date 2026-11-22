@@ -1,0 +1,19 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-patrol-lights.git
+    commit_sha: 115e9310c15a51504e62491815e712742da354d0
+category: art
+short_description: A red and blue desk light bar with alternating lenses, a sweep and a one-button blackout.
+description: 'Turn the BUSY Bar into a miniature police light bar for your desk. Three red lenses sit on the left and three blue lenses on the right. Alternate lights one bank at a time. Sweep moves a highlight along all six lenses and sends it back the other way. Both effects are silent.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-patrol-lights/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-patrol-lights/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+- screenshots/front-1.png
+- screenshots/front-2.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
