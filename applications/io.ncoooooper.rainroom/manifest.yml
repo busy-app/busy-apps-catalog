@@ -1,0 +1,18 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-rain-room.git
+    commit_sha: b7f9da58a33efe6ee62bc4de88f4eb0d7e3cd3ac
+category: art
+short_description: Watch drops strike a puddle. Turn the wheel for drizzle, steady rain or a downpour.
+description: 'Set a small rainstorm on the edge of your desk. Drops fall through a blue night sky and strike the water at two distances. A foreground drop throws up a splash and opens a ring across the puddle. Choose a light drizzle to follow individual impacts, or fill the scene with a downpour. The scene is silent and runs offline.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-rain-room/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-rain-room/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-1.png
+- screenshots/front-2.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
