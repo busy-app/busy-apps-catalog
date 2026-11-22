@@ -1,0 +1,19 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-midi-footprints.git
+    commit_sha: 0af66349d4a5cb537a00156e7de8b0de08a159b3
+category: music
+short_description: See played and sustained MIDI notes leave different trails and freeze a chord.
+description: 'Watch the difference between what your fingers hold and what the sustain pedal keeps ringing. Each pitch has a column. White columns rise under your fingers, mint columns carry a released note under pedal, and blue trails fade after pedal-up. The rear screen names the notes and counts keys and sustained notes separately.
+
+
+  The companion runs on a computer on your trusted network.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-midi-footprints/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-midi-footprints/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+back_screenshots:
+- screenshots/back-1.png
