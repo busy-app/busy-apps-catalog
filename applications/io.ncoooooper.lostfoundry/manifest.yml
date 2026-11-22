@@ -1,0 +1,18 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-lost-foundry.git
+    commit_sha: 2922d3b1782849cafb89f89fcfbc94beb21e6891
+category: productivity
+short_description: Borrow a workshop tool, leave initials and hand it to the next person in its queue.
+description: 'Leave the bar beside a shared tool shelf. The front identifies who has the selected tool. On the rear, the next borrower can join its queue. When the holder returns the tool, the first person in line becomes the new holder.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-lost-foundry/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-lost-foundry/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+- screenshots/front-1.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
