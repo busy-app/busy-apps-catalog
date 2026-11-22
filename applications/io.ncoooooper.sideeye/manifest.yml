@@ -1,0 +1,20 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-side-eye.git
+    commit_sha: 6c7794f4c4d262b27f1f5cffc10f438153dff447
+category: art
+short_description: A pair of blinking eyes follows a firefly, trades a wink and does a double take on your desk.
+description: 'Two eyes keep watch from the edge of your desk. They glance around and blink together until something catches their attention. A tiny amber firefly flies in and lands between them. Both pupils turn inward to look at it, then follow it off the edge. Leave the bar running and the eyes will also do a double take and trade winks.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-side-eye/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-side-eye/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+- screenshots/front-1.png
+- screenshots/front-2.png
+- screenshots/front-3.png
+- screenshots/front-4.png
+back_screenshots:
+- screenshots/back-1.png
