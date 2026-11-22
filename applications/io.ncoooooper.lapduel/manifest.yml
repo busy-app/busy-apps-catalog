@@ -1,0 +1,20 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-lap-duel.git
+    commit_sha: f6115f2e094e5c20bf189a3a0fafc4798929ce4b
+category: info-feeds
+short_description: Replay two qualifying laps sector by sector and find where a driver gained time.
+description: 'Carlos Sainz and George Russell finished qualifying in Singapore 72 milliseconds apart in 2023. Lap Duel breaks a pair of laps into their three sectors so you can see where the lead changed. Its source is OpenF1''s timing archive. Historical sessions from 2023 onward are available without an account. [OpenF1 laps](https://openf1.org/docs/#laps)
+
+
+  The companion runs on a computer on your trusted network.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-lap-duel/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-lap-duel/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+- screenshots/front-2.png
+back_screenshots:
+- screenshots/back-1.png
