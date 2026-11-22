@@ -1,0 +1,19 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-pocket-murmuration.git
+    commit_sha: 89780ade12efa33c188e38494bb06b8fc8ef84d7
+category: art
+short_description: Steer the wind through a flock of starlings and scatter the birds with a press.
+description: 'Twenty-eight starlings share one strip of sky. Each bird steers around close neighbours, matches nearby flight and responds to the wind. You can watch a loose group pull together, fly out one side of the display and return on the other.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-pocket-murmuration/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-pocket-murmuration/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+- screenshots/front-1.png
+- screenshots/front-2.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
