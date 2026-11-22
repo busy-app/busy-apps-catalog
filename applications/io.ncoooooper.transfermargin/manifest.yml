@@ -1,0 +1,19 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-transfer-margin.git
+    commit_sha: e0b0cf1ff456b47d533d1cd0642d53b3b01f3fab
+category: info-feeds
+short_description: See how much walking time remains between two connecting transit services.
+description: 'At Park Street in Boston, the Red Line and the Green Line have different platforms. Transfer Margin compares the incoming train''s arrival with the departure you want and reserves time to walk between them. The number left over is how late your first train could be before the connection stops working. [MBTA''s GTFS documentation](https://github.com/mbta/gtfs-documentation)
+
+
+  The companion runs on a computer on your trusted network.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-transfer-margin/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-transfer-margin/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+back_screenshots:
+- screenshots/back-1.png
