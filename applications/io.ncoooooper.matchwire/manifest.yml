@@ -1,0 +1,18 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-match-wire.git
+    commit_sha: dc47012aaac0904fab2980df6a1c80e89676eeda
+category: info-feeds
+short_description: Follow the teams, score, match clock and available football cards on your desk.
+description: 'Set a Football or Basketball event ID and supply an API-SPORTS key to the local companion. The front shows the score. Turn the wheel to check the half or quarter and the clock supplied by the feed. Football bookings include the player, team and minute when available. Some football feeds report whole minutes. Two labelled practice games let you try the controls without an account.
+
+
+  [Privacy policy](https://github.com/ncoooooper/busybar-match-wire/blob/main/PRIVACY.md)'
+changelog: Read football bookings in stoppage time and check basketball quarters. Find an event by date with the local companion.
+screenshots:
+- screenshots/football-score.png
+- screenshots/basketball-score.png
+- screenshots/front-2.png
+back_screenshots:
+- screenshots/booking-rear.png
