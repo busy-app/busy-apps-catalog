@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/ncoooooper/busybar-flag-cabinet.git
-    commit_sha: 95d29914751a1f572c5543a48c940acd5723edb0
+    commit_sha: 2a2d7fc93a681b56c9113ce681a12429534ea277
 category: info-feeds
 short_description: Browse 254 flags offline or rotate a shortlist on your desk.
 description: Turn the wheel to browse country and territory flags. The front shows the flag in its original proportions. The back shows its name and code. Set Ukraine as the startup flag, save Poland alongside it, then press Start to rotate between them at your chosen interval. The artwork is bundled with the app.
@@ -10,5 +10,7 @@ changelog: New screen transitions and high-contrast LED previews.
 screenshots:
 - screenshots/front-1.png
 - screenshots/front-2.png
+- screenshots/united-kingdom.png
+- screenshots/italy.png
 back_screenshots:
 - screenshots/back-1.png
