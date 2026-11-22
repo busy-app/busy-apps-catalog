@@ -1,0 +1,44 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/rnadyrshin/busybar-ping-monitor.git
+    commit_sha: 01321e7545d24410e6bc217febfd3149fff68835  # 1.0.0
+
+category: dev-monitoring
+
+short_description: Internet latency to a host of your choice as a live graph, updated up to five times a second.
+
+description: |
+  Ping Monitor shows how your internet connection feels right now. The bar keeps measuring the round trip to a host of your choice, twice a second by default, and draws it across the whole screen: one column per measurement, newest on the right, the latest value in the corner.
+
+  ## On screen
+
+  - Green while latency is low, yellow from 60 ms and red from 150 ms by default (both are settings).
+  - A lost request is a dotted red column.
+  - On start the app shows the host and a packet running along a link until the first answer comes back, then wipes into the graph.
+
+  ## Controls
+
+  - **Wheel**: vertical scale, step by step from 100 ms to 2 s. Until the first turn the scale follows the graph automatically.
+  - **Start**: clears the graph.
+  - **Back**: quits.
+
+  ## Settings
+
+  - **Host**: an IP address, a host name or a full http:// address. Default 1.1.1.1.
+  - **Update period**: how often to measure, from 200 ms to 60 s. Default 500 ms, twice a second.
+  - **Value font**: five sizes for the number in the corner.
+  - **Yellow from** and **Red from**: the colour thresholds.
+
+  ## How it measures
+
+  Apps on the BUSY Bar can't send ICMP pings, so the app times a small plain-HTTP request instead. The host must answer HTTP on port 80: 1.1.1.1, 208.67.222.222 and google.com do, 8.8.8.8 doesn't. The numbers run a little higher than ping shows, because each request also opens a TCP connection.
+
+changelog: |
+  First version in the catalog.
+
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
+  - screenshots/3.png
+  - screenshots/4.png
