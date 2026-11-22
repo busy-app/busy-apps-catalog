@@ -1,0 +1,19 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-window-trade.git
+    commit_sha: b5deecdf126d5827282fc63d8d66be04c55b29d6
+category: smart-home
+short_description: Compare indoor and outdoor moisture, then see how a room changes as a window opens.
+description: 'Outside air can be at 100% relative humidity and still carry less water than the air in your room. Window Trade compares the two in grams of water per cubic metre. A positive drying margin means the outside air holds less water. Open the window and the room-change page tracks what actually happens indoors.
+
+
+  The companion runs on a computer on your trusted network.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-window-trade/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-window-trade/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+back_screenshots:
+- screenshots/back-1.png
