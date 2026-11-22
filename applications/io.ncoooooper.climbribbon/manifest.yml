@@ -1,0 +1,21 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-climb-ribbon.git
+    commit_sha: 9bb5df29d77aee514fe95f056f83509441e7dce8
+category: utilities
+short_description: Explore a GPX elevation profile and find the steepest 500 metres of each climb.
+description: 'Open a recorded route to see where the hardest half kilometre begins. Climb Ribbon reads the trackpoints and elevations in a GPX file. It gives you a distance along the route, so you can compare two hills even when they start at different elevations.
+
+
+  The companion runs on a computer on your trusted network.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-climb-ribbon/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-climb-ribbon/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+- screenshots/front-2.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
