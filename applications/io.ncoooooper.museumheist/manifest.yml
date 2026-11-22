@@ -1,0 +1,18 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-museum-heist.git
+    commit_sha: 78877bd6158d5d703b201c04e1c455e372962946
+category: games
+short_description: Memorise five exhibits, watch the lights go out and identify the stolen or swapped object.
+description: 'Memorise five objects in a miniature gallery. When the lights come back, one pedestal is empty or holds a different object. Choose the changed pedestal to catch the thief. Fourteen pieces rotate through the gallery, so the right answer moves from round to round.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-museum-heist/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-museum-heist/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+- screenshots/front-2.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
