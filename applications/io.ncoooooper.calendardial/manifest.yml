@@ -1,0 +1,18 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-calendar-dial.git
+    commit_sha: 96468a90d324b5ae04284c21d3817753132e0af9
+category: productivity
+short_description: See the current meeting and time left. Turn the wheel to choose between overlapping events.
+description: 'Read timed events from an Outlook, Google, Apple or other iCalendar subscription through a local companion. The front display pairs an event name with a live countdown. Turn the wheel to follow an overlapping event until it ends. A clear calendar and an unavailable source have distinct displays.
+
+
+  [Privacy policy](https://github.com/ncoooooper/busybar-calendar-dial/blob/main/PRIVACY.md)'
+changelog: First release.
+screenshots:
+- screenshots/front-hour.png
+- screenshots/front-1.png
+- screenshots/front-2.png
+back_screenshots:
+- screenshots/back-1.png
