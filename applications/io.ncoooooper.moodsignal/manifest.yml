@@ -1,0 +1,19 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-mood-signal.git
+    commit_sha: b4f68840748766e00e5c1d04795863ebe1fe60e5
+category: social
+short_description: Choose a mood, a pixel face and an invitation for people near your desk.
+description: 'Tell people at your desk how you feel and whether now is a good time to talk. The front of the bar pairs a mood with a pixel face and a short request. Turn the wheel to try a different mood on the rear screen. People across the desk see your choice only after you click.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-mood-signal/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-mood-signal/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-3.png
+- screenshots/front-1.png
+- screenshots/front-2.png
+- screenshots/front-4.png
+back_screenshots:
+- screenshots/back-1.png
