@@ -1,0 +1,46 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/superwolfi82/BusyBar_WakeSurfTimer.git
+    commit_sha: 5e702c6761cd98c5ab23297a0d909748d69215de  # v1.4.0
+
+category: utilities
+
+short_description: Ride timer for boat captains. Wakesurf, wakeboard, waterski. Pause on falls, keeps the last 20 rides.
+
+description: |
+  A ride timer for boat captains. Made for wakesurfing; works the same for wakeboarding and waterskiing.
+
+  Start the clock when the rider is up, pause it when the rider falls, hold START when the ride is over.
+  Everything works with the big START button, so the captain can keep the eyes on the water.
+
+  ## Each ride records
+
+  - **Surf time**: time the rider was actually up. Pauses are not counted.
+  - **Clock time**: wall time from start to end of the ride, pauses included.
+  - **Falls**: how often the ride was paused and resumed.
+  - Ride number and start date/time.
+
+  The difference between clock time and surf time is the time spent picking the rider up after falls.
+
+  ## How to use
+
+  - **START**: start session, start ride, pause (fall), resume
+  - **Hold START**: finish and save the ride
+  - **Turn the wheel**: ride history (last 20 rides)
+  - **BACK**: end session / quit
+
+  BACK and the wheel are ignored while a ride is running, so the clock can't be lost by a stray press.
+  The front shows the surf time in big digits (green while riding, yellow when paused),
+  the back shows clock time, falls, session time and the last rides.
+
+changelog: |
+  First version in the catalog.
+
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
+  - screenshots/3.png
+
+back_screenshots:
+  - screenshots/back-1.png
