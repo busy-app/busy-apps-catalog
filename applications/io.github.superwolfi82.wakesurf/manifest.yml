@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/superwolfi82/BusyBar_WakeSurfTimer.git
-    commit_sha: 5e702c6761cd98c5ab23297a0d909748d69215de  # v1.4.0
+    commit_sha: a00b9b70f79a2bbc92c365720dc700d5e6215ddb  # v1.5.0 (tag v1.5.0 + v1.5.0 screenshots)
 
 category: utilities
 
