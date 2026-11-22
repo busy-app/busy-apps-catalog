@@ -1,0 +1,21 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-jupiter-four.git
+    commit_sha: 8457f6dcd47954739525d553b199b519d3dc77dc
+category: info-feeds
+short_description: See the four Galilean moons appear on either side of Jupiter and turn through the night.
+description: 'Which side of Jupiter should you look on for Io? Jupiter Four places the four Galilean moons relative to Jupiter as seen from Earth. Step through the hours to follow a moon past its neighbours. The predicted positions come from the Jet Propulsion Laboratory''s Horizons service. [JPL Horizons API](https://ssd-api.jpl.nasa.gov/doc/horizons.html)
+
+
+  The companion runs on a computer on your trusted network.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-jupiter-four/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-jupiter-four/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+- screenshots/front-2.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
