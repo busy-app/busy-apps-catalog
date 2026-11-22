@@ -1,0 +1,19 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/rnadyrshin/busybar-london-bus.git
+    commit_sha: b9ec1ba1795b4dc7caab947354ae5a148f43e311  # v1.0.0
+
+category: info-feeds
+
+short_description: Live arrivals at your London bus stop from TfL, with routes, destinations and minutes to wait.
+
+description: "@README.md"
+
+changelog: |
+  First version in the catalog.
+
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
+  - screenshots/3.png
