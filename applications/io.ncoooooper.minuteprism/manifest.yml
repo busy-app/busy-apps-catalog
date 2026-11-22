@@ -2,14 +2,14 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/ncoooooper/busybar-minute-prism.git
-    commit_sha: 9bb124849b88e5f01852cbcd5b8b539cdb79f12d
+    commit_sha: f73249090bff756aa7ac63830d7c136a0d5c2e24
 category: art
-short_description: Turn the wheel to choose one of four kaleidoscope patterns. It keeps turning until you choose another.
-description: 'Choose a kaleidoscope for your desk and leave it turning. The centre pane rotates while the panes on either side mirror its motion. The wheel selects the design. It stays on the display until you turn the wheel again, and the bar remembers it when you close the app.
+short_description: A kaleidoscope that reshapes itself every second. Turn the wheel to change the pattern and palette.
+description: 'Minute Prism folds a new shape into the picture every second. Leave Sea Glass running and its turquoise facets draw together, spread and twist while the centre pane turns. The two outer panes mirror it. Turn the wheel when you want a different design and colour palette. The bar remembers your choice after you close the app.
 
 
   [Setup and controls](https://github.com/ncoooooper/busybar-minute-prism/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-minute-prism/blob/main/PRIVACY.md)'
-changelog: Four continuously rotating patterns. Turn the wheel to change designs. The last selection is restored on launch.
+changelog: Each second brings a new arrangement inside the selected pattern. Turn the wheel to change the design and palette.
 screenshots:
 - screenshots/front-1.png
 - screenshots/front-3.png
