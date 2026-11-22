@@ -1,0 +1,54 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/rnadyrshin/busybar-ks-tracker.git
+    commit_sha: ddff2508ea79b4714ad18b05a7433b3dbe0aef48  # 1.0.0
+
+category: info-feeds
+
+short_description: Any Kickstarter campaign's total with every digit, in your currency, plus what the last minute brought.
+
+description: |
+  KS Tracker keeps a Kickstarter campaign's funding on your BUSY Bar. It's set up for [Flipper One](https://www.kickstarter.com/projects/flipper-devices/flipper-one) and works with any project: paste its link in the settings.
+
+  ## On screen
+
+  - **The total raised, every digit of it**, so each new pledge shows: `$16,131,502`. It turns green once the goal is reached, and new pledges roll in like an odometer.
+  - **A thin line** filling up towards the goal.
+  - **What the last minute brought**, `+$759 in 1m`, recounted every second.
+  - **The time left**, `25d`, `47h`, `12m`, or the outcome once the campaign is over.
+  - Optionally, taking turns every four seconds: **backers** and **percent funded**.
+
+  On start, the project's name and tagline show in pages that fit the screen, then the total counts up from zero.
+
+  ## Any currency
+
+  Kickstarter reports amounts in the project's own currency. The app shows them in the one you choose, USD by default, at the daily rate from open.er-api.com, or as the project reports them.
+
+  Huge totals still show every digit, in a smaller font if needed, up to tens of trillions. Amounts are never rounded up, so a goal never looks reached before it is.
+
+  ## Controls
+
+  - **Start**: skips the intro; later, checks the project right away.
+  - **Back**: quits.
+
+  ## Settings
+
+  - **Project**: a link to the project, or just its `creator/slug`. Default: Flipper One.
+  - **Currency**: USD by default; 25 currencies, or the project's own.
+  - **Show backers** and **Show percent funded**: off by default.
+  - **Update period**: 10 s by default, from 5 s (Kickstarter refreshes these numbers every 5 seconds) to an hour.
+
+  ## Good to know
+
+  Kickstarter has no public API. The app reads the same numbers the project's page and its embeddable card show, the way a browser does, and Kickstarter may change them at any time. When a check fails, the last numbers stay up with a red dot in the corner.
+
+changelog: |
+  First version in the catalog.
+
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
+  - screenshots/3.png
+  - screenshots/4.png
+  - screenshots/5.png
