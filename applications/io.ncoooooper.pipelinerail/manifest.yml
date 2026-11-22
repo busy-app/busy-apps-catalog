@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/ncoooooper/busybar-pipeline-rail.git
-    commit_sha: 8f36d4bbe67bd5aa326f87f3f70f784297d07dd6
+    commit_sha: b266d8c2b738b2224662d61300db91c59195392c
 category: dev-monitoring
 short_description: Follow a GitHub Actions workflow through its active step, estimated finish and recent success rate.
 description: 'Follow one GitHub Actions workflow and branch. During a build the bar shows the active step, elapsed time and an estimate based on earlier successful runs. Between builds it keeps the latest outcome on screen.
