@@ -1,0 +1,21 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-retry-strip.git
+    commit_sha: 3542c2f2d17c28f880434b9d095bf4d2bda292f9
+category: dev-monitoring
+short_description: Find tests that failed and then passed on the same commit in real JUnit reports.
+description: 'The same job can go green for two very different reasons. A rerun might pass while the code is unchanged, or a developer might have landed a fix. Retry Strip reads JUnit XML and groups each test''s results by Git revision. It helps you find tests that recovered on a rerun even when the final dashboard is green.
+
+
+  The companion runs on a computer on your trusted network.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-retry-strip/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-retry-strip/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+- screenshots/front-2.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
