@@ -1,0 +1,15 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-westfall.git
+    commit_sha: d43bb9680c6a23fb62e564de53b2a6f3108a069b
+category: games
+short_description: Watch seven coloured shapes slide west and clear columns.
+description: A hands-free falling-block puzzle. Seven shapes rotate into place from right to left. Full columns light up and collapse. Watch the score, locked pieces and next shape on the bar. Starts a fresh board after a top-out. Runs offline.
+changelog: First release.
+screenshots:
+- screenshots/front-cover.png
+- screenshots/front-2.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
