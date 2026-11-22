@@ -1,0 +1,19 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-blind-mix.git
+    commit_sha: 5bdc34bf88c28635e94c813815709e76b4aea192
+category: music
+short_description: Compare two local audio masters at the same passage and identify the hidden version.
+description: 'Can you hear the extra harmonics in a mix with your eyes off the filenames? Play A, B and an anonymous X from the same cue point. Guess which master X came from and keep a running score on the rear screen. Sound comes from the computer running the reader.
+
+
+  The companion runs on a computer on your trusted network.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-blind-mix/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-blind-mix/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+back_screenshots:
+- screenshots/back-1.png
