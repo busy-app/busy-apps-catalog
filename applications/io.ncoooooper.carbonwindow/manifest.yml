@@ -1,0 +1,21 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-carbon-window.git
+    commit_sha: 2e4566046852638fcc0ff1f6534a69c9f924f7df
+category: smart-home
+short_description: See a real AirGradient sensor reading in parts per million and the age of its measurement.
+description: 'Read the carbon dioxide concentration from a chosen physical AirGradient monitor. The second screen tells you when the sample was taken, so you can judge whether the reading is current.
+
+
+  The companion runs on a computer on your trusted network.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-carbon-window/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-carbon-window/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-1.png
+- screenshots/front-2.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
