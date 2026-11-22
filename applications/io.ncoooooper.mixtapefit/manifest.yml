@@ -1,0 +1,18 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-mixtape-fit.git
+    commit_sha: 27fc94d618f36b522a439dd420ebe3933d0950fe
+category: music
+short_description: Fit a track list onto two tape sides and move songs without cutting a track short.
+description: 'Lay out a track list before recording a cassette. The front shows the time left on the selected track’s side. Turn the wheel to inspect the songs, move them one at a time, or let the bar find a split using whole tracks and their exact durations.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-mixtape-fit/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-mixtape-fit/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+- screenshots/front-1.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
