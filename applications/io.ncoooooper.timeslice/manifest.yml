@@ -1,0 +1,19 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-time-slice.git
+    commit_sha: 09836a7d52bfcf5f3075bb61464665372d6592e4
+category: art
+short_description: Build a slit-scan photograph from 72 moments of a local video or camera stream.
+description: 'Wave across the middle of a frame and your hand becomes a ribbon. Time Slice takes one vertical column from the centre of each sampled video frame. The strip grows from the right. Once all 72 columns are filled, the oldest moment leaves on the left. A stationary background produces horizontal bands while something crossing the sampling line bends and interrupts them.
+
+
+  The companion runs on a computer on your trusted network.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-time-slice/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-time-slice/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+back_screenshots:
+- screenshots/back-1.png
