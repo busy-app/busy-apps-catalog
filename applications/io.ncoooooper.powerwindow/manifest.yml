@@ -1,0 +1,18 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-power-window.git
+    commit_sha: 810f117520695fdd640ec50a39dcba4cefd0bbdd
+category: smart-home
+short_description: See reserve battery charge, mains status and the next scheduled outage from your local power bridge.
+description: 'Check whether your computer or UPS is on mains, then turn the wheel to see the next planned power cut or return. The schedule can be useful even without a battery meter.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-power-window/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-power-window/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-1.png
+- screenshots/front-2.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
