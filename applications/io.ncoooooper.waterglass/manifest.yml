@@ -1,0 +1,18 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-water-glass.git
+    commit_sha: a80e5d86b3b3bde9448bf80692f86eead3bfef33
+category: utilities
+short_description: Log each glass of water and see the amount you have drunk today.
+description: 'Keep a running total of the water you drink today. Press Start after finishing a glass. The front shows millilitres and a glass that fills towards your chosen target.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-water-glass/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-water-glass/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-2.png
+- screenshots/front-1.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
