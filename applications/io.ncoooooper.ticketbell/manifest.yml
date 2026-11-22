@@ -1,0 +1,18 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-ticket-bell.git
+    commit_sha: 0870e664a75665a5195de9d3c7d4a2bdfba72f0a
+category: utilities
+short_description: Track ticket availability, price thresholds, observed lows and remaining reward stock.
+description: 'Configure the local companion with a sale page or a watchlist. It can read an enabled purchase control, a supported price feed, a numeric stock field or a price-alert email. Set a strict price limit and keep the history file to compare future observations with your lowest recorded price. PS Deals uses your own notification email. A reward quantity needs a feed that publishes the number remaining.
+
+
+  [Privacy policy](https://github.com/ncoooooper/busybar-ticket-bell/blob/main/PRIVACY.md)'
+changelog: Read the discounted price for a selected PS Deals edition and region in single-game and multi-game alerts.
+screenshots:
+- screenshots/price-front.png
+- screenshots/front-1.png
+back_screenshots:
+- screenshots/price-rear.png
+- screenshots/back-1.png
