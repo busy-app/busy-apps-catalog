@@ -1,0 +1,21 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-charge-port.git
+    commit_sha: 06d200a241ede3ff54f55e5dfb07514f76cd2cff
+category: smart-home
+short_description: Read EV battery charge, plug status, charging power and the active charge limit from a named evcc charge point.
+description: 'See the battery charge and plug state at one evcc charging point. A connected cable can carry zero power. The separate plug and target pages let you check what the charger reports.
+
+
+  The companion runs on a computer on your trusted network. The official evcc demo is a test vehicle. Set your own evcc URL and loadpoint for your car.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-charge-port/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-charge-port/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-1.png
+- screenshots/front-2.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
