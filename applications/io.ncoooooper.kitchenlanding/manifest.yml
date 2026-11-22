@@ -1,0 +1,19 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-kitchen-landing.git
+    commit_sha: 1725f9cd3458602472cac5f2e1abd82022500871
+category: productivity
+short_description: Coordinate three dishes for one serving time and see which one runs late.
+description: 'Work backward from dinner time. Set one serving countdown and the cooking time for three dishes. The front calls out the next kitchen action. Once a dish starts, the rear compares its expected finish with the original serving target.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-kitchen-landing/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-kitchen-landing/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+- screenshots/front-1.png
+- screenshots/front-2.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
