@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/ncoooooper/busybar-layout-lamp.git
-    commit_sha: a13034a46d6eeb368ed917f68f1047f322f66fd0
+    commit_sha: 79b22fd11820f20809068f7ec6147c8ede56dc90
 category: utilities
 short_description: See the keyboard input source selected on your Mac without recording what you type.
 description: 'Keep the active macOS keyboard layout visible while you type. The host reads the input-source identifier through Text Input Sources. The bar shows a short language code and the full layout name.
