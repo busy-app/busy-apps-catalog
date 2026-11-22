@@ -1,0 +1,20 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-inbox-triage.git
+    commit_sha: 1e88f1c4c42a7d8fe7da65c91a31103e19399ac4
+category: productivity
+short_description: Read unread count and the age of your oldest unread message without showing mail contents.
+description: 'Read unread count and the age of your oldest unread message without showing mail contents.
+
+
+  The companion runs on a computer on your trusted network.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-inbox-triage/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-inbox-triage/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-1.png
+- screenshots/front-3.png
+back_screenshots:
+- screenshots/back-1.png
