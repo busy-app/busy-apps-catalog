@@ -1,0 +1,19 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-replay-catch.git
+    commit_sha: ad96313a84fe2ad11a089aa2c5045a27bd1c14e0
+category: utilities
+short_description: Save the OBS replay buffer with one press and see when the clip reaches disk.
+description: 'Save the last few seconds of an OBS session from the desk. Press Start once after a good take. The bar shows Saving while OBS writes the replay, then Saved when the reader can see a new nonempty file. The rear screen gives you the filename. You can keep your game or presentation in the foreground.
+
+
+  The companion runs on a computer on your trusted network.
+
+
+  [Setup and controls](https://github.com/ncoooooper/busybar-replay-catch/blob/main/README.md) · [Privacy](https://github.com/ncoooooper/busybar-replay-catch/blob/main/PRIVACY.md)'
+changelog: Initial release for BUSY Bar.
+screenshots:
+- screenshots/front-cover.png
+back_screenshots:
+- screenshots/back-1.png
