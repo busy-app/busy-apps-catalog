@@ -1,0 +1,22 @@
+sourcecode:
+  type: git
+  location:
+    origin: "https://github.com/hexandcube/BUSYBAR_BPM-Metronome.git"
+    commit_sha: "da6eb1bfc8eeadba6da6ad317278546a41208566"
+category: music
+short_description: A metronome app for the BUSY Bar
+description: |-
+  A metronome app for the BUSY bar with configurable BPM (30-300) and time signature.
+
+  Press the Start/Pause button to Start or Pause the metronome.
+  Hold the Dial/OK button to switch between editing BPM, Time Signature, Volume.
+  Turn the dial to edit a selected value.
+
+  When BPM is selected, you can tap the BPM by pressing the OK button along with the beat.
+  When Time Signature is selected, tap the OK button to switch between choosing presets, or entering a custom time signature.
+  When Volume is selected, tap the OK button to mute/unmute the device.
+changelog: Initial release of BPM Metronome, a configurable metronome app for the BUSY bar.
+screenshots:
+  - screenshots/front-1.png
+back_screenshots:
+  - screenshots/back-1.png
