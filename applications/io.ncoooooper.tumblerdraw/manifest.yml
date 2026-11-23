@@ -1,0 +1,18 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ncoooooper/busybar-tumbler-draw.git
+    commit_sha: 66205dd759359deca41fc58c8fd4df50903c5e1a
+category: games
+short_description: Draw a number or name with rolling digits and a result colour you choose.
+description: 'Click the wheel to draw from one to the configured maximum or from a list of names. The digits settle from left to right. Set the result colour on the bar. An optional host companion reads longer lists, a YouTube video’s comment count or an IMAP mailbox size. The two count sources draw an entry number. The offline number and name modes work without a computer.
+
+
+  [Privacy policy](https://github.com/ncoooooper/busybar-tumbler-draw/blob/main/PRIVACY.md)'
+changelog: Adds live YouTube and TLS mailbox draw instructions, a filmed YouTube draw, and a privacy policy.
+screenshots:
+- screenshots/youtube-pool.png
+- screenshots/front-1.png
+- screenshots/front-2.png
+back_screenshots:
+- screenshots/back-1.png
