@@ -4,7 +4,7 @@ sourcecode:
     # Public GitHub repository of your app
     origin: https://github.com/Invizabel/nemo.git
     # Full commit SHA. Tags and branches aren't accepted, you can keep the tag in a comment
-    commit_sha: cd653f7fe707e8d04786834660974b30622ccc10  # v0.1.0
+    commit_sha: 83707e413dcb11b6977f65b6c0d8394f96167ad5  # v0.1.0
     # App folder in the repository, with its own lock file. Omit it if the app is in the root
 
 # Category ID from the list in Categories below
