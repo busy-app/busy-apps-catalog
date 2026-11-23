@@ -13,10 +13,10 @@ description: |
 
   ## On screen
 
-  - **The total raised, every digit of it**, so each new pledge shows: `$16,131,502`. It turns green once the goal is reached, and new pledges roll in like an odometer.
+  - **The total raised, every digit of it**, so each new pledge shows: $16,131,502. It turns green once the goal is reached, and new pledges roll in like an odometer.
   - **A thin line** filling up towards the goal.
-  - **What the last minute brought**, `+$759 in 1m`, recounted every second.
-  - **The time left**, `25d`, `47h`, `12m`, or the outcome once the campaign is over.
+  - **What the last minute brought**, +$759 in 1m, recounted every second.
+  - **The time left**, 25d, 47h or 12m, or the outcome once the campaign is over.
   - Optionally, taking turns every four seconds: **backers** and **percent funded**.
 
   On start, the project's name and tagline show in pages that fit the screen, then the total counts up from zero.
@@ -34,7 +34,7 @@ description: |
 
   ## Settings
 
-  - **Project**: a link to the project, or just its `creator/slug`. Default: Flipper One.
+  - **Project**: a link to the project, or just its creator/slug part. Default: Flipper One.
   - **Currency**: USD by default; 25 currencies, or the project's own.
   - **Show backers** and **Show percent funded**: off by default.
   - **Update period**: 10 s by default, from 5 s (Kickstarter refreshes these numbers every 5 seconds) to an hour.
