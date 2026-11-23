@@ -1,0 +1,39 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/mrlunev/busybar-net-traffic.git
+    commit_sha: 323cd21b08bedda369fe6143af05abe862d19cb3  # v0.1.0
+    subdir: app
+
+category: dev-monitoring
+
+short_description: Your computer's live network traffic, down and up, on a speedometer. Not a speed test. Needs a companion on Mac or PC.
+
+description: |-
+  Live network traffic of your computer on a speedometer: download on the needle, download and upload in numbers. Not a speed test: it shows what the computer moves right now.
+
+  **Setup.** Plug the bar in by USB and run on the computer:
+
+  - Mac, Terminal: curl -fsSL https://raw.githubusercontent.com/mrlunev/busybar-net-traffic/main/install.sh | bash
+  - Windows, PowerShell: irm https://raw.githubusercontent.com/mrlunev/busybar-net-traffic/main/install.ps1 | iex
+
+  After that the bar works over the cable or the same Wi-Fi.
+
+  **Controls:** Back closes the app.
+
+  **States:** SET UP, NO PC, NO NET, UPDATE. The back screen shows how to fix each.
+
+  **Settings:** dial scale, Auto or fixed from 50 Mbit/s to 10 Gbit/s.
+
+  **Privacy:** the companion sends nothing to the internet and answers only devices on the local network.
+
+changelog: First release.
+
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+
+back_screenshots:
+  - screenshots/back-1.png
+  - screenshots/back-2.png
