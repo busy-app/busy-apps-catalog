@@ -1,0 +1,46 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/mrlunev/busybar-ical-calendar.git
+    commit_sha: cda0b2ff72d70413e23cb5670203ed63a0f11385
+category: productivity
+short_description: Your week from up to three iCal links on one timeline, with a loud warning before each meeting. No computer needed.
+description: |-
+  Up to three calendars from iCal links on one timeline, no sign-in: Outlook, Google Calendar, iCloud, Proton, Fastmail, Nextcloud or any other .ics link.
+
+  Front: the days ahead, now as a red line. Back: today's meetings. Before each meeting the bar lights up, blinks and beeps, and again at the start if nobody dismissed it.
+
+  **Controls**
+
+  - **Scroll Wheel:** move along the timeline.
+  - **OK** or **Start:** dismiss a warning; open the meeting under the marker.
+  - **Back:** close the meeting, then return to now, then leave the app.
+  - **Hold OK:** check the calendars now.
+
+  **Setup**
+
+  - In the bar's web interface open **Apps → iCal Calendar**.
+  - Paste your calendar's iCal link into **Calendar 1**; two more go into **Calendar 2** and **Calendar 3**.
+  - Where to find the link in Outlook, Google Calendar, iCloud, Proton, Fastmail and Nextcloud: [step-by-step guide](https://github.com/mrlunev/busybar-ical-calendar/blob/main/CALENDAR-LINKS.md).
+  - No link yet: type *demo* to try it.
+
+  **Good to know**
+
+  - The link opens your whole calendar to anyone who has it: treat it like a password. It stays in the bar's settings.
+  - The bar talks only to your calendar services; the app sends nothing anywhere else.
+  - Changes reach the bar with a delay: the app checks every 10 minutes (adjustable), and each service refreshes its link on its own schedule.
+  - Set the bar's time zone, or meeting times show in UTC.
+  - A BUSY session closes every app, this one too: during it there are no warnings.
+  - Needs firmware 1.4.1.
+  - The back screen is an early version; later versions will improve it.
+
+  Outlook, Microsoft 365, Google Calendar, iCloud, Proton and Fastmail are trademarks of their owners; this app is not made or endorsed by them.
+changelog: First version in the catalog.
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+  - screenshots/front-4.png
+back_screenshots:
+  - screenshots/back-1.png
+  - screenshots/back-2.png
