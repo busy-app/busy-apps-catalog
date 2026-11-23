@@ -2,14 +2,14 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/ncoooooper/busybar-jar-tide.git
-    commit_sha: d79803fafc150b4d087d406f1a6f09603627872c
+    commit_sha: 6de79e26912672c7387b28c9bff993d94e138ca2
 category: utilities
-short_description: Follow one monobank jar, its remaining goal and the latest balance change.
-description: 'See a shelter jar’s balance, currency, goal and latest observed change. Select either public shelter preset and run the Python companion on your computer. The bar refreshes every 65 seconds. Turn the wheel to see the balance or the next milestone. A jar without a target shows its balance and currency.
+short_description: See a shelter jar’s balance and its net change over one or five minutes.
+description: 'Choose one of two public shelter jars and start the Python companion on your computer. Turn the wheel to check the balance, goal and progress, or see how much the jar gained or lost over one or five minutes. The rear display gives the currency and the actual time between readings. The bar refreshes about every 65 seconds and shows Waiting until it has enough history. Both public presets work without a bank account or token.
 
 
-  [Privacy policy](https://github.com/ncoooooper/busybar-jar-tide/blob/main/PRIVACY.md)'
-changelog: Read two public animal-shelter widgets without a monobank account.
+  [Companion setup and controls](https://github.com/ncoooooper/busybar-jar-tide#public-shelter-widgets) · [Privacy policy](https://github.com/ncoooooper/busybar-jar-tide/blob/main/PRIVACY.md)'
+changelog: Adds rolling one-minute and five-minute balance changes with the measured time span on the rear display.
 screenshots:
 - screenshots/front-1.png
 back_screenshots:
