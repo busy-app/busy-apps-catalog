@@ -1,0 +1,37 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/mrlunev/busybar-host-load.git
+    commit_sha: 9b9c589b7948d6e2752a6f50a2ae19079084a377  # 1.0.2
+
+category: dev-monitoring
+
+short_description: Your computer's live CPU and RAM load on two graphs. Needs Glances on Mac, Windows or Linux; the installer sets it up.
+
+description: |-
+  Live CPU and RAM load of your computer on two graphs: CPU on the left, RAM on the right, each with its current value. One column per sample; the graph holds from 18 seconds to 18 minutes.
+
+  **Setup.** Plug the bar in by USB and run on the computer:
+
+  - Mac or Linux, Terminal: curl -fsSL https://raw.githubusercontent.com/mrlunev/busybar-host-load/main/install.sh | bash
+  - Windows, PowerShell: irm https://raw.githubusercontent.com/mrlunev/busybar-host-load/main/install.ps1 | iex
+
+  The installer sets up [Glances](https://nicolargo.github.io/glances/), starts it at every login and fills in the computer's address. After that the bar works over the cable or the same Wi-Fi.
+
+  **Controls:** Back closes the app.
+
+  **States:** SET ADDRESS, NO GLANCES. The back screen shows how to fix each.
+
+  **Settings:** update every 0.5 to 30 seconds.
+
+  **Privacy:** Glances serves only CPU and memory load, nothing about processes, disks or network, and sends nothing to the internet.
+
+changelog: First version in the catalog.
+
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+
+back_screenshots:
+  - screenshots/back-1.png
+  - screenshots/back-2.png
