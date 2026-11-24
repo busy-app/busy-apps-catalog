@@ -1,0 +1,49 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/thomascarvalho/busy-chess-clock.git
+    commit_sha: b02bc989b8fd5c546712151333a901b08bc6a7dd  # 0.2.0
+
+category: games
+
+short_description: Two-player chess clock with bonus time per move, time gauges, pause and tenths under 10 seconds.
+
+description: |
+  # Chess Clock
+
+  A real chess clock for two players, on one bar. The big button serves both sides: each press stops the running clock and starts the other one. It acts the moment the button goes down, not when it is released, so no time is lost on a move.
+
+  ## Time controls
+
+  - Turn the wheel to pick one of nine presets: 1+0, 3+0, 3+2, 5+0, 5+3, 10+0, 10+5, 15+10 and 30+0.
+  - A tenth entry is your own time control, set in the app settings: 1 to 180 minutes, with 0 to 60 seconds of bonus per move.
+  - The bonus is a Fischer increment, added to a player's clock after each of their moves.
+  - The app opens on the time control of the last game played.
+
+  ## Display
+
+  - **Front:** both clocks side by side, each above a gauge that empties as its time runs out. The clock on the move is green, a paused clock is orange, and any time under 10 seconds turns red and counts in tenths of a second.
+  - **Back:** the time control, the state of the game, whose move it is, the move number and a reminder of the controls.
+
+  ## Controls
+
+  - **Big button:** confirm the time control, start the game, end your move.
+  - **Wheel:** pick the time control, then the side that moves first.
+  - **Wheel click (OK):** pause and resume.
+  - **Back:** return to setup, or quit from setup. It is ignored while a clock is running, to avoid accidental resets: pause first.
+
+  When a flag falls the game freezes, the losing clock flashes at zero and a sound is played. Sounds, and the beep under 10 seconds, can be turned off in the settings.
+
+  The app runs entirely on the bar and makes no network request.
+
+changelog: |
+  First release in the Apps Catalog: nine preset time controls and a custom one, bonus time per move, time gauges, pause, and tenths of a second under 10 seconds.
+
+screenshots:
+  - screenshots/front-running.png
+  - screenshots/front-setup.png
+  - screenshots/front-low-time.png
+  - screenshots/front-paused.png
+
+back_screenshots:
+  - screenshots/back-running.png
