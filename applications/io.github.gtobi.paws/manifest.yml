@@ -1,0 +1,29 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/gtobi/busybar-paws.git
+    commit_sha: 055f19a543218954889a4193e7f1db2fd208cd2d
+category: productivity
+short_description: A desk cat that keeps you to focus sessions, breaks, water and lunch, and sleeps when your day is done.
+description: "@CATALOG.md"
+changelog: First release.
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+  - screenshots/front-4.png
+  - screenshots/front-5.png
+  - screenshots/front-6.png
+  - screenshots/front-7.png
+  - screenshots/front-8.png
+  - screenshots/front-9.png
+  - screenshots/front-10.png
+back_screenshots:
+  - screenshots/back-1.png
+  - screenshots/back-2.png
+  - screenshots/back-3.png
+  - screenshots/back-4.png
+  - screenshots/back-5.png
+  - screenshots/back-6.png
+  - screenshots/back-7.png
+  - screenshots/back-8.png
