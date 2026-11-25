@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/vvzvlad/busybar-bar-link.git
-    commit_sha: bda10eb5a404c03b0bc0b84cabdb4f69249923ed
+    commit_sha: cd0de74a2bcd7a4f3d92dcf7979231a72e1857e6
 category: social
 short_description: Send a heart or a short message from your BUSY Bar to a friend's.
 description: |-
