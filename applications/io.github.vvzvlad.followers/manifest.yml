@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/vvzvlad/busybar-follower-counter.git
-    commit_sha: a09ec689fcd7f4ee5e4951bbb75e46123e81561e
+    commit_sha: 8dd162c70f4cdcb279df79cd5cc71c00fc6fd16c
 category: social
 short_description: Your Bluesky or Mastodon follower count in large digits on your BUSY Bar.
 description: |-
