@@ -1,0 +1,44 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/LuiAr/chord-pilot.git
+    commit_sha: 9ae112ad84a3d7e92493c05889eaaf3f129eed3d
+category: music
+short_description: Shows which chord to play and when, in all 12 keys, so you can practise music with both hands on your instrument.
+description: |-
+  Chord Pilot is a practice partner for musicians. It shows which chord to play now, which one comes next, and when to change, so you can practise with both hands on your instrument.
+
+  ## In plain words
+  - A **chord** is a few notes played together.
+  - Songs move through short series of chords that come back again and again: **progressions**.
+  - The same progression can start on any of the 12 notes, its **key**. Musicians practise every progression in all 12 keys.
+
+  ## How it works
+  - Press **Start**: the bar counts you in for four beats, then shows the chord to play in large letters and the next one on the right.
+  - A line along the bottom fills up beat by beat. When it is full, the chord changes.
+  - After each round the key moves on, so you practise every key.
+  - The colour tells you what the chord does: **blue** moves away from home, **orange** builds tension, **green** is home, **violet** is a softer stand-in for home.
+  - The back display spells out the chord's notes (F7 is F, A, C, Eb) and marks them on a keyboard. Even without music training, you can press the marked keys on a piano.
+
+  ## Progressions
+  - ii-V-I (two-five-one), the most common chord series in jazz
+  - minor ii-V-i
+  - I-vi-ii-V, a loop heard in many songs and jazz standards
+
+  ## Controls
+  - **Start:** play or pause
+  - **Wheel turn:** change key
+  - **Wheel press:** next chord
+  - **Hold the wheel:** next progression
+  - **Back:** exit (your key and progression are remembered)
+
+  ## Settings
+  Tempo (40 to 200 beats per minute), beats per chord (2, 4 or 8) and what happens after each round (up a fourth, up a semitone, or stay in the key).
+
+  Chord Pilot makes no sound: it shows the changes, and you play them.
+changelog: "First version: three progressions in all 12 keys, hands-free play with a count-in and beat bar, and settings for tempo, beats per chord and key order. Developed and tested in BUSY Bar Emulator on firmware 1.4.1 and 1.3.1."
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+back_screenshots:
+  - screenshots/back-1.png
