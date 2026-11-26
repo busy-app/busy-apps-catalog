@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/windAGH/busybar-apps.git
-    commit_sha: 01140f45ebd29c1b3f59ed42f21ef5ee6536c17d  # v1.0.0
+    commit_sha: 70ac84b1be97a03b85e4b8c07e533aa5548ab2bc  # v1.0.0
     subdir: stocks
 
 category: info-feeds
@@ -12,10 +12,11 @@ short_description: Stock and crypto prices one at a time, with the day's line an
 description: "@README.md"
 
 changelog: |
-  First release: up to 8 tickers from Yahoo Finance with a CNBC fallback; price, change and the line of the day, 5 days or 1 month; green-up or red-up colours.
+  First release: up to 8 tickers from Yahoo Finance with a CNBC fallback; price, change and the line of the day, 5 days or 1 month; green-up or red-up colours; pre-market and after-hours sessions in a night-blue box with a gradient line.
 
 screenshots:
   - screenshots/1.png
   - screenshots/2.png
   - screenshots/3.png
   - screenshots/4.png
+  - screenshots/5.png
