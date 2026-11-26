@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/thomascarvalho/busy-chess-clock.git
-    commit_sha: b02bc989b8fd5c546712151333a901b08bc6a7dd  # 0.2.0
+    commit_sha: f18ff5c893b67a9c21fe4b928d5565390247cd48  # 0.2.0
 
 category: games
 
