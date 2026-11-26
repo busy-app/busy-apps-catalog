@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/windAGH/busybar-apps.git
-    commit_sha: 211325c4a3f2e4130567b745e9a12886002ef552  # v1.0.0
+    commit_sha: 01140f45ebd29c1b3f59ed42f21ef5ee6536c17d  # v1.0.0
     subdir: hoops
 
 category: info-feeds
@@ -12,7 +12,7 @@ short_description: NBA game night as a live score strip with timeouts, runs, fou
 description: "@README.md"
 
 changelog: |
-  First release: live NBA score strips with the quarter's time along the bottom, timeouts, runs and team fouls; signs for threes (with the shooter's number and name), runs, lead changes, overtime and the final; halftime and tip-off countdowns; a carousel of the day's finished and coming games; jump to your team with OK; a champions' banner and an offseason countdown when the season is over.
+  First release: live NBA score strips with the quarter's time along the bottom, timeouts, runs and team fouls; signs for threes (with the shooter's number and name), runs, lead changes, overtime and the final; halftime and tip-off countdowns; a carousel of the day's finished and coming games; jerseys or tall letters with OK; a champions' banner and an offseason countdown when the season is over.
 
 screenshots:
   - screenshots/1.png
