@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/windAGH/busybar-apps.git
-    commit_sha: 01140f45ebd29c1b3f59ed42f21ef5ee6536c17d  # v1.0.0
+    commit_sha: 70ac84b1be97a03b85e4b8c07e533aa5548ab2bc  # v1.0.0
     subdir: gameday
 
 category: info-feeds
@@ -12,7 +12,7 @@ short_description: NFL game day as a live score strip with the field, timeouts, 
 description: "@README.md"
 
 changelog: |
-  First release: live NFL score strips with the field, the ball and the line to gain, timeouts, red zone, halftime and kick-off countdowns; broadcast-style signs for touchdowns, field goals, turnovers and sacks with the player's number and name; a carousel of the week's finished and coming games; a champions' banner and an offseason countdown after the season; a countdown line, a KICKOFF card and tall letters or team marks with OK.
+  First release: live NFL score strips with the field, the ball and the line to gain, timeouts, red zone, halftime and kick-off countdowns; broadcast-style signs for touchdowns, field goals, turnovers and sacks with the player's number and name; a carousel of the week's finished and coming games; a champions' banner and an offseason countdown after the season; the kick-off's flight and return, team and officials' timeouts, a countdown line before the game, and team marks or tall letters with OK.
 
 screenshots:
   - screenshots/1.png
