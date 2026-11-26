@@ -1,0 +1,47 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/thomascarvalho/busy-chess-rating.git
+    commit_sha: d41be75f86cbb31d4ebba29ccb5a7adb5aa0ca62  # 0.1.1
+
+category: social
+
+short_description: Your Chess.com or Lichess rating in big digits, with a green or red count and a jingle after every game.
+
+description: |
+  # Chess Rating
+
+  Your Chess.com or Lichess rating on the BUSY Bar, in big digits. After every rated game, the bar counts to your new rating, in green when you won points and in red when you lost some, and plays a jingle.
+
+  ## Setup
+
+  Open the BUSY Bar's web interface, find Chess Rating among the apps and enter your username. Pick Chess.com or Lichess. That's all: no account, no API key and no computer needed. The app reads your public profile straight from the site, once at launch and then every three minutes.
+
+  ## Display
+
+  - **Front:** your username on a small top line with the time control next to it, then your rating and how it moved after your last game: +8 in green, -12 in red. The site can be shown on the top line too, and the top line can be hidden.
+  - **Back:** your username and the site, the time control, the rating and its last change, your best rating and your wins, draws and losses on Chess.com, or your number of games on Lichess.
+  - After a game, the app switches to the time control you just played, counts from the old rating to the new one and plays a rising or a falling jingle.
+  - A ? after a rating is Lichess saying it is still provisional, as on its own site.
+
+  ## Controls
+
+  - **Wheel:** bullet, blitz, rapid, classical or daily, among the ones you have played.
+  - **Big button or OK:** refresh now.
+  - **Back:** quit.
+
+  The app remembers your ratings between launches, so the change after a game is shown even if the bar was off while you played. Sound can be turned off in the settings. Chess.com updates its public statistics with some delay, so a new rating can take a while to show up there; Lichess updates it right after the game.
+
+changelog: |
+  First release in the Apps Catalog: Chess.com and Lichess ratings for bullet, blitz, rapid, classical and daily, the change after every game with a count and a jingle, and an optional username and site on the front.
+
+screenshots:
+  - screenshots/gain-front.png
+  - screenshots/loss-front.png
+  - screenshots/lichess-front.png
+  - screenshots/site-front.png
+
+back_screenshots:
+  - screenshots/gain-back.png
+  - screenshots/loss-back.png
+  - screenshots/lichess-back.png
