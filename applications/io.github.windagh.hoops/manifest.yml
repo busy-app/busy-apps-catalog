@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/windAGH/busybar-apps.git
-    commit_sha: 01140f45ebd29c1b3f59ed42f21ef5ee6536c17d  # v1.0.0
+    commit_sha: 70ac84b1be97a03b85e4b8c07e533aa5548ab2bc  # v1.0.0
     subdir: hoops
 
 category: info-feeds
