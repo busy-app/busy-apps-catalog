@@ -1,0 +1,20 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/Nortick/break-time.git
+    commit_sha: a334a6fdc4d75acb1852cae8af6658d393159378
+category: clocks
+short_description: A tiny pixel worker changes every digit his own way, plus a focus timer
+description: |-
+  Break Time is a clock with a tiny pixel worker who lives on your BUSY Bar and changes the digits himself, and never the same way twice. Every minute he has something new up his sleeve, and every hour he puts on a big show. What exactly? You'll have to watch. He also has his own little habits, a few secrets for special times, and at night he sleeps on the job.
+
+  Press Start for a focus timer: he counts your focus time down the same way, lets you know when it's over, and a break follows. Turn the wheel to add or take off 5 minutes.
+
+  Settings: 12/24-hour clock, focus and break length, sound, night mode, 8 backgrounds and a New Year garland. Starts muted: hold OK to turn the sound on.
+changelog: First release
+screenshots:
+  - screenshots/front-2.png
+  - screenshots/front-4.png
+  - screenshots/front-5.png
+back_screenshots:
+  - screenshots/back-2.png
