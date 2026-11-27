@@ -1,0 +1,14 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/Sixlainer/lockpick.git
+    commit_sha: 2d7f96edc532abe2ae637107e0a159fe8fc035c6  # v1.0.0
+category: games
+short_description: "Three locks to open by ear: a pin lock, a safe dial and an electronic lock. OK plays, Start/Pause opens."
+description: "@DESCRIPTION.md"
+changelog: "First release: three locks (PINS, SAFE and WAVE), each with harder levels, synthesized sounds and false clicks."
+screenshots:
+  - screenshots/pins.png
+  - screenshots/safe.png
+  - screenshots/wave.png
+  - screenshots/menu.png
