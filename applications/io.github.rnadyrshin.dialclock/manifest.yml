@@ -1,0 +1,47 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/rnadyrshin/busybar-dial-clock.git
+    commit_sha: c297d0c1cb271cbe49bed964b497dd246ccaabfa  # 1.0.0
+
+category: clocks
+
+short_description: A clock with the minutes on a sliding dial, like the tuning scale of an old radio. Design by Roman Galeev.
+
+description: |
+  Dial Clock shows the hour in large digits and the minutes on a scale that slides under a fixed marker, like the tuning dial of an old FM radio. Design by **Roman Galeev**.
+
+  ## On screen
+
+  - **The hour** in large digits, with AM or PM next to it, or in the 24-hour format.
+  - **The minutes** on a dial: a tick every minute, a label every five, fading out towards both ends. It moves 3 pixels a minute, a pixel every 20 seconds.
+  - **The marker** in the accent colour shows the exact minute.
+  - **The status LEDs** glow in the accent colour too.
+
+  ## Colours
+
+  Ten bright colours of the displays clocks, scoreboards and radios have used: Amber (the default), Nixie orange, LED red, Yellow, LED green, VFD cyan, LCD blue, White, Pink and Violet.
+
+  ## Controls
+
+  - **Wheel**: steps through the accent colours.
+  - **Start**: switches between the 12- and 24-hour format.
+  - **Back**: quits.
+
+  What the buttons choose lasts until the app quits; the settings set what it starts with.
+
+  ## Settings
+
+  - **Accent colour**: Amber by default.
+  - **Hour format**: 12-hour with AM/PM by default, or 24-hour.
+  - **Status LEDs glow**: on by default.
+
+changelog: |
+  First version in the catalog.
+
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
+  - screenshots/3.png
+  - screenshots/4.png
+  - screenshots/5.png
