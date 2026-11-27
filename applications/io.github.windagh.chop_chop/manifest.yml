@@ -1,0 +1,27 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/windAGH/busybar-apps.git
+    commit_sha: 4dd3ee563345f046bd7149e8053fee3119278c5c  # v1.0.0
+    subdir: chop_chop
+
+category: games
+
+short_description: Cut bread, fish and more into even pieces before the time runs out. Turn the wheel to aim, press to cut.
+
+description: "@CATALOG.md"
+
+changelog: |
+  First release: a game of cutting food into even pieces. Ten foods drawn with their own cut faces, one to six cuts a round against a time line that shrinks to the middle, a score for how even the pieces are with a verdict from PERFECT to RUINED, a pass mark that rises with the rounds, a controls card that waits for you, pause, the five best games kept on the bar, and two settings (controls card at start, start over).
+
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
+  - screenshots/3.png
+  - screenshots/4.png
+  - screenshots/5.png
+  - screenshots/6.png
+  - screenshots/7.png
+  - screenshots/8.png
+  - screenshots/9.png
+  - screenshots/10.png
