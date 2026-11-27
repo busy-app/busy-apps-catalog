@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/windAGH/busybar-apps.git
-    commit_sha: a425ef7a66a7b1ea002c32e7cd79367f9a5b2a67  # v1.0.0
+    commit_sha: 15f3aca40254fbd016926f07d5d7c05331669e1f  # v1.0.0
     subdir: lucky_reels
 
 category: games
@@ -12,7 +12,7 @@ short_description: "A three-reel slot machine with play coins only: spin, set yo
 description: "@CATALOG.md"
 
 changelog: |
-  First release: a three-reel slot machine with play coins only, no real money anywhere. Six symbols on reels that blur and stop one after another, bets of 1 to 25 coins, wins that light up the reels and count into the balance, a JACKPOT sign for three sevens or three diamonds, info pages with the pay table, a new game with 100 coins when the coins are gone, a guide to the controls at every start, and settings for quick spins, the guide and starting over.
+  First release: a three-reel slot machine with play coins only, no real money anywhere. Six symbols on reels that blur and stop one after another, bets of 1 to 25 coins, wins that light up the reels and count into the balance, a JACKPOT sign for three sevens or three diamonds, info pages with the pay table, a new game with 100 coins when the coins are gone, a guide to the controls the first time you open it, and settings for quick spins and starting over.
 
 screenshots:
   - screenshots/1.png
