@@ -1,0 +1,13 @@
+sourcecode:
+  type: git
+  location:
+    origin: "https://github.com/hexandcube/BUSYBAR_DrumSeq.git"
+    commit_sha: "292c4509d35bf32c410255f53f3d04ba3e761b14"
+category: music
+short_description: A 3-channel, 8-step, polyphonic drum sequencer for the BUSY Bar
+description: "A simple 3-channel, 8-step polyphonic drum sequencer for the BUSY Bar. \n\nComes with 4 presets, 3 sounds (Hi-Hat, Kick, and Snare), and allows for live BPM adjustment.\n\nPress Start to Play/Pause the playback, double press to select and load a preset or clear the grid.\n\nScroll through the sequence using the dial. Press OK to toggle a cell, press BACK to switch channels.\n\nHold OK to switch modes between BPM selection, Volume, and Sequence editing.\n\nHold BACK to exit."
+changelog: Initial release of DrumSeq
+screenshots:
+  - screenshots/front-1.png
+back_screenshots:
+  - screenshots/back-1.png
