@@ -1,0 +1,32 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/s10/busybar-binary-clock-js.git
+    commit_sha: 56a3bd8ce303f4f2cd41287756264e25aeb7db2d  # 0.1.0
+category: clocks
+short_description: The time as columns of binary digits, with a choice of color, bit shape and spacing.
+description: |-
+  A clock that shows the time as columns of binary digits.
+
+  ## How to read it
+
+  Each column is one decimal digit of the time: two columns for hours, two for minutes and two for seconds. A column has four bits, worth 8, 4, 2 and 1 from top to bottom. Add up the lit bits to get the digit.
+
+  In the first screenshot the columns read 1, 5, 1, 9, 0, 8, which is 15:19:08.
+
+  ## Settings
+
+  - **Color:** green, amber, red, cyan, white or a custom color.
+  - **Bit shape:** square, rectangle, long rectangle or as wide as fits the bar.
+  - **Spacing:** tight, medium or wide.
+  - **Seconds:** on or off.
+  - **Time format:** 24-hour or 12-hour. The 12-hour clock has no AM/PM mark.
+  - **Change effect:** off, or a short fade when a bit changes.
+
+  The app reads its settings when it starts. Open it again to see a change.
+
+  A short press of Back closes the app.
+changelog: First release.
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
