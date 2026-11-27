@@ -2,20 +2,20 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/rnadyrshin/busybar-ks-tracker.git
-    commit_sha: ddff2508ea79b4714ad18b05a7433b3dbe0aef48  # 1.0.0
+    commit_sha: 107778c93c6c0b45dbd86ddb5c89d6642d70833a  # 1.1.0
 
 category: info-feeds
 
-short_description: Any Kickstarter campaign's total with every digit, in your currency, plus what the last minute brought.
+short_description: Any Kickstarter campaign's total with every digit, in your currency, plus what the last hour brought.
 
 description: |
   KS Tracker keeps a Kickstarter campaign's funding on your BUSY Bar. It's set up for [Flipper One](https://www.kickstarter.com/projects/flipper-devices/flipper-one) and works with any project: paste its link in the settings.
 
   ## On screen
 
-  - **The total raised, every digit of it**, so each new pledge shows: $16,131,502. It turns green once the goal is reached, and new pledges roll in like an odometer.
+  - **The total raised, every digit of it**, so each new pledge shows: $16,131,502. It turns green once the goal is reached.
   - **A thin line** filling up towards the goal.
-  - **What the last minute brought**, +$759 in 1m, recounted every second.
+  - **What the last hour brought**, +$7,590 in 1h, recounted every second. The period is a setting, from 1 to 60 minutes.
   - **The time left**, 25d, 47h or 12m, or the outcome once the campaign is over.
   - Optionally, taking turns every four seconds: **backers** and **percent funded**.
 
@@ -36,6 +36,7 @@ description: |
 
   - **Project**: a link to the project, or just its creator/slug part. Default: Flipper One.
   - **Currency**: USD by default; 25 currencies, or the project's own.
+  - **Rise period**: 1, 5, 10, 15, 30 or 60 minutes, 60 by default.
   - **Show backers** and **Show percent funded**: off by default.
   - **Update period**: 10 s by default, from 5 s (Kickstarter refreshes these numbers every 5 seconds) to an hour.
 
@@ -44,7 +45,9 @@ description: |
   Kickstarter has no public API. The app reads the same numbers the project's page and its embeddable card show, the way a browser does, and Kickstarter may change them at any time. When a check fails, the last numbers stay up with a red dot in the corner.
 
 changelog: |
-  First version in the catalog.
+  - **Rise period**: the rise in the corner, now +$7,590 in 1h by default, can be counted over 1, 5, 10, 15, 30 or 60 minutes.
+  - The total no longer animates when it changes: the new amount simply replaces the old one, with no blinking.
+  - A shorter intro.
 
 screenshots:
   - screenshots/1.png
