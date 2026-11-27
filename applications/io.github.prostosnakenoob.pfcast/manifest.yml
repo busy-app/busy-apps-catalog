@@ -1,0 +1,52 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ProstoSnakenoob/pipeline-forecast.git
+    commit_sha: 1dc2c3fe14204a129e0be97d79771a071aa5a513
+category: dev-monitoring
+short_description: CI health as weather - Jenkins and GitHub Actions status, live stage bar, last builds and fail alerts.
+description: |-
+  # Pipeline Forecast
+
+  Your build pipeline as a glanceable status light on the 72×16 screen.
+
+  - **Weather** of the job's health: sunny when builds are green, stormy when they keep failing.
+  - **Live stage bar** while a pipeline runs: see which stage is active right now.
+  - **Last 5 builds**: turn the wheel to browse them and see which stage failed and who broke it.
+  - **Alerts**: a hard-to-miss frame, the LED and an optional sound when a build fails, a green "FIXED!" flash when it recovers, and a "NEW BUILD" notice on the back screen.
+  - **Back screen** dashboard: health, trend of recent builds, build duration bars, author and branch.
+
+  Works with **Jenkins** (URL, job, user and API token) and **GitHub Actions** (repository, optional workflow and branch; a token is needed only for private repositories). Several jobs or repositories can be listed and switched with a long press. A demo mode shows every screen without any server.
+
+  ## Setup
+
+  Open the app settings, choose Jenkins or GitHub Actions and fill in the connection fields. Use a read-only Jenkins user and a GitHub token with the Actions: read permission.
+
+  Made by Nazarii Nazarenko. Source: https://github.com/ProstoSnakenoob/pipeline-forecast
+changelog: |-
+  First release.
+
+  - Jenkins and GitHub Actions support (public and private repositories).
+  - Job health shown as weather, with a live stage bar while a pipeline runs.
+  - Browse the last 5 builds with the wheel: result, failed stage, author.
+  - Fail alert (frame, LED, optional sound) and a "FIXED!" flash when a build recovers.
+  - Back screen dashboard and a "NEW BUILD" notice.
+  - Several jobs or repositories, switched with a long press.
+  - Adjustable polling intervals and a demo mode that needs no server.
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+  - screenshots/front-4.png
+  - screenshots/front-7.png
+  - screenshots/front-8.png
+  - screenshots/front-6.png
+  - screenshots/front-5.png
+  - screenshots/front-10.png
+  - screenshots/front-13.png
+back_screenshots:
+  - screenshots/back-3.png
+  - screenshots/back-4.png
+  - screenshots/back-7.png
+  - screenshots/back-8.png
+  - screenshots/back-9.png
