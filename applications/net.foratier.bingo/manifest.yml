@@ -1,0 +1,61 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/jforatier/busy-bar-bingo.git
+    commit_sha: a7ccb872d05f88e7b2d626337bf31f4697b89923
+category: games
+short_description: "Run a bingo night from your BUSY Bar: the drum spins, a voice calls each ball, the host checks cards on the back."
+description: |
+  Bingo turns your BUSY Bar into the caller of a bingo night. Press **Start**: the drum spins, a ball rolls out and lands, and a voice calls it. The room watches the front; the host checks cards on the back.
+
+  ## Both sides of the bar
+
+  - **Front, for the room**: the drawn ball in its column's colour, its number big enough to read across the room.
+  - **Back, for the host**: the board of every number called, the last one highlighted. When a player shouts, the host checks the card on it in seconds.
+
+  ## Two games
+
+  - **US bingo, 75 balls**: B-I-N-G-O columns, each ball called with its letter ("N 42").
+  - **90 balls**, the UK game and the French *loto*: one line, two lines, then the full house.
+
+  Choose the game when you start a new one. The bar never calls a number twice, and the game is saved after every ball: quit, run out of battery or switch apps, it comes back where it was.
+
+  ## Manual or automatic
+
+  - **Manual** (default): Start spins the drum, Start again lets the ball out. The host runs the show.
+  - **Automatic**: a ball at a steady pace (15 to 60 s), Start to pause. Handy when the host plays too.
+
+  ## The caller's voice
+
+  Every ball and every prize is called aloud, in **English or French**. Turn on the **nicknames** setting to see the traditional calls scroll under the number ("Two little ducks" for 22, "Two fat ladies" for 88).
+
+  ## Controls
+
+  - **Start**: spin and stop the drum (manual), play or pause (automatic)
+  - **OK**: a player calls a win; OK again confirms it, Back is a false call
+  - **OK, held**: new game, after a confirmation
+  - **Wheel**: look back at the balls already called
+  - **Back**: quit; the game is saved
+
+  ## Settings
+
+  Draw mode and pace, language, voice, sounds, nicknames.
+
+  Tip: for a game night, raise the bar's brightness in the BUSY app.
+
+  Players bring their own cards; the app calls the numbers and keeps the board, with no money involved. Open source (MIT); the voices are made with the Kokoro speech model, credits in the repository.
+changelog: |
+  - Run a bingo night from the bar: US 75-ball or 90-ball (UK and French loto), never the same number twice.
+  - The drum spins, the ball rolls out and a caller's voice announces it, in English or French.
+  - The host's board on the back display: every called number, to check a winning card at a glance.
+  - Manual draws on the Start button, or automatic draws at a steady pace.
+  - The game is saved after every ball: quitting the app never loses it.
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+  - screenshots/front-4.png
+  - screenshots/front-5.png
+back_screenshots:
+  - screenshots/back-1.png
+  - screenshots/back-2.png
