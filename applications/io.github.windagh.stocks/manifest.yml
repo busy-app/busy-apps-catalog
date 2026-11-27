@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/windAGH/busybar-apps.git
-    commit_sha: 500ae6515c964ef5c21de3809c1c8c91dc1553f5  # v1.0.0
+    commit_sha: 94051977a561c3b13b904cd7b33ac1b794514ee6  # v1.0.1
     subdir: stocks
 
 category: info-feeds
@@ -12,7 +12,7 @@ short_description: Stock and crypto prices one at a time, with the day's line an
 description: "@CATALOG.md"
 
 changelog: |
-  First release: up to 8 tickers from Yahoo Finance with a CNBC fallback; price, change and the line of the day, 5 days or 1 month; green-up or red-up colours; pre-market and after-hours sessions in a night-blue box with a gradient line.
+  Fixes. Before a market opens - at night, on a weekend, on a holiday - the box keeps the line and the change of the last session; it stood empty once the quote source had announced the next trading day. In the hours before the opening the app no longer shows a pre-market session that has not traded yet. The two lines of the notice for a symbol that is not found (and for no data) now stand clear of the box's rim. New: the app opens with a short author's mark.
 
 screenshots:
   - screenshots/1.png
