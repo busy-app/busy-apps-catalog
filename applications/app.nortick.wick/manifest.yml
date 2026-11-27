@@ -1,0 +1,43 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/Nortick/wick.git
+    commit_sha: e5ca8186eefff5f33f51ebe026841bf4e8d27b2b
+category: productivity
+short_description: Focus timer with tracks, a shared focus mode and a fuse that burns down.
+description: |-
+  A focus timer for BUSY Bar with tracks, a shared focus mode and a burning fuse.
+
+  ## Tracks and modes
+
+  Up to 3 tracks, each with its own name, colour and daily goal. Every track runs in one of three modes:
+
+  - **Count up**: a plain stopwatch.
+  - **Countdown**: one stretch of time, then a sound and DONE.
+  - **Focus mode (shared)**: work and breaks with the shared Focus mode settings: work, short break, long break, a long break after every N sessions of the day, optional auto-start of the next phase.
+
+  While you work, a fuse in the track colour burns down behind the digits; the burnt part of every text turns dark grey. During a break the fuse is green and fills up like a charge. Phase changes fade through black, the digits turn white and run up to the new time.
+
+  ## Buttons
+
+  | Button | Action |
+  | --- | --- |
+  | Start | start / pause / resume; during a break: end the break |
+  | Hold Start | RESET TRACK? - OK clears today's minutes and sessions of the current (or selected) track |
+  | OK, long | skip the current phase; when idle - statistics |
+  | Wheel | choose a track (Start or OK picks it) |
+  | Back | idle: exit; pause: stop; running: press twice to stop |
+
+  ## Settings
+
+  Everything is set in the app settings on the phone or the web: tracks (mode, name, colour, countdown length, daily goal, auto start), Focus mode, timer screen length, standby (day in bars or clock), screen off after idle, health breaks, sounds (quiet at night), the time a new day starts, goal screen.
+changelog: "First version: up to 3 tracks, count up / countdown / shared focus mode, burning fuse with charging breaks, phase transitions, track reset and statistics on the buttons."
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+  - screenshots/front-4.png
+  - screenshots/front-5.png
+  - screenshots/front-6.png
+  - screenshots/front-7.png
+  - screenshots/front-8.png
