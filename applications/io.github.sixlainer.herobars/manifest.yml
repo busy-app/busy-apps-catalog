@@ -1,0 +1,18 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/Sixlainer/herobars.git
+    commit_sha: 64b42a864771b5f538d454ea2df799de376c3a53  # v1.0.0
+    subdir: app
+category: utilities
+short_description: "Your World of Warcraft character on your desk: level, XP to the next level and money, with animations."
+description: "@README.md"
+changelog: "First release: the character card, XP and money animations, a level-up screen, death screens and a demo."
+screenshots:
+  - screenshots/card.png
+  - screenshots/xp-gain.png
+  - screenshots/money.png
+  - screenshots/level-up.png
+  - screenshots/dead.png
+  - screenshots/ghost.png
+  - screenshots/waiting.png
