@@ -1,0 +1,45 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/RocketGod-git/busy-bar-marquee.git
+    commit_sha: ee55a642cc2f67818077088737f0c15a7c6c67ec
+    subdir: marquee
+category: art
+short_description: "Animated, full-color message board: glowing text, 26 pixel-art emoji, and 9 live backgrounds."
+description: |
+  ## Your door sign, but make it glow
+
+  Marquee turns your BUSY Bar into an animated, full-color message board. Type a message, pick a look, and it runs on the bar by itself, even with your computer off.
+
+  ## What it can do
+
+  - **9 animated backgrounds:** Plasma, Fire, Matrix rain, Warp speed, Rainbow, Aurora, Sparkle, Solid, and None.
+  - **5 text styles:** Solid, Chrome glint, Rainbow, Gradient, and Fire.
+  - **6 kinds of motion:** Scroll, Wave, Still, Blink, Glitch, and Typewriter.
+  - **26 pixel-art emoji** in full color, including faces, hearts, thumbs up, fire, pizza, coffee, and party. They show on the back screen too.
+  - **Two text sizes**, a black outline that keeps text readable over busy backgrounds, and a white flash plus LED blink when a new message arrives.
+
+  ## Three ways to set your message
+
+  - **The free Marquee desktop app** for Windows, Mac, and Linux sends messages to Marquee once it's on your bar. It has a live preview that runs the same renderer as the bar, one-click presets like "In a meeting" and "Do not disturb," an emoji picker, and a small screen-only view you can keep in a corner. Get it from [the Marquee releases page](https://github.com/RocketGod-git/busy-bar-marquee/releases/latest).
+  - **The bar's web interface:** every option is in Marquee's settings. Write emoji as codes, like :fire: or :heart:.
+  - **The bar itself:** the scroll wheel cycles backgrounds, OK cycles motion, Start cycles the text style, and Back quits.
+
+  ## How it works
+
+  The bar's built-in text can't do per-letter color or motion, so Marquee draws every frame itself: a 72×16 image, 10 to 12 times a second. Its pixel font was read off the bar's own screen, so text looks native. The effects are built for the bar's small JavaScript engine, with precomputed fields, integer-only math, and only the lit pixels drawn.
+
+  Marquee is busier than most apps, so press Back to quit it when you don't need it.
+changelog: |
+  First release in the BUSY Apps Catalog: 9 animated backgrounds, 5 text styles, 6 kinds of motion, 26 pixel-art emoji on both screens, and a free desktop app for Windows, Mac, and Linux.
+screenshots:
+  - screenshots/1-lunch.png
+  - screenshots/2-tgif.png
+  - screenshots/3-ship.png
+  - screenshots/4-fire.png
+  - screenshots/5-call.png
+  - screenshots/6-neo.png
+  - screenshots/7-come.png
+  - screenshots/8-busy.png
+back_screenshots:
+  - screenshots/back-1.png
