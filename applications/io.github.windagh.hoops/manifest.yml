@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/windAGH/busybar-apps.git
-    commit_sha: 500ae6515c964ef5c21de3809c1c8c91dc1553f5  # v1.0.0
+    commit_sha: 94051977a561c3b13b904cd7b33ac1b794514ee6  # v1.0.1
     subdir: hoops
 
 category: info-feeds
@@ -12,7 +12,7 @@ short_description: NBA game night as a live score strip with timeouts, runs, fou
 description: "@CATALOG.md"
 
 changelog: |
-  First release: live NBA score strips with the quarter's time along the bottom, timeouts, runs and team fouls; signs for threes (with the shooter's number and name), runs, lead changes, overtime and the final; halftime and tip-off countdowns; a carousel of the day's finished and coming games; jerseys or tall letters with OK; a champions' banner and an offseason countdown when the season is over.
+  Fix: with the teams shown as their three letters alone (OK), the tall letters stand one row higher - two dark rows above them and two between them and the line along the bottom, in every state of a game. They sat one row too low, almost on the countdown line before a game. New: the app opens with a short author's mark.
 
 screenshots:
   - screenshots/1.png
