@@ -1,9 +1,9 @@
-# applications/dev.ruffledgoose.scenes/manifest.yml  (v1.0.3)
+# applications/dev.ruffledgoose.scenes/manifest.yml  (v1.0.4)
 sourcecode:
   type: git
   location:
     origin: https://github.com/ruffledgoose/busybar-scenes.git
-    commit_sha: e9a0bd7c68b792c1e34787f95f5d56e22799d773
+    commit_sha: 752ca853a7cbc93816cab01ba0d899a34dd2f1ce
 category: smart-home
 short_description: "Run your Home Assistant scenes from the BUSY Bar: dial to pick, OK to activate, with the scene's own icon."
 description: |
