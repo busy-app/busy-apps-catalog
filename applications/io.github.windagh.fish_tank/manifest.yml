@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/windAGH/busybar-apps.git
-    commit_sha: 60d89a357e0e361c4064fadec50fd1e685eedd67  # v1.0.0
+    commit_sha: 248d97cc4d54544ccae057c50d68b1ab2b331438  # v1.0.0
     subdir: fish_tank
 
 category: games
@@ -12,7 +12,7 @@ short_description: A tank of pet fish for your desk. Feed them, but not too ofte
 description: "@CATALOG.md"
 
 changelog: |
-  First release: a living tank with water, shafts of light, plants, bubbles and up to twelve fish, under a lamp with five steps (turn the knob). Start feeds; hunger runs in real time, so fish can starve or be overfed. OK opens the menu: a fish shop with three capsules a day and twelve kinds of fish in three rarities (common, rare, epic), each with its own reveal, to keep or to release; and the status. Crowding above eight fish, a card that says what happened while you were away, and a guide of five pages on first use. Settings for the bubbles and for starting over.
+  First release: a living tank with water, shafts of light, plants, bubbles and up to twelve fish, under a lamp with five steps (turn the knob). Start feeds; hunger runs in real time, so fish can starve or be overfed. OK opens the menu: a fish shop with three capsules a day and twelve kinds of fish in three rarities (common, rare, epic), each with its own reveal, to keep or to release; and the status. Crowding above eight fish, and a card that says what happened while you were away. The app opens on its main screen: Start enters the tank, pressing the knob (OK) opens a guide of five pages, which also opens by itself the first time. Settings for the bubbles and for starting over.
 
 screenshots:
   - screenshots/1.png
