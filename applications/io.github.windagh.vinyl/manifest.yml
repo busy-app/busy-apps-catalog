@@ -1,0 +1,30 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/windAGH/busybar-apps.git
+    commit_sha: 023f4a1fd3af7a85dafa33417b794b4bd486646b  # v1.0.0
+    subdir: vinyl
+
+category: music
+
+short_description: What is playing, as a record player with karaoke lyrics. Works with a small Mac app or your own Spotify keys.
+
+description: "@CATALOG.md"
+
+changelog: |
+  First release: what you are listening to as a record player. Twelve records, one per album, with an arm that comes down when the music starts and lifts when it pauses; synced lyrics from lrclib.net in two rows that take turns, with the lyrics of the last 20 songs kept on the bar; three views (lyrics, song info, a ribbon of light); Start plays and pauses, the knob sets the volume; a film projector for videos. The app opens on its main screen: Start enters, pressing the knob (OK) opens the guide. What is playing comes from Vinyl for Mac (in this folder, with SETUP.md), over Wi-Fi after pairing once by USB, or from your own Spotify keys.
+
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
+  - screenshots/3.png
+  - screenshots/4.png
+  - screenshots/5.png
+  - screenshots/6.png
+  - screenshots/7.png
+  - screenshots/8.png
+  - screenshots/9.png
+  - screenshots/10.png
+
+back_screenshots:
+  - screenshots/back-1.png
