@@ -1,0 +1,27 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/windAGH/busybar-apps.git
+    commit_sha: 415f7f695305a2363d1f7a956a10583d866c6b3f  # v1.0.0
+    subdir: plate_by_plate
+
+category: art
+
+short_description: A conveyor-belt sushi bar to watch and eat from. Take a plate, eat it in three bites, return the plates for keepsakes.
+
+description: "@CATALOG.md"
+
+changelog: |
+  First release: a conveyor belt with 23 dishes under glass domes (three of them rare, on gold plates), a plate brought in front of you and eaten in three bites, your table with the empty plates, a slot that takes them back and counts them, a capsule every fifth plate with ten keepsakes to win, a menu to complete, quiet nights, a guide of five pages to the controls on first use, and settings for the belt's speed, quiet nights and starting over.
+
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
+  - screenshots/3.png
+  - screenshots/4.png
+  - screenshots/5.png
+  - screenshots/6.png
+  - screenshots/7.png
+  - screenshots/8.png
+  - screenshots/9.png
+  - screenshots/10.png
