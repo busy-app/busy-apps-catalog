@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/windAGH/busybar-apps.git
-    commit_sha: e4b7ec4d4912d6b6662b35a900030ede1f2d247a  # v1.0.0
+    commit_sha: 4d19b2519b4ab940b14d4683c206b52134ee3709
     subdir: gameday
 
 category: info-feeds
