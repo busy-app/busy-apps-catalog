@@ -1,0 +1,27 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/windAGH/busybar-apps.git
+    commit_sha: ee5e901c6ae63895def26117e92ec5f15705e291  # v1.0.0
+    subdir: breathe
+
+category: productivity
+
+short_description: A light to breathe with. Follow it in and out for one to five minutes, in three patterns, each with its own colour.
+
+description: "@CATALOG.md"
+
+changelog: |
+  First release: a light to breathe with. Calm is a guided breath of seven breaths a minute, out longer than in; Box (4-4-4-4) and Sleep (4-7-8) are the other two patterns, each with its own colour of light. Sessions of one to five minutes with pause and stop, a line of progress, an end film and a summary of minutes, breaths and days in a row; the app opens on its main screen, where Start goes on to the choice of pattern and minutes and pressing the knob (OK) opens a short guide to the controls; settings for the words, the pattern to start with, and starting over.
+
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
+  - screenshots/3.png
+  - screenshots/4.png
+  - screenshots/5.png
+  - screenshots/6.png
+  - screenshots/7.png
+  - screenshots/8.png
+  - screenshots/9.png
+  - screenshots/10.png
