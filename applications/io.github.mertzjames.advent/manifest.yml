@@ -4,7 +4,7 @@ sourcecode:
     origin: https://github.com/mertzjames/busybartools.git
     commit_sha: bdc45e5a32db86b2c6f32fc6e43a29fb51cad66c  # 1.1.0
     subdir: apps/advent-calendar/app
-category: art
+category: clocks
 short_description: "A unique animation for every day of Advent, with a countdown to Christmas"
 description: "@CATALOG.md"
 changelog: |
