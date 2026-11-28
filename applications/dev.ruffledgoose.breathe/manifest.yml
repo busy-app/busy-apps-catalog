@@ -1,0 +1,36 @@
+# applications/dev.ruffledgoose.breathe/manifest.yml  (v1.0.1)
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ruffledgoose/busybar-breathe.git
+    commit_sha: 6d19166f6a2e492d75fb3a90b4752bfcfd543c11
+category: utilities
+short_description: "Guided breathing coach with 5 patterns, 4 fluid animations, LED pulse and completion chime."
+description: |
+  A guided breathing coach for the **BUSY Bar**.
+
+  ## Features
+
+  - **5 breathing patterns:** BOX (4-4-4-4), 4-7-8, CALM (5-5), SIGH (3-1-6) and AWAKE (4-2-4).
+  - **4 fluid procedural animations:** BLOOM, ORB, WAVE and LUNGS, switchable live with the wheel.
+  - **Session length:** 2, 3, 5 or 10 minutes, or endless (MAX).
+  - **LED pulse and chime:** The status LED follows the breath phase and a gentle chime marks the end.
+  - **Back display:** Shows pattern, phase and session info.
+
+  ## Controls
+
+  - **Menu:** Wheel selects the pattern, **OK** cycles the duration, **START** begins, **BACK** quits.
+  - **Session:** Wheel switches animation, **START** pauses/resumes, **OK** restarts the current breath cycle, **BACK** returns to the menu.
+changelog: |
+  Initial release of Breathe:
+  - 5 selectable breathing patterns
+  - 4 fluid animation styles, switchable live
+  - LED pulse following the breath phase and completion chime
+  - Back display with session overview
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+  - screenshots/front-4.png
+back_screenshots:
+  - screenshots/back-1.png
