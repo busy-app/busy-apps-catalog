@@ -1,0 +1,23 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/0xSoul24/adguardhome-busybar.git
+    commit_sha: b47681c22e2f8cf724ecbd53815343c161138beb  # 0.1.0
+
+category: smart-home
+
+short_description: Your AdGuard Home on the BUSY Bar, with protection status, queries, blocks and top domains. Pause it with START.
+
+description: "@README.md"
+
+changelog: |
+  First release: protection status on a coloured shield, DNS queries, blocked count and share, top blocked domain, average response time and top client, over a configurable stats period. START pauses protection for a set time or turns it back on.
+
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
+  - screenshots/3.png
+  - screenshots/4.png
+  - screenshots/5.png
+  - screenshots/6.png
+  - screenshots/7.png
