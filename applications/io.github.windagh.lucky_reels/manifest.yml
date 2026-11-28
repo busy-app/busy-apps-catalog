@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/windAGH/busybar-apps.git
-    commit_sha: b507b0e672425ec319ce8394d352abb0bef1b950  # v1.0.0
+    commit_sha: 257941a1d4400a0da31c6cfe878c6644ece0dfa8  # v1.0.0
     subdir: lucky_reels
 
 category: games
