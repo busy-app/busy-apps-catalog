@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/windAGH/busybar-apps.git
-    commit_sha: ea30ecd19e2f88d8519d6a136b61b3ad542469ba  # v1.0.0
+    commit_sha: 0cc80f1972395d2b7383582a58e04325ab997be8  # v1.0.0
     subdir: baggage_claim
 
 category: art
@@ -12,7 +12,7 @@ short_description: "An airport baggage belt for your desk, seen from above: endl
 description: "@CATALOG.md"
 
 changelog: |
-  First release: an airport baggage hall seen from above. A roller shutter with the controls on it, lamps that strike one by one, four belts to move between, 21 kinds of luggage in many colours and 21 surprises with a small life of their own (a sleeping traveller, a cat, a robot vacuum going the wrong way, seasonal ones), rubber flaps that every thing pushes through, jolts, luggage tags with a few dry words, four belt speeds, and light that follows the bar's clock.
+  First release: an airport baggage hall seen from above. The app opens on its main screen, where Start enters and pressing the knob (OK) opens the guide. A roller shutter, lamps that strike one by one, four belts to move between, 21 kinds of luggage in many colours and 21 surprises with a small life of their own (a sleeping traveller, a cat, a robot vacuum going the wrong way, seasonal ones), rubber flaps that every thing pushes through, jolts, luggage tags with a few dry words, four belt speeds, and light that follows the bar's clock.
 
 screenshots:
   - screenshots/1.png
