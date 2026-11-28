@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/windAGH/busybar-apps.git
-    commit_sha: 573e1a53efaff1abf712ccbbdb94df9e1a204bd0  # v1.0.0
+    commit_sha: f2dc86f028560e8967188a4d68b2b9d3711f719c  # v1.0.0
     subdir: ember
 
 category: games
@@ -12,7 +12,7 @@ short_description: A slingshot game. Sling a glowing ember at towers of ice and 
 description: "@CATALOG.md"
 
 changelog: |
-  First release: a slingshot game with more than 6,000 different fields that get harder slowly (free towers, walls, stairs, pillars, gates, stone caps on ice), each checked to be clearable in several ways; five embers a round; ice that shatters, stone that cracks first, pieces that fall and crush what is under them; a flat shot and a lob; a guide to the controls, five pages you turn yourself, the first time the app is opened; a little extra for a one-shot clear and for a collapse; the best score and the furthest round kept on the bar.
+  First release: a slingshot game with more than 6,000 different fields that get harder slowly (free towers, walls, stairs, pillars, gates, stone caps on ice), each checked to be clearable in several ways; five embers a round; ice that shatters, stone that cracks first, pieces that fall and crush what is under them; a flat shot and a lob; the app opens on its main screen, where Start plays and pressing the knob (OK) opens a guide to the controls, five pages you turn yourself (it also opens by itself the first time); a little extra for a one-shot clear and for a collapse; the best score and the furthest round kept on the bar.
 
 screenshots:
   - screenshots/1.png
