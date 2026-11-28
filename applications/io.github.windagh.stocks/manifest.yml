@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/windAGH/busybar-apps.git
-    commit_sha: 94051977a561c3b13b904cd7b33ac1b794514ee6  # v1.0.1
+    commit_sha: c32dde8394815ef7131a0649ce79b380f04a4d9a  # v1.0.1
     subdir: stocks
 
 category: info-feeds
@@ -12,7 +12,7 @@ short_description: Stock and crypto prices one at a time, with the day's line an
 description: "@CATALOG.md"
 
 changelog: |
-  Fixes. Before a market opens - at night, on a weekend, on a holiday - the box keeps the line and the change of the last session; it stood empty once the quote source had announced the next trading day. In the hours before the opening the app no longer shows a pre-market session that has not traded yet. The two lines of the notice for a symbol that is not found (and for no data) now stand clear of the box's rim. New: the app opens with a short author's mark.
+  Fixes. Before a market opens - at night, on a weekend, on a holiday - the box keeps the line and the change of the last session; it stood empty once the quote source had announced the next trading day. In the hours before the opening the app no longer shows a pre-market session that has not traded yet. The two lines of the notice for a symbol that is not found (and for no data) now stand clear of the box's rim. New: the app opens with a short author's mark. New: a further fallback for quotes, Tencent's public quote service (qt.gtimg.cn), asked when neither Yahoo Finance nor CNBC answers - for places where those cannot be reached; it covers shares and funds listed in the United States, Hong Kong, Shanghai and Shenzhen and four indexes, with the price and the day's change of the regular session.
 
 screenshots:
   - screenshots/1.png
