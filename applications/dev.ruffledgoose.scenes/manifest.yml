@@ -24,7 +24,11 @@ description: |
   ## Controls
 
   - **Dial:** select a scene, **OK:** activate, **START:** sync with Home Assistant, **BACK:** quit.
-changelog: New screenshots with example scenes and their icons.
+changelog: |
+  Initial release of Scenes:
+  - Scene launcher for Home Assistant: dial to pick, OK to activate
+  - Only the scenes with a label of your choice, most used first
+  - Shows each scene's Material Design icon, in a standard or colour style, or your own icon pack
 screenshots:
   - screenshots/front-1.png
   - screenshots/front-2.png
