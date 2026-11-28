@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/windAGH/busybar-apps.git
-    commit_sha: 2c3fcba48eadd8f6e2bc7b6967a7f5eab0aeec4e  # v1.0.0
+    commit_sha: 023f4a1fd3af7a85dafa33417b794b4bd486646b  # v1.0.0
     subdir: vinyl
 
 category: music
