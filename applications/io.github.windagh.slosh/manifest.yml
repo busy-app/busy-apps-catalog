@@ -1,0 +1,27 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/windAGH/busybar-apps.git
+    commit_sha: cc0f297061e80c5a120d313e49c0092004997127  # v1.0.0
+    subdir: slosh
+
+category: art
+
+short_description: A glass tank of simulated water. Push it, tilt it, watch the waves, and float a rubber duck on it.
+
+description: "@CATALOG.md"
+
+changelog: |
+  First release: a glass tank of simulated water. Start pushes the water in the middle (a crown, drops, waves that come back from the glass), turning the knob tilts the tank up to breaking fronts with foam and spray. Eight waters, one of them a slow rainbow. Seven things that float and ride the waves (duck, sailing boat, paper boat, message in a bottle, beach ball, ice cube, buoy with a light), or none. The water and what floats are chosen on the bar itself, in two steps with OK and the knob. The app opens on its main screen: Start enters the tank, pressing the knob (OK) opens the guide of five living pages, which also opens by itself on first use. A calm mode that stirs the water now and then, round glass corners, and Start over.
+
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
+  - screenshots/3.png
+  - screenshots/4.png
+  - screenshots/5.png
+  - screenshots/6.png
+  - screenshots/7.png
+  - screenshots/8.png
+  - screenshots/9.png
+  - screenshots/10.png
