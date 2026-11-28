@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/windAGH/busybar-apps.git
-    commit_sha: a66f2bfbb64585acab6d13740c52a34579f9b019  # v1.0.0
+    commit_sha: 44b6899c071b4bcdad5118a62d870acf96b881e9  # v1.0.0
     subdir: chop_chop
 
 category: games
