@@ -1,0 +1,27 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/windAGH/busybar-apps.git
+    commit_sha: 166e6a2eea0f60f8bdd78ca0d54261df444f9148  # v1.0.0
+    subdir: bop_back
+
+category: games
+
+short_description: Watch a little act play a rhythm, then play it back with Start. Five acts, eight levels, three hearts.
+
+description: "@CATALOG.md"
+
+changelog: |
+  First release: a rhythm game of watch, count, play it back. Five acts made for this app (a cat at a drum, a bear at an anvil, a frog and a firefly, a woodpecker, a popcorn pan), forty phrases in eight levels from 90 to 130 beats a minute, a prompt that always says whose turn it is, the phrase written on a strip with a lamp that walks it, a verdict that shows every hit early or late, three hearts, and a best score kept on the bar. The app opens on its main screen: Start plays, a press of the knob (OK) opens the guide.
+
+screenshots:
+  - screenshots/1.png
+  - screenshots/2.png
+  - screenshots/3.png
+  - screenshots/4.png
+  - screenshots/5.png
+  - screenshots/6.png
+  - screenshots/7.png
+  - screenshots/8.png
+  - screenshots/9.png
+  - screenshots/10.png
