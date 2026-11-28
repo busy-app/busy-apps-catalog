@@ -1,0 +1,31 @@
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ruffledgoose/busybar-transit-rostock.git
+    commit_sha: eba6c393e9e86050267496d81003c908c1dc6424
+category: info-feeds
+short_description: "Live departure board for Rostock on the BUSY Bar: two stops, colour-coded lines, dial to scroll."
+description: |
+  **Transit Rostock** is a live departure board for the **BUSY Bar**, powered by the free [Transitous](https://transitous.org) API. It covers RSAG trams and buses plus S-Bahn and regional trains in and around Rostock. No account and no API key needed.
+
+  ## Features
+
+  - **Two stops:** Set two stops in the app settings (default `Steintor` and `Doberaner Platz`, just type the name, no city needed; the search is limited to Rostock and its surroundings). Leave the second one empty for a single stop.
+  - **Colour-coded lines:** Tram (blue), bus (purple), S-Bahn and rail (green), ferry (teal).
+  - **Live times:** Scrolling destination, a `NOW` / minutes countdown, and the delay (`+2m`) or the departure time.
+  - **Back display:** Shows the stop name and the next four departures at a glance.
+
+  ## Controls
+
+  - **Dial:** scroll through the next 6 departures, **OK:** switch between stop 1 and stop 2, **START:** refresh now, **BACK:** quit.
+changelog: |
+  Initial release of Transit Rostock:
+  - Live departures for two stops via the free Transitous API
+  - Colour-coded tram, bus, rail and ferry badges
+  - Scrolling destinations, countdown and delay
+  - Back display with the next four departures
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+back_screenshots:
+  - screenshots/back-1.png
