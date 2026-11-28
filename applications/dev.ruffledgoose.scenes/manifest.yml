@@ -1,0 +1,32 @@
+# applications/dev.ruffledgoose.scenes/manifest.yml  (v1.0.2)
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ruffledgoose/busybar-scenes.git
+    commit_sha: 4370c46e5ed0297bfde155b6861f3177535fd436
+category: smart-home
+short_description: "Run your Home Assistant scenes from the BUSY Bar: dial to pick, OK to activate, with the scene's own icon."
+description: |
+  A scene launcher for **Home Assistant** on the **BUSY Bar**.
+
+  ## Features
+
+  - **Pick and run:** The dial scrolls through your scenes, **OK** activates the selected one.
+  - **Only the scenes you want:** Shows just the scenes that carry a Home Assistant label of your choice (default `busybar`), or all of them with `*`. Give a scene the label in Home Assistant and it appears on the bar.
+  - **Most used first:** The list is sorted by how often you use each scene, so the usual one is often one press away.
+  - **The scene's own icon:** Shows the Material Design icon the scene has in Home Assistant. 33 common ones are built in, all others are loaded from an icon library on GitHub Pages. Choose white (standard) or coloured icons; an icon without a colour version falls back to white. You can also use your own icon pack by URL, or contribute one.
+  - **Back display:** Shows the list around the selection.
+
+  ## Setup
+
+  In the app settings enter the address of Home Assistant and a long-lived access token (Home Assistant profile, Security).
+
+  ## Controls
+
+  - **Dial:** select a scene, **OK:** activate, **START:** sync with Home Assistant, **BACK:** quit.
+changelog: "Setup guide in the README: token, label, settings and what the error messages mean."
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+back_screenshots:
+  - screenshots/back-1.png
