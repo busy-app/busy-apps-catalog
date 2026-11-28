@@ -2,17 +2,17 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/windAGH/busybar-apps.git
-    commit_sha: c24acca8dfad2fe724ca0c3751df6ae9a47ca86a  # v1.0.0
+    commit_sha: 2f43b28cd365e8c7e076e2a8198efa3a344ad48e  # v1.0.0
     subdir: pick_for_me
 
 category: utilities
 
-short_description: "A reel that decides for you: eat, drink, wear, move, watch, go, yes or no, or a list of your own."
+short_description: "A reel that decides for you what to eat, drink, wear or watch, where to go, yes or no, or picks from your own list."
 
 description: "@CATALOG.md"
 
 changelog: |
-  First release: eight lists on one reel (eat, drink, wear, move, watch, go, yes or no, and a list of your own from the settings), a spin that slows in three clicks and lands on the answer in large letters, a shirt in the chosen colour for Wear, no answer twice in a row, a guide to the controls the first time you open it, and settings for your own list and starting over.
+  First release: eight lists on one reel (eat, drink, wear, move, watch, go, yes or no, and a list of your own from the settings), a spin that slows in three clicks and lands on the answer in large letters, a shirt in the chosen colour for Wear, no answer twice in a row, a main screen where Start spins and a press of the knob (OK) opens the guide to the controls, and settings for your own list and starting over.
 
 screenshots:
   - screenshots/1.png
