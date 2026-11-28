@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/windAGH/busybar-apps.git
-    commit_sha: 5c34b46c859529a2a82e1d7908559f8d7f4fc783  # v1.0.0
+    commit_sha: eee391d78ce535e022052a53e0f3ec1ab5962786  # v1.0.0
     subdir: ember
 
 category: games
