@@ -1,0 +1,40 @@
+# applications/dev.ruffledgoose.safecracker/manifest.yml  (v1.0.0)
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ruffledgoose/busybar-safecracker.git
+    commit_sha: aae8a4384194c4e722db4e27f3be251709efb412
+category: games
+short_description: "Crack the safe by ear: turn the dial, listen for the klonk of the gate, lock in the combination."
+description: |
+  **Safecracker** turns the **BUSY Bar** into a safe. Turn the dial, listen to the clicks and lock in the number when the gate drops with a deep *klonk*. No account and no internet needed.
+
+  ## Features
+
+  - **Play by ear:** every number clicks; on the right one the gate drops with a deep klonk and a small settle click.
+  - **Levels that teach you:** early levels give a brighter click and an amber number near the gate, later ones leave you alone with your ears.
+  - **Right, left, right:** from level 4 the numbers must be dialled in alternating directions, and from level 7 turning back against them resets the wheels, like a real lock.
+  - **False gates:** from level 6 hollow *klocks* try to fool you. Every such level starts with an ear test.
+  - **Up to 8 numbers:** combinations grow from 3 to 8 numbers on a 0–99 dial.
+  - **Alarm:** three wrong numbers trip the alarm and the level starts over.
+  - **Best times:** cracked levels show an open safe and your best time.
+  - **Sound test:** turn left past level 1 to hear every sound before you play.
+  - **Back display:** found numbers, time, misses and the direction to turn.
+
+  ## Controls
+
+  - **Dial:** turn the safe dial (in the menu: pick a level), **START or OK:** lock in the number (in the menu: play), **BACK:** to the menu, from the menu quit.
+changelog: |
+  Initial release of Safecracker:
+  - Crack the combination by ear: clicks, a deep klonk on the real gate, START locks in
+  - Levels from 3 to 8 numbers with warm clicks, a right/left rule (strict from level 7) and false gates
+  - Alarm after 3 misses, best time per level, open safe for cracked levels
+  - Sound test in the menu and a back display with progress, time and direction
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+  - screenshots/front-4.png
+  - screenshots/front-5.png
+back_screenshots:
+  - screenshots/back-1.png
