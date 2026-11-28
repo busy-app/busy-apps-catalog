@@ -1,0 +1,41 @@
+# applications/dev.ruffledgoose.deskflow/manifest.yml  (v1.0.2)
+sourcecode:
+  type: git
+  location:
+    origin: https://github.com/ruffledgoose/busybar-deskflow.git
+    commit_sha: 42b61ae0b9aaf90fcce9f763f19040e5b067411d
+category: productivity
+short_description: "Sit/stand timer that moves your ESPHome desk for you, with a visual pre-warning and a meeting lock."
+description: |
+  A sit/stand timer for the **BUSY Bar** that can move your standing desk for you. Connect a desk with ESPHome and DeskFlow raises and lowers it when the timer ends. Without ESPHome it works with any desk: it tells you when to go **UP** or **DOWN**, and you confirm with **OK**.
+
+  ## Features
+
+  - **ESPHome desk control:** Enable **Move Desk (ESPHome)** in settings and DeskFlow moves your standing desk via ESPHome web_server with an elevator animation. See the [example ESPHome config](https://github.com/ruffledgoose/busybar-deskflow/blob/main/esphome/desk.example.yaml).
+  - **Works with any desk:** Manual mode is the default. At 00:00, DeskFlow prompts **UP** or **DOWN** until you adjust your desk and confirm with **OK** (or turn the wheel to snooze).
+  - **Home screen setup:** View and adjust Sit and Stand durations with the wheel and pick your starting position.
+  - **BUSY-style progress badge:** The **SIT** (blue) and **STAND** (orange) badge fills as time elapses, with a glowing border and optional animated or calm mode.
+  - **Visual pre-warning and LED:** Configurable countdown warning (default 30 s) turns the right side into a textured hazard sign (yellow, then red in the final 5 s) with matching status LED and priority 100.
+  - **Meeting lock:** Hold **START** to lock the current phase with a padlock icon so the desk stays put at 00:00 until you unlock it.
+  - **Back display summary:** Shows today's standing and sitting totals, desk height or mode, and current state.
+
+  ## Controls
+
+  - **Home screen:** Wheel adjusts minutes, **OK** switches SIT/STAND, **START** begins, **BACK** quits.
+  - **Running timer:** Wheel adjusts time (showing total length above), **START** (short) pauses/resumes or unlocks, **START** (long) toggles meeting lock, **OK** switches phase (or stops/reverses a move), **BACK** returns to home.
+changelog: |
+  Initial release of DeskFlow:
+  - Home screen with quick Sit/Stand duration setup and starting position selection
+  - BUSY-style progress badge with glowing border and animated or calm mode
+  - Framed yellow/red pre-warning sign with priority 100 and matching status LED
+  - One-button meeting lock (hold START) to prevent desk movement during calls
+  - Works with any desk in manual mode (OK to confirm) or automatically with ESPHome
+  - Back display showing daily standing/sitting totals and current state
+screenshots:
+  - screenshots/front-1.png
+  - screenshots/front-2.png
+  - screenshots/front-3.png
+  - screenshots/front-4.png
+  - screenshots/front-5.png
+back_screenshots:
+  - screenshots/back-1.png
