@@ -2,7 +2,7 @@ sourcecode:
   type: git
   location:
     origin: https://github.com/windAGH/busybar-apps.git
-    commit_sha: 94051977a561c3b13b904cd7b33ac1b794514ee6  # v1.0.1
+    commit_sha: 726a39c8cc37b66ae38547e6555c77b0a2a5a587  # v1.0.1
     subdir: hoops
 
 category: info-feeds
@@ -12,7 +12,7 @@ short_description: NBA game night as a live score strip with timeouts, runs, fou
 description: "@CATALOG.md"
 
 changelog: |
-  Fix: with the teams shown as their three letters alone (OK), the tall letters stand one row higher - two dark rows above them and two between them and the line along the bottom, in every state of a game. They sat one row too low, almost on the countdown line before a game. New: the app opens with a short author's mark.
+  Fix: with the teams shown as their three letters alone (OK), the tall letters stand one row higher - two dark rows above them and two between them and the line along the bottom, in every state of a game. They sat one row too low, almost on the countdown line before a game. New: the game clock now ticks between updates, a second a second, down to the value last received, and the game on screen is checked every 5 seconds instead of 8. The line along the bottom takes the colour of the team that has the ball, with a light running the way it attacks. The team fouls are shown only while the clock is stopped. The app opens with a short author's mark. Fix: on a night with many games the app now starts on your team's game, not on the first game that answers; a request that gets no answer no longer stops the display.
 
 screenshots:
   - screenshots/1.png
